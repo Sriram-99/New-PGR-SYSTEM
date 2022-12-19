@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="projectprac.css">
+</head>
+<body>
+  <div class="head">
+    <img id="logo"src="logo.jpeg" alt="">
+    <div class="title"><p>
+<h1>  National Institute of Technology,Silchar</h1>
+<h3 style="font-size:25px;">Grievance Redressal System</h3> </p>
+    </div>
+        <img id="clg" src="img.jpeg" alt="">
+</div>
+<div class="navbar">
+    <a href="http://127.0.0.1:5500/.vscode/html/project/project5/ruchi/login%20vth%20password.html" class="home "><img src="home.jpeg" alt=""></a>
+      <div class="navmini">
+        <a href="http://www.nits.ac.in/" class="nav"> About</a>
+        <a href="" class="nav">Feedback </a>
+        <a href="" class="nav">Guidelines</a>
+        <a href="" class="nav">Profile</a>
+      </div>
+  
+</div>
+   <div class="middle-container">
+    <div id="flex">
+        <div class="dropdown1 dropdown">
+          <button onclick="myFunction1()" class="dropbtn1 dropbtn">Assigned complaints</button>
+          <div id="myDropdown1" class="dropdown-content1 dropdown-content">
+            <a href="#home">Complaint 1 <button class="tick">✔</button><button class="cross">✖ </button></a>
+            <a href="#about">Complaint 2 <button class="tick">✔</button><button class="cross">✖ </button></a>
+            <a href="#contact">Complaint 3 <button class="tick">✔</button><button class="cross">✖ </button></a>
+          </div>
+        </div>
+        
+        <div class="dropdown2 dropdown">
+          <button onclick="myFunction2()" class="dropbtn2 dropbtn">Accepted complaints</button>
+          <div id="myDropdown2" class="dropdown-content2 dropdown-content">
+            <a href="#home">Complaint 1</a>
+            <a href="#about">Complaint 2</a>
+            <a href="#contact">Complaint 3</a>
+          </div>
+        </div>
+        
+        <div class="dropdown3 dropdown">
+          <button onclick="myFunction3()" class="dropbtn3 dropbtn">Rejected complaints</button>
+          <div id="myDropdown3" class="dropdown-content3 dropdown-content">
+            <a href="#complaint1">Complaint 1</a>
+            <a href="#about">Complaint 2</a>
+            <a href="#contact">Complaint 3</a>
+          </div>
+        </div>
+        </div>
+   </div>
+  <div class="bottomnavbar">
+    <a href="#home">Contact</a>
+            <a href="#about">News</a>
+            <a href="#contact">guidelines</a>
+  </div>
+  
+<script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction1() {
+      document.getElementById("myDropdown1").classList.toggle("show");
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn1')) {
+        var dropdowns1 = document.getElementsByClassName("dropdown-content1");
+        var i;
+        for (i = 0; i < dropdowns1.length; i++) {
+          var openDropdown = dropdowns1[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    
+    function myFunction2() {
+        document.getElementById("myDropdown2").classList.toggle("show");
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn2')) {
+        var dropdowns2 = document.getElementsByClassName("dropdown-content2");
+        var i;
+        for (i = 0; i < dropdowns2.length; i++) {
+          var openDropdown = dropdowns2[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    function myFunction3() {
+        document.getElementById("myDropdown3").classList.toggle("show");
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn3')) {
+        var dropdowns3= document.getElementsByClassName("dropdown-content3");
+        var i;
+        for (i = 0; i < dropdowns3.length; i++) {
+          var openDropdown = dropdowns3[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
+</body>
+</html>
