@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="css/test.css">
+</head>
+<body>
+    <!-- start of heading and nav -->
+    <div class="heading">
+        <img src="images/logo Nit.png" class="logo" alt="" width="50px" >
+    <div class="headingmini" >
+        <h1>NATIONAL INSTITUTE OF TECHNOLOGY</h1>
+    <p>public governance system</p>
+    </div>
+    <img class="picsilchar" src="iamges/nit silchar.jpg"   alt="">
+</div>
+<nav> 
+   
+    <a href="http://127.0.0.1:5500/.vscode/html/project/project5/ruchi/login%20vth%20password.html"> Home</a>  <a href="#">about</a><a href="#">feedback</a><a href="">Guidelines</a><a href="">profile</a>
+</nav>
+ <!-- ending of heading and nav -->
+ <!-- start of sidebar of mid -->
+    <div class="mid">
+       <div class="sidebar">
+       <div>
+        <button id="button1">Register Complaint</button>
+        <button id="button2">Track Complaint</button>
+       </div>
+       </div>
+       
+<!-- end of sidebar of main -->
+        <!-- start of main1 -->
+        <div class="main">
+        <div id="main1">
+            <h1 class="title">Registration form</h1>
+<form action="#" method="post"  >
+  
+      <h3>COMPLAINT LOCATION</h3>
+   <br>
+     <p>
+          <span class="area">
+            Area: <select name="Area" required id="">
+             
+                <option value="">choose</option>
+               <option value="GH1">GH1</option>
+               <option value="GH2">GH2</option>
+               <option value="GH3">GH3</option>
+               <option value="BH1">BH1</option>
+               <option value="BH2">BH2</option>
+               <option value="BH3">BH3</option>
+               <option value="BH4">BH4</option>
+               <option value="BH5">BH5</option>
+               <option value="BH6">BH6</option>
+               <option value="BH7">BH7</option>
+               <option value="BH8">BH8</option>
+               </select>
+          </span>
+
+              <span class="roomnumber">Room Number: &nbsp;&nbsp; <input type="number" placeholder="enter room number" ></span>
+    </p>   
+            <br>
+              <div class="textarea">
+              <p>specify the location: </p> 
+              <textarea required name="textarea" id="" cols="20" rows="10"  ></textarea>
+            </div>
+         
+         
+            <h3>Complaint types</h3>
+            <br>
+            <p >  <span class="toilets">Toilets: <select name="Toilets" required id="">
+                <option value=""> choose</option>
+                <option value="t1">complaint regarding the cleanliness</option>
+                <option value="t2">complaint regarding leakage of water</option>
+                <option value="t3">complain regarding the free usage of public toilet</option>
+            </select>
+        </span>
+        <br id="tdb"><br id="tdb"><br id="tdb">
+       
+            <span class="breakdown">
+            device breakdown: <select name="lights" required id="">
+                <option value="">choose</option>
+                <option value="lt1">regarding failure of light</option>
+                <option value="lt2">regarding failure of computer </option>
+                <option value="lt3">regarding failure of ac</option>
+                <option value="lt4">other</option>
+              </select>
+            </span>
+         </p>
+         <br>
+         <br>
+          <p id="gwe">
+            <span class="garbage">
+            Garbage: <select name="garbage" required id="">
+                <option value="">choose</option>
+                <option value="gb1">Absenteeism of sweepers</option>
+                <option value="gb2">broken bin</option>
+                <option value="gb3"> burning of garbage</option>
+                <option value="gb4">improper sweeping</option>
+                <option value="gb5">overflow of garbage bin </option>
+                <option value="gb6">removal of garbage</option>
+                <option value="gb7">Nuisance of garbage truck</option>
+            </select>
+        </span>
+    <span class="water">
+            water/electricity: <select name="w/e" id="" required>
+                <option value="">choose</option>
+                <option value="we1
+                ">drinking water supply</option>
+                <option value="we2">electric shock</option>
+                <option value="we3">electric unavailibilty</option>
+                <option value="we4"> sewerage overflow</option>
+                <option value="we5">water mixed with sewerage</option>
+            </select> 
+        </span>
+        </p>
+        <br>
+        <p class="Other">other: <select name="other"  required class="other" id="">
+            <option value="">choose</option>
+            <option value="oth1">water stagnation</option>
+            <option value="oth2">parking issues</option>
+            <option value="oth3">food related issue</option>
+        </select></p>
+        <br>
+        <div class="textarea">
+            <p>Details of complaint: </p> 
+            <textarea name="textarea" required id="" cols="20" rows="10"  ></textarea>
+          </div>
+          <br>
+          <p class="upload" > upload photo related to complaint: &nbsp; &nbsp;   <input type="file"></p>
+
+          <p class="sandr"><input id="submit" type="submit"><input  type="reset"></p>
+  
+</form>
+        </div>
+
+        <!-- end of main1 -->
+        <!-- start of main2 -->
+
+        <div id="main2">
+          <div id="top">
+            <button id="topone">Active Complaints</button>
+            <button id="toptwo">Resolved Complaints Complaints</button>
+          </div>
+
+          <!-- start of center1 -->
+          <div class="center1" id="center1">
+              <ul>
+                <li class="listone" >
+                   <h3 >Repair of fan</h3>
+                   <button class="view">View</button>
+                   <button class="remove">Remove</button>
+                </li>
+              </ul>
+          </div>
+          <!-- end of center1 -->
+          <!-- start of center1 -->
+          <div class="center2" id="center2">
+            <ul>
+                <li class="listtwo">
+                   <h3 data-1="BH6",data-2="6042" data-3="regarding failure of ac" , data-4="">Repair of fan</h3>
+                   <button class="view">View</button>
+                </li>
+              </ul>
+          </div>
+          <!-- end of center 1 -->
+        </div>
+        <!-- end of main2 -->
+       </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="js/test.js"></script>
+</html>
