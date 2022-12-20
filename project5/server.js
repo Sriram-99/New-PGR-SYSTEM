@@ -7,6 +7,9 @@ app.use(express.static('public'));
 app.get('/',(req,res)=>{
     res.render('login vth password');
 });
+app.get('/forgotpassword',(req,res)=>{
+    res.render('login vth password');
+});
 
 app.listen(3000,()=>{
     console.log('Server running at port 3000');
