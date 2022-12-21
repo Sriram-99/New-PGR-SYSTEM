@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // const userRouter = require('./routes/userRouter');
 const citizenRouter = require('./routes/citizenRouter');
+const forgotPassRouter = require('./routes/forgotPassRouter');
 const userModel = require('./models/userSchema');
 const session = require('express-session');
 const passport = require('passport');
@@ -105,18 +106,18 @@ app.get('/citizen', (req, res) => {
 });
 app.get('/assignOff', (req, res) => {
     if (req.isAuthenticated()) {
-        // const data ={};
-        // data.user = req.user;
-        res.render('Assigning');
+        const data ={};
+        data.user = req.user;
+        res.render('Assigning',{profile:data.user});
     } else {
         res.redirect('/');
     }
 });
 app.get('/technician', (req, res) => {
     if (req.isAuthenticated()) {
-        // const data ={};
-        // data.user = req.user;
-        res.render('technician');
+        const data ={};
+        data.user = req.user;
+        res.render('technician',{profile:data.user});
     } else {
         res.redirect('/');
     }
@@ -141,6 +142,7 @@ app.get('/registration', (req, res) => {
     res.render('registration');
 });
 app.use(citizenRouter);
+app.use(forgotPassRouter);
 app.listen(3000, () => {
     console.log('Server running at port 3000');
 });
