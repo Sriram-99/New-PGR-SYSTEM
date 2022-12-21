@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // const userRouter = require('./routes/userRouter');
+const citizenRouter = require('./routes/citizenRouter');
 const userModel = require('./models/userSchema');
 const session = require('express-session');
 const passport = require('passport');
@@ -24,9 +25,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://Truptee:Truptee123@cluster0.u3q7n.mongodb.net/Userslogs", {
-    useNewUrlParser: true
-});
+// mongoose.connect("mongodb+srv://Truptee:Truptee123@cluster0.u3q7n.mongodb.net/Userslogs", {
+//     useNewUrlParser: true,  useUnifiedTopology: true
+// }).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
+
+//mongoose connect
+mongoose.connect("mongodb://localhost:27017/Userlogs", {useNewUrlParser: true}).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
 
 passport.use(userModel.createStrategy());
 passport.serializeUser(userModel.serializeUser());
@@ -92,9 +96,9 @@ app.post('/login', (req, res) => {
 });
 app.get('/citizen', (req, res) => {
     if (req.isAuthenticated()) {
-        // const data ={};
-        // data.user = req.user;
-        res.render('citizen');
+        const data ={};
+        data.user = req.user;
+        res.render('citizen',{profile:data.user});
     } else {
         res.redirect('/');
     }
@@ -136,7 +140,7 @@ app.get('/forgotUsername', (req, res) => {
 app.get('/registration', (req, res) => {
     res.render('registration');
 });
-
+app.use(citizenRouter);
 app.listen(3000, () => {
     console.log('Server running at port 3000');
 });
