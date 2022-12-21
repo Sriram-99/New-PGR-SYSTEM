@@ -33,6 +33,7 @@ passport.serializeUser(userModel.serializeUser());
 passport.deserializeUser(userModel.deserializeUser());
 
 app.post('/', (req, res) => {
+    const username = req.body.username;
     const userno = new userModel({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -52,23 +53,39 @@ app.post('/', (req, res) => {
             });
         } else {
             passport.authenticate('local')(req, res, () => {
-                res.redirect('/citizen');
+                userModel.findOne({username:username},(err,found)=>{
+                    if(err){
+                        console.log("no such user!!");
+                    }
+                    if(found.typeOfPerson === "citizen")res.redirect('/citizen');
+                    if(found.typeOfPerson === "assigningOfficer")res.redirect('/assignOff');
+                   else if(found.typeOfPerson === "technician")res.redirect('/technician');
+                });
+                
             });
         }
     });
 });
-app.post('/login',(req,res)=>{
+app.post('/login', (req, res) => {
+    const username = req.body.username;
     const userno = new userModel({
-        username:req.body.username,
-        password:req.body.password
+        username: req.body.username,
+        password: req.body.password
     });
-    req.login(userno,(err)=>{
-        if(err)
-        console.log(err);
-        else
-        {
-            passport.authenticate('local')(req,res,()=>{
-                res.redirect('/citizen');
+    req.login(userno, (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            passport.authenticate('local')(req, res, () => {
+                userModel.findOne({username:username},(err,found)=>{
+                    if(err){
+                        console.log("no such user!!");
+                    }
+                    if(found.typeOfPerson === "citizen")res.redirect('/citizen');
+                    if(found.typeOfPerson === "assigningOfficer")res.redirect('/assignOff');
+                   else if(found.typeOfPerson === "technician")res.redirect('/technician');
+                });
+                
             });
         }
     });
@@ -77,15 +94,36 @@ app.get('/citizen', (req, res) => {
     if (req.isAuthenticated()) {
         // const data ={};
         // data.user = req.user;
-        res.render('test');
+        res.render('citizen');
     } else {
         res.redirect('/');
     }
 });
-app.get('/logout',(req,res)=>{
-    req.logout();
-    res.redirect('/');
+app.get('/assignOff', (req, res) => {
+    if (req.isAuthenticated()) {
+        // const data ={};
+        // data.user = req.user;
+        res.render('Assigning');
+    } else {
+        res.redirect('/');
+    }
 });
+app.get('/technician', (req, res) => {
+    if (req.isAuthenticated()) {
+        // const data ={};
+        // data.user = req.user;
+        res.render('technician');
+    } else {
+        res.redirect('/');
+    }
+});
+
+app.get('/logout', (req, res, next)=>{
+    req.logout((err)=> {
+      if (err) { return next(err); }
+      res.redirect('/');
+    });
+  });
 app.get('/', (req, res) => {
     res.render('login vth password');
 });
