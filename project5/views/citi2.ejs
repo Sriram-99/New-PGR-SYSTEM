@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style> @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@1,600&display=swap'); </style>
     <link rel="stylesheet" href="css/test.css">
 </head>
@@ -20,7 +23,11 @@
 </div>
 <nav>
     <a href="">Home</a>
-    <a href=""> Hello<%= profile.firstName %>!</a>
+    <a href="">Home</a>
+    <a href="">Home</a>
+    <a href="">Home</a>
+    <a href="">Home</a>
+    <a href="" style="width: 6rem;"><i class="fa-solid fa-user"></i> <%= profile.firstName %>!</a>
     <a href="/logout">logout</a>
 </nav>
  <!-- ending of heading and nav -->
@@ -39,7 +46,11 @@
         <div id="main1">
                 <h1 class="title" id="maintitle">Registration form</h1>
                 <br><br>
-                
+                <% if(message.length > 0){ %> 
+                    <div class="alert alert-warning">
+                      <%= message %> 
+                    </div>
+                  <% } %> 
                 <div class="area" id="area">Area: &nbsp; &nbsp; <select id="selectarea" name="Area" class="select">
                     <option value="AdministrationArea">Administration Area</option>
                    
@@ -55,7 +66,8 @@
                   <!-- Administration -->
                 <form action="/citizen" method="post">
                   <div id="AdministrationArea"   class="mainsr"  >
-                    <input type="hidden" value="administrationArea">
+                    <input type="hidden" value="administrationArea" name="area">
+                  
                     <h3>Administration Area</h3>
                     <p >Name of Building: &nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose the option</option>
@@ -84,7 +96,7 @@
                 <!-- AcademicBuildings -->
                 <form action="/citizen" method="post">
                 <div  class="mainsr"  id="AcademicBuildings">
-                    <input type="hidden" value="academicBuildings">
+                    <input type="hidden" value="academicBuildings" name="area">
                     <h3>Academic Buildings</h3>
                     <p>Name of Building: &nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose the option</option>
@@ -120,7 +132,7 @@
 
                     <form action="/citizen" method="post">
                 <div  id="Hostels" class="mainsr">
-                    <input type="hidden" value="hostel">
+                    <input type="hidden" value="hostel" name="area">
                     <h3>Hostels</h3>
                     <p id="hostelname"> Hostel Name:&nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose</option>
@@ -157,7 +169,7 @@
 
                         <!-- staff quarter -->
                         <form action="/citizen" method="post">
-                            <input type="hidden" value="staffQuarters">
+                            <input type="hidden" value="staffQuarters" name="area">
                 <div  id="StaffQuarters"  class="mainsr">
                     <h3>StaffQuarters</h3>
                     <p>Name of Building:&nbsp; &nbsp; <select name="building" id="">
@@ -197,7 +209,7 @@
                     <!-- students recreation and sports -->
                     <form action="/citizen" method="post">
                 <div  id="StudentRecreationAndSports" class="mainsr">
-                    <input type="hidden" value="sudentRecreationAndSports">
+                    <input type="hidden" value="sudentRecreationAndSports" name="area">
                     <h3>Students Recreation & sprots</h3>
                     <p>Name of the building: &nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose the building</option>
@@ -225,7 +237,7 @@
                 <!-- guesthouse -->
                 <form action="/citizen" method="post">
                 <div  id="GuestHouse" class="mainsr">
-                    <input type="hidden" value="guestHouse">
+                    <input type="hidden" value="guestHouse" name="area">
                     <h3>Guest House</h3>
                     <p>Name of the building:&nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose</option>
@@ -263,49 +275,56 @@
 
           <!-- start of center1 -->
           <div class="center1" id="center1">
+            <% complaint.forEach((item)=>{ %> 
               <ul>
                 <li class="listone" >
-                   <h3 >Repair of fan</h3>
+                   <h3 ><%= item.subject %></h3>
 
                    <div>
                     <button onclick="openpopup(this)"  id="btn"  class="view">view</button>
                     <div class="popup">
                         <img src="images/ddd.jpg" alt="">
                        <h2> Details of Complaint </h2>
-                       <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; 21/12/2022&nbsp; 10:10AM</p>
-                       <p><b>Area:</b>  &nbsp;&nbsp; Hostels</p>
-                       <p><b>Hostel Name:</b>&nbsp;&nbsp; Boys Hostel 6 </p>
-                       <p><b>Room Number: </b>&nbsp;&nbsp; 6041</p>
-                       <p><b>Subject of the complain:</b>&nbsp;&nbsp;broken furniture</p>
-                       <p><b>Details of complaint:</b> &nbsp;&nbsp;chair had broken</p>
+                       <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%= item.date %></p>
+                       <p><b>Area:</b>  &nbsp;&nbsp; <%= item.area %></p>
+                       <p><b>Specific Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
+                       <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
+                       <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
+                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
                         <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
-
                         <button type="button" onclick="closepopup(this)"> ok</button>
 
                     </div>
                    </div>
-
-                   <button class="remove">Remove</button>
+                   <% if(complaint.length > 0){ %> 
+                   <form action="/deleteComplaint/<%= item._id %>" method="post">
+                        <button class="remove" type="submit">Remove</button>
+                   </form>
+                   <% }%>  
                 </li>
               </ul>
+              <% }); %>
           </div>
+        
           <!-- end of center1 -->
           <!-- start of center1 -->
+          
           <div class="center2" id="center2">
+            <% complaint.forEach((item)=>{ %> 
             <ul>
                 <li class="listtwo">
-                   <h3 data-1="BH6",data-2="6042" data-3="regarding failure of ac" , data-4="">Repair of fan</h3>
+                   <h3 data-1="BH6",data-2="6042" data-3="regarding failure of ac" , data-4=""><%= item.subject %></h3>
                   <div>
                     <button class="view" onclick="openpopup(this)">View</button>
                     <div class="popup">
                         <img src="images/ddd.jpg" alt="">
                        <h2> Details of Complaint </h2>
-                       <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; 21/12/2022&nbsp; 10:10AM</p>
-                       <p><b>Area:</b>  &nbsp;&nbsp; Hostels</p>
-                       <p><b>Hostel Name:</b>&nbsp;&nbsp; Boys Hostel 6 </p>
-                       <p><b>Room Number: </b>&nbsp;&nbsp; 6041</p>
-                       <p><b>Subject of the complain:</b>&nbsp;&nbsp;broken furniture</p>
-                       <p><b>Details of complaint:</b> &nbsp;&nbsp;chair had broken</p>
+                       <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%= item.date %></p>
+                       <p><b>Area:</b>  &nbsp;&nbsp; <%= item.area %></p>
+                       <p><b>Specific Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
+                       <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
+                       <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
+                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
                         <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
 
                         <button type="button" onclick="closepopup(this)"> ok</button>
@@ -314,7 +333,9 @@
                   </div>
                 </li>
               </ul>
+              <% }); %> 
           </div>
+          
           <!-- end of center 1 -->
         </div>
         <!-- end of main2 -->

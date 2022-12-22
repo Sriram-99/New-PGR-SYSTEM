@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const citizenSchema = new mongoose.Schema({ 
     area:{
         type:String,
-        required:true
     },
     building:{
         type:String,
@@ -24,7 +23,8 @@ const citizenSchema = new mongoose.Schema({
     brokenImg: { 
         data: Buffer, 
         contentType: String 
-     }
+     },
+     date: { type: Date, default: Date().split('G')[0]},
    
 });
 
