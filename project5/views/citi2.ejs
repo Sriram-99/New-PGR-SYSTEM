@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <style> @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@1,600&display=swap'); </style>
+    <link rel="stylesheet" href="css/test.css">
+</head>
+<body>
+    <!-- start of heading and nav -->
+    <div class="heading">
+        <img src="images/logo Nit.png" class="logo" alt="" width="50px" >
+    <div class="headingmini" >
+        <h1>NATIONAL INSTITUTE OF TECHNOLOGY</h1>
+    <p>public governance system</p>
+    </div>
+    <img class="picsilchar" src="images/nit silchar.jpg"   alt="">
+</div>
+<nav>
+    <a href="/">Home</a>
+    <a href="">about</a>
+    <a href="">feedback</a>
+    <a href="">Guidelines</a>
+    <a href=""> Hello<%= profile.firstName %>!</a>
+    <a href="/logout">logout</a>
+  </nav>
+ <!-- ending of heading and nav -->
+ <!-- start of sidebar of mid -->
+    <div class="mid">
+       <div class="sidebar">
+       <div>
+        <button id="button1">Register Complaint</button>
+        <button id="button2">Track Complaint</button>
+       </div>
+       </div>
+       
+<!-- end of sidebar of main -->
+        <!-- start of main1 -->
+        <div class="main">
+        <div id="main1">
+           
+             <form action="/" method="post">
+                <h1 class="title" id="maintitle">Registration form</h1>
+                <br><br>
+                
+                <div class="area" id="area">Area: <select id="selectarea" name="area" class="select">
+                    <option value="AdministrationArea">Administration Area</option>
+                    <option value="AcademicBuildings">Academic Buildings</option>
+                    <option value="Hostels">Hostels</option>
+                    <option value="StaffQuarters">Staff Quarters</option>
+                    <option value="StudentRecreationAndSports">Student's Recreation & sports</option>
+                    <option value="GuestHouse">Guest House</option>
+                  </select>
+                </div>
+
+                  <!-- Administration -->
+
+                  <div class="AdministrationArea" id="AdministrationArea" class="main11" >
+                    <h3>Administration Area</h3>
+                    <p>Name of Building: &nbsp; <select name="building" id="">
+                        <option value="">choose the option</option>
+                        <option value="aa1">Administration Building</option>
+                        <option value="aa2">Dispensary</option>
+                        <option value="aa3">Old Administrative Buildings</option>
+                        <option value="aa4">Staff Canteen</option>
+                    </select></p>
+                    <p>Room Number: &nbsp; <input type="number" name="room" id=""></p>
+                    <p>Subject  of Complaint:&nbsp; <select name="subject" id="">
+                        <option value="">choose the option</option>
+                        <option value="toilets">Toilets</option>
+                        <option value="devicebreakdown">Device Breakdown</option>
+                        <option value="garbage">Garbage</option>
+                        <option value="water">Water</option>
+                        <option value="electricity">Electricity</option>
+                        <option value="Network">Network</option>
+                        <option value="broken furniture">broken furniture</option>
+                        <option value="other">other</option>
+                    </select></p>
+                    <p>specify the complaint: &nbsp; &nbsp;<textarea name="complaint" id="" cols="40" rows="2"></textarea></p>
+                    <p>Upload  apic of broken device / situation to be rectified : &nbsp; <input type="file" name="brokenImg" id=""></p>
+                    <p class="sr"><button type="submit">submit</button> <button type="reset">reset</button></p>
+                </div>
+
+                <!-- AcademicBuildings -->
+
+                <div class="AcademicBuildings"  id="AcademicBuildings" class="main11">
+                    <h3>Academic Buildings</h3>
+                    <p>Name of Building: <select name="building" id="">
+                        <option value="">choose the option</option>
+                        <option value="aa1">Institutional Building</option>
+                        <option value="aa3">Mechanical Engineering Department</option>
+                        <option value="aa4">Production Engineering Lab</option>
+                        <option value="ab5">Telecommunication Engineering Department</option>
+                        <option value="ab6">Library Building</option>
+                        <option value="ab7">ETC & CSE Building</option>
+                        <option value="aa2">Workshop</option>
+                    </select></p>
+                    <p>Room Number: <input type="number" name="room" id=""></p>
+                    <p>Subject of the Complaint: <select name="subject" id="">
+                        <option value="">choose the option</option>
+                        <option value="toilets">Toilets</option>
+                        <option value="devicebreakdown">Device Breakdown</option>
+                        <option value="garbage">Garbage</option>
+                        <option value="water">Water</option>
+                        <option value="electricity">Electricity</option>
+                        <option value="Network">Network</option>
+                        <option value="brokenfurniture">broken furniture</option>
+                        <option value="brokenapparatus">broken lab apparatus</option>
+                        <option value="other">other</option>
+                    </select></p>
+                    <p>specify the complaint: <textarea name="complaint" id="" cols="30" rows="10"></textarea></p>
+                    <p>Upload apic of broken device / situation to be rectified <input type="file" name="brokenImg" id=""></p>
+                    <p class="sr"><button type="submit">submit</button> <button type="reset">reset</button></p>
+                </div>
+
+
+                    <!-- HOSTEL -->
+
+
+
+                <div class="hostel" id="Hostels" class="main11">
+                    <h3>Hostels</h3>
+                    <p>Hostel Name: <select name="building" id="">
+                        <option value="">choose</option>
+                        <option value="BH1">BH1</option>
+                        <option value="BH2">BH2</option>
+                        <option value="BH3">BH3</option>
+                        <option value="BH4">BH4</option>
+                        <option value="BH5">BH5</option>
+                        <option value="BH6">BH6</option>
+                        <option value="BH7">BH7</option>
+                        <option value="BH8">BH8</option>
+                        <option value="GH1">GH1</option>
+                        <option value="GH2">GH2</option>
+                        <option value="GH3">GH3</option>
+                    </select></p>
+                    p>Room Number: <input type="number" name="room" id=""></p>
+                    <p>Subject of the Complaint: <select name="subject" id="">
+                        <option value="">choose the option</option>
+                        <option value="toilets">Toilets</option>
+                        <option value="devicebreakdown">Device Breakdown</option>
+                        <option value="garbage">Garbage</option>
+                        <option value="water">Water</option>
+                        <option value="electricity">Electricity</option>
+                        <option value="Network">Network</option>
+                        <option value="broken furniture">brokenfurniture</option>
+                        <option value="broken apparatus">broken lab apparatus</option>
+                        <option value="other">other</option>
+                    </select></p>
+                    <p>specify the complaint: <textarea name="complaint" id="" cols="30" rows="10"></textarea></p>
+                    <p>Upload apic of broken device / situation to be rectified <input type="file" name="brokenImg" id=""></p>
+                    <p><button type="submit">submit</button> <button type="reset">reset</button></p>
+                </div>
+
+
+                        <!-- staff quarter -->
+
+                <div class="staff" id="StaffQuarters" >
+                    <h3>StaffQuarters</h3>
+                    <p>Name of Building: <select name="building" id="">
+                        <option value="">choose the option</option>
+                        <option value="DirectorQuarters">Director's Quarters</option>
+                        <option value="ProfessorQuarters">Professor Quarters</option>
+                        <option value="Asstt.professor Quarters">Asstt.professor Quarters</option>
+                        <option value="Type-D">Type-D Quarters</option>
+                        <option value="Type-C">Type-C Quarters</option>
+                        <option value="Type-A">Type-A Quarters</option>
+                        <option value="LecturesQuarters">Lectures's Quarters</option>
+                        <option value="TeacherFlat">Teacher's Flat </option>
+                        <option value="Grade-3">Grade-3 staff Quarters</option>
+                        <option value="Grade-4">Grade-4 staff Quarters</option>
+                        <option value="Type-4 professor Quarters">Type-4 professor Quarters</option>
+                        <option value="Type-5 Asstt.prof.Quarters"> Type-5 Asstt.prof.Quarters</option>
+                        <option value="Type-4 Lecturer Quarters">Type-4 Lecturer Quarters</option>
+                    </select></p>
+                    Room Number: <input type="number" name="room" id=""></p>
+                    <p>Subject of the Complaint: <select name="subject" id="">
+                        <option value="">choose the option</option>
+                        <option value="toilets">Toilets</option>
+                        <option value="devicebreakdown">Device Breakdown</option>
+                        <option value="garbage">Garbage</option>
+                        <option value="water">Water</option>
+                        <option value="electricity">Electricity</option>
+                        <option value="Network">Network</option>
+                        <option value="broken furniture">broken furniture</option>
+                        <option value="other">other</option>
+                    </select></p>
+                    <p>specify the complaint: <textarea name="complaint" id="" cols="30" rows="10"></textarea></p>
+                    <p>Upload apic of broken device / situation to be rectified <input type="file" name="brokenImg" id=""></p>
+                    <p><button type="submit">submit</button> <button type="reset">reset</button></p>
+                </div>
+                          
+
+                    <!-- students recreation and sports -->
+
+                <div class="student" id="StudentRecreationAndSports" class="main11">
+                    <h3>Students Recreation & sprots</h3>
+                    <p>Name of the building: <select name="building" id="">
+                        <option value="students activity center"> Students Activity Center  </option>
+                        <option value="Amenities building">Amenities Building</option>
+                    </select></p>
+                    Room Number: <input type="number" name="room" id=""></p>
+                    <p>Subject of the Complaint: <select name="subject" id="">
+                        <option value="">choose the option</option>
+                        <option value="toilets">Toilets</option>
+                        <option value="devicebreakdown">Device Breakdown</option>
+                        <option value="garbage">Garbage</option>
+                        <option value="water">Water</option>
+                        <option value="electricity">Electricity</option>
+                        <option value="Network">Network</option>
+                        <option value="broken furniture">broken furniture</option>
+                        <option value="other">other</option>
+                    </select></p>
+                    <p>specify the complaint: <textarea name="complaint" id="" cols="30" rows="10"></textarea></p>
+                    <p>Upload apic of broken device / situation to be rectified <input type="file" name="brokenImg" id=""></p>
+                    <p><button type="submit">submit</button> <button type="reset">reset</button></p>
+                </div>
+
+
+                <!-- guesthouse -->
+
+                <div  class="guest" id="GuestHouse" class="main11">
+                    <h3>Guest House</h3>
+                    <p>Name of the building: <select name="building" id="">
+                        <option value="guest house building"> Guest House Building</option>
+                        <option value="Continuing Education Center(CEC)">Continuing Education Center</option>
+                    </select></p>
+                    p>Room Number: <input type="number" name="room" id=""></p>
+                    <p>Subject of the Complaint: <select name="subject" id="">
+                        <option value="">choose the option</option>
+                        <option value="toilets">Toilets</option>
+                        <option value="devicebreakdown">Device Breakdown</option>
+                        <option value="garbage">Garbage</option>
+                        <option value="water">Water</option>
+                        <option value="electricity">Electricity</option>
+                        <option value="Network">Network</option>
+                        <option value="broken furniture">broken furniture</option>
+                        <option value="other">other</option>
+                    </select></p>
+                    <p>specify the complaint: <textarea name="complaint" id="" cols="30" rows="10"></textarea></p>
+                    <p>Upload apic of broken device / situation to be rectified <input type="file" name="brokenImg" id=""></p>
+                    <p><button type="submit">submit</button> <button type="reset">reset</button></p>
+
+                </div>
+
+
+             </form>   
+        </div>
+
+        <!-- end of main1 -->
+        <!-- start of main2 -->
+
+        <div id="main2">
+          <div id="top">
+            <button id="topone">Active Complaints</button>
+            <button id="toptwo">Resolved Complaints Complaints</button>
+          </div>
+
+          <!-- start of center1 -->
+          <div class="center1" id="center1">
+              <ul>
+                <li class="listone" >
+                   <h3 >Repair of fan</h3>
+                   <button class="view">View</button>
+                   <button class="remove">Remove</button>
+                </li>
+              </ul>
+          </div>
+          <!-- end of center1 -->
+          <!-- start of center1 -->
+          <div class="center2" id="center2">
+            <ul>
+                <li class="listtwo">
+                   <h3 data-1="BH6",data-2="6042" data-3="regarding failure of ac" , data-4="">Repair of fan</h3>
+                   <button class="view">View</button>
+                </li>
+              </ul>
+          </div>
+          <!-- end of center 1 -->
+        </div>
+        <!-- end of main2 -->
+       </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="js/test.js"></script>
+</html>

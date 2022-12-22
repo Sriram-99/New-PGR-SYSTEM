@@ -1,3 +1,8 @@
+*{
+    font-family: 'Crimson Text', serif;
+}
+
+
 h1{
     
     text-transform: uppercase;
@@ -115,9 +120,12 @@ a{
     width: 90%;
     height: 590px;
     margin: auto;
-    background-color:burlywood ;
+    background-color:rgb(232, 229, 224) ;
    padding-bottom: 20px;
 }
+
+
+
 #main2{
   
     width: 70%;
@@ -129,144 +137,57 @@ a{
 }
 /* end of display settings */
 /* styling of main1 */
-#main1{
-    font-weight: bold;
-    overflow: scroll;
-    border: 2px solid black;
-    margin-top: 10px;
+#area{
     text-align: center;
 }
-#main1 span{
-  
+form h3{
+    color:#000000;
+    font-size: 25px;
+}
 
-    width: 50%;
-    border: 1px solid rgb(96, 35, 35);
+
+.AdministrationArea,.AcademicBuildings,.hostel,.student,.guest{
+    background-color: white;
+     color: #6c26f8;
+    font-size: 25px;
+    text-align: center;
+}
+#main1 button{
+    width: 150px;
+    height: 40px;
+    font-size: 25px;
+    text-transform: capitalize;
+    border-radius: 2px solid black;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+.sr{
+    display:flex;
+    justify-content: space-evenly;
+}
+.AdministrationArea{
+    display: block;
     
-    padding: 15px;
 }
-.area{
-    margin-right: 10px;
-    margin-left: 150px;
-    /* background-color: rgb(165, 68, 68); */
-    background-color: rgb(202, 81, 81);
+select{
+    background-color: #c3a6fc;
+    font-size: 18px;
+ border:3px solid #141414;
+ border-radius: 5px;
 }
-.area select{
-    background-color: aliceblue;
+textarea{
+    font-size: 17px;
+    border: 2px solid  #6c26f8;
 }
-.roomnumber{
-    margin-left: 150px;
-    background-color: rgb(202, 81, 81);
-
-}
-@media screen and (max-width:800px) {
-    .area{
-        margin-right: 10px;
-        margin-left: 0;
-    }
-    .roomnumber{
-        margin-left: 0;
-    }
-}
-
-#main1 textarea{
-    width: 50%;
-    height: 50px;
-    background-color: rgb(165, 68, 68);
-}
-#tdb{
+.staff{
     display: none;
 }
-#main1 .breakdown{
-    background-color: rgb(202, 81, 81);
-}
-#main1 .toilets{
-    margin-right: 80px;
-    background-color: rgb(202, 81, 81);
-}
-@media screen and (max-width:800px) {
-    #main1 .toilets{
-     position: relative;
-     left: 40px;
-    }
-   #tdb{
-    display:initial;
-   }
-}
 
-/* garbage */
-.garbage{
-    margin-right: 50px;
-    background-color: rgb(165, 68, 68);
 
-   
-}
-.water{
-    margin-left: 110px;
-    background-color: rgb(165, 68, 68);
 
-}
 
-@media screen and (max-width:800px) {
 
-    .garbage{
-        margin-left: 60px;
-        margin-bottom: 10px;
-       
-    }
-    .water{
-        margin-left: 10px;
-    }
-    #gwe{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-}
-.other{
-    background-color: rgb(202, 81, 81);
-}
-
-.upload{
-    border: 2px solid red;
-    width: 60%;
-    height: 50px;
-    margin: auto;
-    padding-top: 20px;
-}
-@media screen and (max-width:800px) {
-
-    .upload{
-        padding-top:0px;
-        width: 80%;
-        line-height: 33px;
-        padding-bottom: 20px;
-    }
-}
-
-#main1 input[type="submit"]{
-    width: 50px;
-    
-}
-#main1 input[type="submit"], #main1 input[type="reset"]{
-    text-transform: capitalize;
-    font-size: 20px;
-    width: 100px;
-    height: 60px;
-    border-radius: 5px;
-   
-}
-#main1 input[type="submit"]:hover, #main1 input[type="reset"]:hover{
-    background-color: #439A97;
-    color: wheat;
-    
-}
-#main1 input[type="submit"]{
-    margin-right: 40px;
-}
-#main1 input[type="submit"]{
-    margin-left: 40px;
-}
 /* begin of main 2 */
 
 #main2{
@@ -370,4 +291,3 @@ background-color:rgb(51, 199, 51);
 .remove{
     background-color: red;
 }
-

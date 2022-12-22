@@ -20,37 +20,35 @@
     <div class="div1">
 
       <h1 id="heading" class="heading1">
-        Reset password <%= name %> 
+        Reset password <%= name %>
       </h1>
-      <div class="main">
-        <p>
-          New password
-        </p>
-        <input type="New password" name="New password" placeholder="New password">
+      <form action="" method="post">
+        <div class="main">
+        <p> New password</p>
+        <input type="New password" name="newpassword" placeholder="New password">
         <br>
-        <p>
-          Confirm Password
-        </p>
-        <input type="Confirm password" name="Confirm password" placeholder="Confirm password">
+        <p>Confirm Password</p>
+        <input type="Confirm password" name="Confirmpassword" placeholder="Confirm password">
         <br>
       </div>
       <br><br>
       <div class="div2">
-        <button type="button" name="button">Update</button>
+        <button type="submit" name="button">Update</button>
       </div>
+      </form>
       <div class="bottom">
-      <p class="para">
-        Back To
+        <p class="para">
+          Back To
+          <a href="/">User login</a>
+        </p>
 
-        <a href="/">User login</a>
-      </p>
-
+      </div>
     </div>
-          </div>
 </body>
 <script type="text/javascript">
-function reset(){
-  location.reload();
-}
+  function reset() {
+    location.reload();
+  }
 </script>
+
 </html>

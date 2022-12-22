@@ -3,14 +3,15 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-// const userRouter = require('./routes/userRouter');
 const citizenRouter = require('./routes/citizenRouter');
 const forgotPassRouter = require('./routes/forgotPassRouter');
 const userModel = require('./models/userSchema');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+// const flash = require('connect-flash');
 
+// app.use(flash());
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
@@ -99,7 +100,7 @@ app.get('/citizen', (req, res) => {
     if (req.isAuthenticated()) {
         const data ={};
         data.user = req.user;
-        res.render('citizen',{profile:data.user});
+        res.render('citi2',{profile:data.user});
     } else {
         res.redirect('/');
     }
@@ -132,9 +133,7 @@ app.get('/logout', (req, res, next)=>{
 app.get('/', (req, res) => {
     res.render('login vth password');
 });
-app.get('/forgotPass', (req, res) => {
-    res.render('forgot password');
-});
+
 app.get('/forgotUsername', (req, res) => {
     res.render('forgot username');
 });
