@@ -21,11 +21,10 @@ const citizenSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-   
-    // brokenImg:{
-    //     type:Image,
-    //     required:true
-    // },
+    brokenImg: { 
+        data: Buffer, 
+        contentType: String 
+     }
    
 });
 

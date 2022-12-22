@@ -9,9 +9,7 @@ const userModel = require('./models/userSchema');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-// const flash = require('connect-flash');
 
-// app.use(flash());
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
@@ -95,15 +93,6 @@ app.post('/login', (req, res) => {
             });
         }
     });
-});
-app.get('/citizen', (req, res) => {
-    if (req.isAuthenticated()) {
-        const data ={};
-        data.user = req.user;
-        res.render('citi2',{profile:data.user});
-    } else {
-        res.redirect('/');
-    }
 });
 app.get('/assignOff', (req, res) => {
     if (req.isAuthenticated()) {
