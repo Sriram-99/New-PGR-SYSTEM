@@ -9,7 +9,9 @@ const forgotPassRouter = require('./routes/forgotPassRouter');
 const userModel = require('./models/userSchema');
 const session = require('express-session');
 const passport = require('passport');
+const flash = require('connect-flash');
 
+app.use(flash());
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
@@ -116,11 +118,15 @@ app.get('/technician', (req, res) => {
 app.get('/logout', (req, res, next)=>{
     req.logout((err)=> {
       if (err) { return next(err); }
-      res.redirect('/');
+      else{
+          req.flash('message','You have been log Out!!');
+           res.redirect('/');
+      }
+     
     });
   });
 app.get('/', (req, res) => {
-    res.render('login vth password');
+    res.render('login vth password',{message:req.flash('message')});
 });
 
 app.get('/forgotUsername', (req, res) => {

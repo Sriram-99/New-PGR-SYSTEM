@@ -28,11 +28,15 @@ function msgsubmit(){
     alert("Complaint has been submitted successfully")
 }
 
+  $( "#selectarea" ).on('change',function(){
+        $(".mainsr").hide();
+      $("#"+$(this).val()).fadeIn(700);
+  }).change();
+//    switch tabs based on select value
 
-
-
-// submit and insertion of values
-
-let toiletsary=["complaint regarding cleanliness","complaint regarding leakage of water","complaint regarding the free usage of public toilets"];
-let breadkdownary=["regarding failure of light","regarding failure of computer","regarding failure of ac","other"];
-let garbage=["Absenteeism of sweepers","broken bin","burning of garding",""]
+   function openpopup(currelement){
+    currelement.parentElement.children[1].classList.add("open-popup")
+   }
+   function closepopup(currelement){
+    currelement.parentElement.classList.remove("open-popup");
+   }
