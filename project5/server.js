@@ -1,4 +1,5 @@
 //jshint esversion:6
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -8,7 +9,6 @@ const forgotPassRouter = require('./routes/forgotPassRouter');
 const userModel = require('./models/userSchema');
 const session = require('express-session');
 const passport = require('passport');
-const LocalStrategy = require('passport-local');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(session({
-    secret: "thisissecret",
+    secret: process.env.JWT_SECRET,
     resave: false,
     saveUninitialized: false
 }));
@@ -25,12 +25,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// mongoose.connect("mongodb+srv://Truptee:Truptee123@cluster0.u3q7n.mongodb.net/Userslogs", {
+// mongoose.connect(process.env.MONGODB_ON, {
 //     useNewUrlParser: true,  useUnifiedTopology: true
 // }).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
 
 //mongoose connect
-mongoose.connect("mongodb://localhost:27017/Userlogs", {useNewUrlParser: true}).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
+mongoose.connect(process.env.MONGODB_LOCAL, {useNewUrlParser: true}).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
 
 passport.use(userModel.createStrategy());
 passport.serializeUser(userModel.serializeUser());
@@ -131,6 +131,8 @@ app.get('/registration', (req, res) => {
 });
 app.use(citizenRouter);
 app.use(forgotPassRouter);
-app.listen(3000, () => {
+
+const port = process.env.PORT||3000;
+app.listen(port, () => {
     console.log('Server running at port 3000');
 });

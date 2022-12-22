@@ -12,78 +12,48 @@ router.use(flash());
 router.use(bodyParser.urlencoded({
     extended: true
 }));
-const JWT_SECRET = "thisisasecret";
+const JWT_SECRET = process.env.JWT_SECRET;
 router.post('/forgotPass', (req, res, next) => {
     const username = req.body.username;
 
-    userModel.findOne({username: username}, (err, found) => {
+    userModel.findOne({
+        username: username
+    }, (err, found) => {
         if (!found) {
-             req.flash('message','No such user found!');
+            req.flash('message', 'No such user found!');
             res.redirect('/forgotPass');
         }
         if (err) {
             console.log(err);
-        } else if(found){
-            //creating one time link
-            const secret = JWT_SECRET + found.password;
-            const payload = {
-                email: found.username,
-                // id:found._id
-            };
-            const token = jwt.sign(payload, secret, {
-                expiresIn: '15m'
+        } else if (found) {
+            found.setPassword(req.body.newpassword, (err, users) => {
+                if (err) console.log(err);
+                else {
+                    userModel.updateOne({_id: users._id}, {hash: users.hash,salt: users.salt},
+                        (err, result) => {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                req.flash('message', 'Password Reset!');
+                                res.redirect('/forgotPass');
+                            }
+                        });
+                }
+
             });
-            const link = `http://localhost:3000/resetPass/${found._id}/${token}`;
-            console.log(link);
-            req.flash('message','Link has been sent to your email!');
-            res.redirect('/forgotPass');
         }
 
     });
 
-});
-router.get('/resetPass/:id/:token', (req, res, next) => {
-    const id = req.params.id;
-    const token=req.params.token;
-    userModel.findOne({
-        _id: id
-    }, (err, found) => {
-        if (err) console.log(err);
-        else {
-            const secret = JWT_SECRET + found.password;
-            try {
-                const payload = jwt.verify(token, secret);
-                res.render('forgot username',{name:found.firstName});
-            } catch (error) {
-                console.log(error.message);
-            }
-        }
-    });
-
-});
-router.post('/resetPass/:id/:token', (req, res, next) => {
-    const id = req.params.id;
-    const token=req.params.token;
-    userModel.findOne({
-        _id: id
-    }, (err, found) => {
-        if (err) console.log(err);
-        else {
-            const secret = JWT_SECRET + found.password;
-            try {
-                const payload = jwt.verify(token, secret);
-                found.password = req.body.newpassword;
-                res.send(found);
-            } catch (error) {
-                console.log(error.message);
-            }
-        }
-    });
 });
 router.get('/forgotPass', (req, res) => {
-    res.render('forgot password',{message:req.flash('message')});
+    res.render('forgot password', {
+        message: req.flash('message')
+    });
 });
 router.get('/resetPass', (req, res, next) => {
-    res.render('forgot username',{name:"Trup"});
+    res.render('forgot username', {
+        name: "Trup"
+    });
 });
 module.exports = router;
