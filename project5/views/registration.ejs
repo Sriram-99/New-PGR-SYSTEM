@@ -23,6 +23,11 @@
     <a href="">FAQ</a>
     <a href="">GUIDELINES</a>
   </div>
+  <% if(message.length > 0){ %> 
+    <div class="alert">
+      <%= message %> 
+    </div>
+  <% } %>
   <div class="mainbox">
     <div class="main">
       <div class="register">
@@ -46,12 +51,13 @@
             <input id="password" type="password" name="password" value="password" placeholder="Password">
             <br><br>
             <label for="">Confirm Password:</label><br>
-            <input id="confirm" type="text" name="" value="" placeholder="Confirm Password">
+            <input id="confirm" type="password" name="confirmPass" value="" placeholder="Confirm Password">
             <br><br>
             <label for="">Type of Person:</label><br>
             <input type="radio" name="typeOfPerson" value="citizen" id="female">Citizen
             <input type="radio" name="typeOfPerson" value="assigningOfficer" id="male">Assigning Officer
             <input type="radio" name="typeOfPerson" value="technician" id="other">Technician
+            <!-- <input type="radio" name="typeOfPerson" value="admin" id="other">Admin -->
 
             <br><br>
             <div>

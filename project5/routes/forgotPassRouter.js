@@ -52,7 +52,12 @@ router.post('/forgotPass', (req, res, next) => {
         username: username
     }, (err, found) => {
         if (err) console.log(err);
-        else {
+        if(!found)
+        {
+            req.flash('message','No such user found!');
+            res.redirect('/forgotPass');
+        }
+       else if(found){
             const link = `http://localhost:3000/resetPass/${found._id}`;
             console.log(link);
             req.flash('message','Reset password link has been sent to your email!!');
@@ -65,7 +70,7 @@ router.get('/forgotPass', (req, res) => {
         message: req.flash('message')
     });
 });
-router.get('/resetPass/:id', (req, res, next) => {
+router.get('/resetPass/:id', (req, res) => {
     res.render('resetPass', {message:req.flash('message')});
 });
 module.exports = router;

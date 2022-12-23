@@ -29,6 +29,10 @@ const userSchema = new mongoose.Schema({
         type:"string",
         default:'none',
         required:true
+    },
+    verified:{
+        type:"string",
+        default:'no'
     }
 
 });
