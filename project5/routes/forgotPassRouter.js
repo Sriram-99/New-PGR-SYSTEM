@@ -12,12 +12,11 @@ router.use(flash());
 router.use(bodyParser.urlencoded({
     extended: true
 }));
-const JWT_SECRET = process.env.JWT_SECRET;
-router.post('/forgotPass', (req, res, next) => {
-    const username = req.body.username;
-
+// const JWT_SECRET = process.env.JWT_SECRET;
+router.post('/resetPass/:id', (req, res, next) => {
+    const id = req.params.id;
     userModel.findOne({
-        username: username
+        _id: id
     }, (err, found) => {
         if (!found) {
             req.flash('message', 'No such user found!');
@@ -35,7 +34,7 @@ router.post('/forgotPass', (req, res, next) => {
                                 console.log(err);
                             } else {
                                 req.flash('message', 'Password Reset!');
-                                res.redirect('/forgotPass');
+                                res.redirect('/resetPass/:id');
                             }
                         });
                 }
@@ -46,14 +45,27 @@ router.post('/forgotPass', (req, res, next) => {
     });
 
 });
+
+router.post('/forgotPass', (req, res, next) => {
+    const username = req.body.username;
+    userModel.findOne({
+        username: username
+    }, (err, found) => {
+        if (err) console.log(err);
+        else {
+            const link = `http://localhost:3000/resetPass/${found._id}`;
+            console.log(link);
+            req.flash('message','Reset password link has been sent to your email!!');
+            res.redirect('/forgotPass');
+        }
+    });
+});
 router.get('/forgotPass', (req, res) => {
     res.render('forgot password', {
         message: req.flash('message')
     });
 });
-router.get('/resetPass', (req, res, next) => {
-    res.render('forgot username', {
-        name: "Trup"
-    });
+router.get('/resetPass/:id', (req, res, next) => {
+    res.render('resetPass', {message:req.flash('message')});
 });
 module.exports = router;

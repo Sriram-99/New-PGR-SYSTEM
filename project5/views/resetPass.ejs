@@ -21,24 +21,24 @@
 
     <div class="div1">
       <h1 id="heading" class="heading1">
-        FORGOT PASSWORD
+        RESET PASSWORD
       </h1>
       <% if(message.length > 0){ %> 
       <div class="alert alert-warning">
         <%= message %> 
       </div>
     <% } %> 
-      <form action="/forgotPass" method="post">
+      <form action="" method="post">
         <div class="main">
-          <p> Username/Email Id</p>
-          <input type="email" name="username" placeholder="Username">
+            <p> New password</p>
+        <input type="New password" name="newpassword" placeholder="New password">
           <br>
-          <!-- <p> New password</p>
-        <input type="New password" name="newpassword" placeholder="New password"> -->
+          <p>Confirm New password</p>
+        <input type="New password" name="confirmNewpassword" placeholder="Confirm password">
         <br>
         </div>
         <div class="div2">
-          <button type="submit" name="submit">Send Link</Link></button>
+          <button type="submit" name="submit">Update</button>
         </div>
       </form>
       <div class="bottom">
