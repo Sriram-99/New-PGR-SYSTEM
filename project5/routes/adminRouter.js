@@ -19,7 +19,7 @@ router.post('/verifyByAdmin/:id',(req,res)=>{
         else{
             console.log('user Updated!!');
             req.flash('message','User Verified!');
-            res.redirect('/admin')
+            res.redirect('/admin');
         }
     });
 });

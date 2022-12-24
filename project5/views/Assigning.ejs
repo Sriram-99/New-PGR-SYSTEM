@@ -76,7 +76,7 @@
             </div>
             <div id="ELECTRICAL" class="tablecontent">
               <h2>Electricity</h2>
-              <% complaints.forEach((items)=>{ if(items.subject === "electricity"){%>
+              <% complaints.forEach((items)=>{ if(items.subject === "electricity"){if(items.assigned =="no"){%>
                 <ul>
                 <li class="listone">
                   <h3><%=items.subject %></h3>
@@ -92,12 +92,12 @@
                       <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
                       <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
                       <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
-                      <form action="/assignedTo/<%=items._id %>" method="post">
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
                         <div class="area" id="area">
                           <b>Assigned To:</b>  &nbsp; &nbsp; 
                            <select id="selectarea" name="assignedTo" class="select">
                              <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
-                           <option value="AdministrationArea">Choose Technician</option>
+                           <!-- <option value="AdministrationArea">Choose Technician</option> -->
                            <option value="AdministrationArea"><%=user.firstName %></option>
                            <% }}) %> 
                          </select>
@@ -110,37 +110,40 @@
                 </li>
                 <br>
               </ul>
-              <% }}) %> 
+              <% }}}) %> 
               
             </div>
 
             <div id="CIVIL" class="tablecontent">
               <h2>Network</h2>
-              <% complaints.forEach((items)=>{ if(items.subject === "network"){%>
+              <% complaints.forEach((items)=>{ if(items.subject === "Network"){ if(items.assigned =="no"){%>
               <ul>
                 <li class="listone">
                   <h3><%=items.subject %></h3>
-
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
                       <img src="/images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; 21/12/2022&nbsp</p>
-                      <p><b>Area:</b> &nbsp;&nbsp; Hostels</p>
-                      <p><b>Hostel Name:</b>&nbsp;&nbsp; Boys Hostel 6 </p>
-                      <p><b>Room Number: </b>&nbsp;&nbsp; 6041</p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;broken furniture</p>
-                      <p><b>Details of complaint:</b> &nbsp;&nbsp;chair had broken</p>
-                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
-                      <div class="area" id="area">
-                        <b>Assigned To:</b>  &nbsp; &nbsp; 
-                         <select id="selectarea" name="Area" class="select">
-                         <option value="AdministrationArea">Choose Technician</option>
-                         <option value="AdministrationArea">Administration Area</option>
-                       </select>
-                     </div>
-                      <button type="button" onclick="closepopup(this)">Assign</button>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp;<%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b><%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b>  &nbsp; &nbsp; 
+                           <select id="selectarea" name="assignedTo" class="select">
+                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                           <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <% }}) %> 
+                         </select>
+                         <button type="submit" onclick="closepopup(this)">Assign</button>
+                        </div>
+                      </form>
                       <button type="button" onclick="closepopup(this)">Reject</button>
                     </div>
                   </div>
@@ -148,12 +151,12 @@
 
                 <br>
               </ul>
-              <% }}) %> 
+              <% }}}) %> 
             </div>
 
             <div id="Furnitures" class="tablecontent">
               <h2>Furnitures</h2>
-              <% complaints.forEach((items)=>{ if(items.subject === "furniture"){%>
+              <% complaints.forEach((items)=>{ if(items.subject === "furniture"){if(items.assigned =="no"){%>
               <ul>
                 <li class="listone">
                   <h3><%=items.subject %></h3>
@@ -163,33 +166,37 @@
                     <div class="popup">
                       <img src="/images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; 21/12/2022&nbsp</p>
-                      <p><b>Area:</b> &nbsp;&nbsp; Hostels</p>
-                      <p><b>Hostel Name:</b>&nbsp;&nbsp; Boys Hostel 6 </p>
-                      <p><b>Room Number: </b>&nbsp;&nbsp; 6041</p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;broken furniture</p>
-                      <p><b>Details of complaint:</b> &nbsp;&nbsp;chair had broken</p>
-                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
-                      <div class="area" id="area">
-                        <b>Assigned To:</b>  &nbsp; &nbsp; 
-                         <select id="selectarea" name="Area" class="select">
-                         <option value="AdministrationArea">Choose Technician</option>
-                         <option value="AdministrationArea">Administration Area</option>
-                       </select>
-                     </div>
-                      <button type="button" onclick="closepopup(this)">Assign</button>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %>  </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b>  &nbsp; &nbsp; 
+                           <select id="selectarea" name="assignedTo" class="select">
+                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                           <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <% }}) %> 
+                         </select>
+                         <button type="submit" onclick="closepopup(this)">Assign</button>
+                        </div>
+                      </form>
                       <button type="button" onclick="closepopup(this)">Reject</button>
                     </div>
                   </div>
                 </li>
                 <br>
               </ul>
-              <% }}) %> 
+              <%} }}) %> 
             </div>
 
             <div id="DeviceBreakdown" class="tablecontent">
               <h2>Device Breakdown</h2>
-              <% complaints.forEach((items)=>{ if(items.subject === "devicebreakdown"){%>
+              <% complaints.forEach((items)=>{ if(items.subject === "devicebreakdown"){if(items.assigned =="no"){%>
               <ul>
                 <li class="listone">
                   <h3><%=items.subject %></h3>
@@ -199,33 +206,37 @@
                     <div class="popup">
                       <img src="images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; 21/12/2022&nbsp</p>
-                      <p><b>Area:</b> &nbsp;&nbsp; Hostels</p>
-                      <p><b>Hostel Name:</b>&nbsp;&nbsp; Boys Hostel 6 </p>
-                      <p><b>Room Number: </b>&nbsp;&nbsp; 6041</p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;broken furniture</p>
-                      <p><b>Details of complaint:</b> &nbsp;&nbsp;chair had broken</p>
-                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
-                      <div class="area" id="area">
-                        <b>Assigned To:</b>  &nbsp; &nbsp; 
-                         <select id="selectarea" name="Area" class="select">
-                         <option value="AdministrationArea">Choose Technician</option>
-                         <option value="AdministrationArea">Administration Area</option>
-                       </select>
-                     </div>
-                      <button type="button" onclick="closepopup(this)">Assign</button>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp;<%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %>  </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b>  &nbsp; &nbsp; 
+                           <select id="selectarea" name="assignedTo" class="select">
+                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                           <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <% }}) %> 
+                         </select>
+                         <button type="submit" onclick="closepopup(this)">Assign</button>
+                        </div>
+                      </form>
                       <button type="button" onclick="closepopup(this)">Reject</button>
                     </div>
                   </div>
                 </li>
                 <br>
               </ul>
-              <% }}) %> 
+              <% }}}) %> 
             </div>
 
             <div id="Water" class="tablecontent">
               <h2>Water</h2>
-              <% complaints.forEach((items)=>{ if(items.subject === "water"){%>
+              <% complaints.forEach((items)=>{ if(items.subject === "water"){ if(items.assigned =="no"){%>
               <ul>
                 <li class="listone">
                   <h3><%=items.subject %></h3>
@@ -235,33 +246,37 @@
                     <div class="popup">
                       <img src="images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; 21/12/2022&nbsp</p>
-                      <p><b>Area:</b> &nbsp;&nbsp; Hostels</p>
-                      <p><b>Hostel Name:</b>&nbsp;&nbsp; Boys Hostel 6 </p>
-                      <p><b>Room Number: </b>&nbsp;&nbsp; 6041</p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;broken furniture</p>
-                      <p><b>Details of complaint:</b> &nbsp;&nbsp;chair had broken</p>
-                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
-                      <div class="area" id="area">
-                        <b>Assigned To:</b>  &nbsp; &nbsp; 
-                         <select id="selectarea" name="Area" class="select">
-                         <option value="AdministrationArea">Choose Technician</option>
-                         <option value="AdministrationArea">Administration Area</option>
-                       </select>
-                     </div>
-                      <button type="button" onclick="closepopup(this)">Assign</button>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp;<%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %>  </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b>  &nbsp; &nbsp; 
+                           <select id="selectarea" name="assignedTo" class="select">
+                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                           <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <% }}) %> 
+                         </select>
+                         <button type="submit" onclick="closepopup(this)">Assign</button>
+                        </div>
+                      </form>
                       <button type="button" onclick="closepopup(this)">Reject</button>
                     </div>
                   </div>
                 </li>
                 <br>
               </ul>
-              <% }}) %> 
+              <% }}}) %> 
             </div>
 
             <div id="Garbage" class="tablecontent">
               <h2>Garbage</h2>
-              <% complaints.forEach((items)=>{ if(items.subject === "garbage"){%>
+              <% complaints.forEach((items)=>{ if(items.subject === "garbage"){if(items.assigned =="no"){%>
               <ul>
                 <li class="listone">
                   <h3><%=items.subject %></h3>
@@ -269,35 +284,39 @@
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
-                      <img src="images/ddd.jpg" alt="">
+                      <img src="/images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; 21/12/2022&nbsp</p>
-                      <p><b>Area:</b> &nbsp;&nbsp; Hostels</p>
-                      <p><b>Hostel Name:</b>&nbsp;&nbsp; Boys Hostel 6 </p>
-                      <p><b>Room Number: </b>&nbsp;&nbsp; 6041</p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;broken furniture</p>
-                      <p><b>Details of complaint:</b> &nbsp;&nbsp;chair had broken</p>
-                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
-                      <div class="area" id="area">
-                        <b>Assigned To:</b>  &nbsp; &nbsp; 
-                         <select id="selectarea" name="Area" class="select">
-                         <option value="AdministrationArea">Choose Technician</option>
-                         <option value="AdministrationArea">Administration Area</option>
-                       </select>
-                     </div>
-                      <button type="button" onclick="closepopup(this)">Assign</button>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %>  </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp;<%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b>  &nbsp; &nbsp; 
+                           <select id="selectarea" name="assignedTo" class="select">
+                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                           <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <% }}) %> 
+                         </select>
+                         <button type="submit" onclick="closepopup(this)">Assign</button>
+                        </div>
+                      </form>
                       <button type="button" onclick="closepopup(this)">Reject</button>
                     </div>
                   </div>
                 </li>
                 <br>
               </ul>
-              <% }}) %> 
+              <% }}}) %> 
             </div>
             
             <div id="Toilets" class="tablecontent">
               <h2>Toilets</h2>
-              <% complaints.forEach((items)=>{ if(items.subject === "toilets"){%>
+              <% complaints.forEach((items)=>{ if(items.subject === "toilets"){if(items.assigned =="no"){%>
               <ul>
                 <li class="listone">
                   <h3><%=items.subject %></h3>
@@ -305,30 +324,34 @@
                   <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
-                      <img src="images/ddd.jpg" alt="">
+                      <img src="/images/ddd.jpg" alt="">
                       <h2> Details of Complaint </h2>
-                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; 21/12/2022&nbsp</p>
-                      <p><b>Area:</b> &nbsp;&nbsp; Hostels</p>
-                      <p><b>Hostel Name:</b>&nbsp;&nbsp; Boys Hostel 6 </p>
-                      <p><b>Room Number: </b>&nbsp;&nbsp; 6041</p>
-                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;broken furniture</p>
-                      <p><b>Details of complaint:</b> &nbsp;&nbsp;chair had broken</p>
-                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
-                      <div class="area" id="area">
-                        <b>Assigned To:</b>  &nbsp; &nbsp; 
-                         <select id="selectarea" name="Area" class="select">
-                         <option value="AdministrationArea">Choose Technician</option>
-                         <option value="AdministrationArea">Administration Area</option>
-                       </select>
-                     </div>
-                      <button type="button" onclick="closepopup(this)">Assign</button>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %>  </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b>  &nbsp; &nbsp; 
+                           <select id="selectarea" name="assignedTo" class="select">
+                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                           <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <% }}) %> 
+                         </select>
+                         <button type="submit" onclick="closepopup(this)">Assign</button>
+                        </div>
+                      </form>
                       <button type="button" onclick="closepopup(this)">Reject</button>
                     </div>
                   </div>
                 </li>
                 <br>
               </ul>
-              <% }}) %> 
+              <% }}}) %> 
             </div>
 
           </div>

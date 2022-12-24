@@ -15,14 +15,15 @@ router.use(bodyParser.urlencoded({
 }));
 
 router.get('/assignOff/:username', (req, res) => {
+    const usernameAssign = req.params.username;
     if (req.isAuthenticated()) {
         const data ={};
         data.user = req.user;
-        userModel.find({},(err,foundusers)=>{
+        userModel.find ({},(err,foundusers)=>{
             if(err) console.log(err);
             complaintModel.find({},(error,foundcomplaints)=>{
                 if(err) console.log(error);
-                res.render('Assigning',{profile:data.user,users:foundusers,complaints:foundcomplaints,message:req.flash('message')});
+                res.render('Assigning',{profile:data.user,users:foundusers,complaints:foundcomplaints,message:req.flash('message'),assignedBy:usernameAssign});
             });
         });
        
@@ -31,17 +32,18 @@ router.get('/assignOff/:username', (req, res) => {
     }
 });
 
-router.post('/assignedTo/:id',(req,res)=>{
+router.post('/assignedTo/:id/:assignedBy',(req,res)=>{
     const to = req.body.assignedTo;
+    const by = req.params.assignedBy;
     const id = req.params.id;
     complaintModel.findByIdAndUpdate({_id:id},{ assignedTo:to,  progress:"complaint has been Assigned", assigned:"yes"},
     (err,found)=>{
-        if(err) console.log(err)
+        if(err) console.log(err);
         else{
             req.flash('message','Complaint has been Assigned!');
-            res.redirect('/assignOff')
+            res.redirect('/assignOff/'+by);
         }
-    })
+    });
 });
 
 module.exports = router;
