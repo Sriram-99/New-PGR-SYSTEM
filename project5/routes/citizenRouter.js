@@ -37,7 +37,6 @@ router.post('/citizen/:username',(req,res)=>{
 router.get('/citizen/:username', (req, res) => {
     if (req.isAuthenticated()) {
             userModel.findOne({username:req.params.username},(error,founduser)=>{
-                // const complaintBy = founduser._id;
                 citizenModel.find({},(err,found)=>{
                 if(error) console.log(error);
                 else{

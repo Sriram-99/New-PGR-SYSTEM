@@ -25,6 +25,7 @@ router.post('/resetPass/:id', (req, res, next) => {
         if (err) {
             console.log(err);
         } else if (found) {
+            if(req.body.confirmNewpassword === req.body.newpassword){
             found.setPassword(req.body.newpassword, (err, users) => {
                 if (err) console.log(err);
                 else {
@@ -34,12 +35,17 @@ router.post('/resetPass/:id', (req, res, next) => {
                                 console.log(err);
                             } else {
                                 req.flash('message', 'Password Reset!');
-                                res.redirect('/resetPass/:id');
+                                res.redirect('/resetPass/'+id);
                             }
                         });
                 }
 
             });
+        }
+        else{
+            req.flash('message', 'Password not Matched!');
+            res.redirect('/resetPass/'+id);
+        }
         }
 
     });

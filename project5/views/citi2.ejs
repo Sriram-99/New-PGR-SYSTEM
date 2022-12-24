@@ -64,10 +64,10 @@
                   </select></div>
 
                   <!-- Administration -->
-                <form action="/citizen/<% user.username %> " method="post">
+                <form action="/citizen/<%=user.username %> " method="post">
                   <div id="AdministrationArea"   class="mainsr"  >
                     <input type="hidden" value="administrationArea" name="area">
-                    <input type="hidden" value=<% user._id %> name="complaintBy">
+                    <input type="hidden" value="<%=user._id %>" name="complaintBy">
                     <h3>Administration Area</h3>
                     <p >Name of Building: &nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose the option</option>
@@ -94,10 +94,10 @@
                 </div>
 </form>
                 <!-- AcademicBuildings -->
-                <form action="/citizen/<% user.username %>" method="post">
+                <form action="/citizen/<%= user.username %>" method="post">
                 <div  class="mainsr"  id="AcademicBuildings">
                     <input type="hidden" value="academicBuildings" name="area">
-                    <input type="hidden" value=<% user._id %> name="complaintBy">
+                    <input type="hidden" value="<%= user._id %>" name="complaintBy">
                     <h3>Academic Buildings</h3>
                     <p>Name of Building: &nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose the option</option>
@@ -131,10 +131,10 @@
                     <!-- HOSTEL -->
 
 
-                    <form action="/citizen/<% user.username %>" method="post">
+                    <form action="/citizen/<%=user.username %>" method="post">
                 <div  id="Hostels" class="mainsr">
                     <input type="hidden" value="hostel" name="area">
-                    <input type="hidden" value=<% user._id %> name="complaintBy">
+                    <input type="hidden" value="<%= user._id %>" name="complaintBy">
                     <h3>Hostels</h3>
                     <p id="hostelname"> Hostel Name:&nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose</option>
@@ -170,9 +170,9 @@
 </form>
 
                         <!-- staff quarter -->
-                        <form action="/citizen/<% user.username %>" method="post">
+                        <form action="/citizen/<%= user.username %>" method="post">
                             <input type="hidden" value="staffQuarters" name="area">
-                            <input type="hidden" value=<% user._id %> name="complaintBy">
+                            <input type="hidden" value="<%= user._id %>" name="complaintBy">
                 <div  id="StaffQuarters"  class="mainsr">
                     <h3>StaffQuarters</h3>
                     <p>Name of Building:&nbsp; &nbsp; <select name="building" id="">
@@ -210,10 +210,10 @@
                     </form>      
 
                     <!-- students recreation and sports -->
-                    <form action="/citizen/<% user.username %>" method="post">
+                    <form action="/citizen/<%=user.username %>" method="post">
                 <div  id="StudentRecreationAndSports" class="mainsr">
                     <input type="hidden" value="sudentRecreationAndSports" name="area">
-                    <input type="hidden" value=<% user._id %> name="complaintBy">
+                    <input type="hidden" value="<%= user._id %>" name="complaintBy">
                     <h3>Students Recreation & sprots</h3>
                     <p>Name of the building: &nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose the building</option>
@@ -239,10 +239,10 @@
 </form>
 
                 <!-- guesthouse -->
-                <form action="/citizen/<% user.username %>" method="post">
+                <form action="/citizen/<%=user.username %>" method="post">
                 <div  id="GuestHouse" class="mainsr">
                     <input type="hidden" value="guestHouse" name="area">
-                    <input type="hidden" value=<% user._id %> name="complaintBy">
+                    <input type="hidden" value="<%= user._id %>" name="complaintBy">
                     <h3>Guest House</h3>
                     <p>Name of the building:&nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose</option>
@@ -280,15 +280,15 @@
 
           <!-- start of center1 -->
           <div class="center1" id="center1">
-            <% complaint.forEach((item)=>{ %> 
+              
+            <% complaint.forEach((item)=>{ if(item.complaintBy == user._id){%> 
               <ul>
                 <li class="listone" >
                    <h3 ><%= item.subject %></h3>
-
                    <div>
                     <button onclick="openpopup(this)"  id="btn"  class="view">view</button>
                     <div class="popup">
-                        <img src="images/ddd.jpg" alt="">
+                        <img src="/images/ddd.jpg" alt="">
                        <h2> Details of Complaint </h2>
                        <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%= item.date %></p>
                        <p><b>Area:</b>  &nbsp;&nbsp; <%= item.area %></p>
@@ -297,6 +297,7 @@
                        <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
                        <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
                         <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
+                        <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%= item.complaintBy %> </p>
                         <button type="button" onclick="closepopup(this)"> ok</button>
 
                     </div>
@@ -308,14 +309,14 @@
                    <% }%>  
                 </li>
               </ul>
-              <% }); %>
+              <% }}); %>
           </div>
         
           <!-- end of center1 -->
           <!-- start of center1 -->
           
           <div class="center2" id="center2">
-            <% complaint.forEach((item)=>{ %> 
+            <% complaint.forEach((item)=>{if(item.complaintBy == user._id){ %> 
             <ul>
                 <li class="listtwo">
                    <h3 data-1="BH6",data-2="6042" data-3="regarding failure of ac" , data-4=""><%= item.subject %></h3>
@@ -331,14 +332,13 @@
                        <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
                        <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
                         <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
-
                         <button type="button" onclick="closepopup(this)"> ok</button>
 
                     </div>
                   </div>
                 </li>
               </ul>
-              <% }); %> 
+              <%}}); %> 
           </div>
           
           <!-- end of center 1 -->
