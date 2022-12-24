@@ -3,20 +3,24 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 const bodyParser = require('body-parser');
 const citizenModel = require("../models/citizenSchema");
+const userModel = require('../models/userSchema');
 const flash = require('connect-flash');
-var fs = require('fs');
+// var fs = require('fs');
+// router.use(express.static('public'));
 router.use(flash());
 router.use(bodyParser.urlencoded({
     extended: true
 }));
 
-router.post('/citizen',(req,res)=>{
+router.post('/citizen/:username',(req,res)=>{
+    const username=req.params.username;
     const citizenComplaint = new citizenModel({
         area:req.body.area,
         building:req.body.building,
         room:req.body.room, 
         subject:req.body.subject,
         complaint:req.body.complaint,
+        complaintBy:req.body.complaintBy,
         brokenImg: req.body.brokenImg
     });
     // citizenComplaint.brokenImg.data = fs.readFileSync(req.body.brokenImg);
@@ -24,22 +28,26 @@ router.post('/citizen',(req,res)=>{
     try {
         citizenComplaint.save(()=>{console.log("saved Complaint!")});
         req.flash('message','Complaint has been lodge!');
-        res.redirect('/citizen');
+        res.redirect('/citizen/'+ username);
     } catch (error) {
         console.log(error);
     }
 });
 
-router.get('/citizen', (req, res) => {
+router.get('/citizen/:username', (req, res) => {
     if (req.isAuthenticated()) {
-        const data ={};
-        data.user = req.user;
-        citizenModel.find({},(err,found)=>{
-            if(err) console.log(err);
-            else{
-                res.render('citi2',{profile:data.user,message:req.flash('message'),complaint:found});
-            }
-            
+            userModel.findOne({username:req.params.username},(error,founduser)=>{
+                // const complaintBy = founduser._id;
+                citizenModel.find({},(err,found)=>{
+                if(error) console.log(error);
+                else{
+                     if(err) console.log(err);
+                  else{
+                res.render('citi2',{user:founduser,message:req.flash('message'),complaint:found});
+                      }
+                }     
+            });
+           
         });
        
     } else {

@@ -24,8 +24,24 @@ const citizenSchema = new mongoose.Schema({
         data: Buffer, 
         contentType: String 
      },
-     date: { type: Date, default: Date().split('G')[0]},
-   
+     date: { 
+         type: Date, 
+        default: Date().split('G')[0]
+    },
+     progress:{
+        type:"string",
+        default:'Complaint Lodged!'
+    },
+    assigned:{
+        type:"string",
+        default:'no'
+    },
+     assignedTo :{
+         type:String
+     },
+     complaintBy :{
+        type:String
+     }
 });
 
 const citizen = new mongoose.model('citizen',citizenSchema);

@@ -7,7 +7,9 @@ const bodyParser = require('body-parser');
 const citizenRouter = require('./routes/citizenRouter');
 const forgotPassRouter = require('./routes/forgotPassRouter');
 const adminRouter = require('./routes/adminRouter');
+const assignRouter = require('./routes/assignRouter');
 const userModel = require('./models/userSchema');
+const citizenModel = require('./models/citizenSchema');
 const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
@@ -73,9 +75,9 @@ else{
                     if(err){
                         console.log("no such user!!");
                     }
-                    if(found.typeOfPerson === "citizen")res.redirect('/citizen');
+                    if(found.typeOfPerson === "citizen")res.redirect('/citizen/'+ username);
                     if(found.typeOfPerson === "assigningOfficer")
-                    {   if(found.verified === 'yes')  res.redirect('/assignOff');
+                    {   if(found.verified === 'yes')  res.redirect('/assignOff/' + username);
                         else{
                             req.flash('message','Verification Takes some days!');
                             res.redirect('/registration');
@@ -83,7 +85,7 @@ else{
                     }
                     if(found.typeOfPerson === "admin")res.redirect('/admin');
                    else if(found.typeOfPerson === "technician")
-                   {   if(found.verified === 'yes')  res.redirect('/technician');
+                   {   if(found.verified === 'yes')  res.redirect('/technician/'+ username);
                    else{
                        req.flash('message','Verification Takes some days!');
                        res.redirect('/registration');
@@ -112,9 +114,9 @@ app.post('/login', (req, res) => {
                     if(err){
                         console.log("no such user!!");
                     }
-                    if(found.typeOfPerson === "citizen")res.redirect('/citizen');
+                    if(found.typeOfPerson === "citizen")res.redirect('/citizen/' + username);
                     if(found.typeOfPerson === "assigningOfficer")
-                    {   if(found.verified === 'yes')  res.redirect('/assignOff');
+                    {   if(found.verified === 'yes')  res.redirect('/assignOff/' + username);
                     else{
                         req.flash('message','Verification Takes some days!');
                         res.redirect('/');
@@ -122,7 +124,7 @@ app.post('/login', (req, res) => {
                 }
                     if(found.typeOfPerson === "admin")res.redirect('/admin');
                    else if(found.typeOfPerson === "technician")
-                   {   if(found.verified === 'yes')  res.redirect('/technician');
+                   {   if(found.verified === 'yes')  res.redirect('/technician/'+ username);
                    else{
                        req.flash('message','Verification Takes some days!');
                        res.redirect('/');
@@ -134,16 +136,16 @@ app.post('/login', (req, res) => {
         }
     });
 });
-app.get('/assignOff', (req, res) => {
-    if (req.isAuthenticated()) {
-        const data ={};
-        data.user = req.user;
-        res.render('Assigning',{profile:data.user});
-    } else {
-        res.redirect('/');
-    }
-});
-app.get('/technician', (req, res) => {
+// app.get('/assignOff', (req, res) => {
+//     if (req.isAuthenticated()) {
+//         const data ={};
+//         data.user = req.user;
+//         res.render('Assigning',{profile:data.user});
+//     } else {
+//         res.redirect('/');
+//     }
+// });
+app.get('/technician/:username', (req, res) => {
     if (req.isAuthenticated()) {
         const data ={};
         data.user = req.user;
@@ -181,6 +183,7 @@ app.get('/registration', (req, res) => {
 app.use(citizenRouter);
 app.use(forgotPassRouter);
 app.use(adminRouter);
+app.use(assignRouter);
 
 const port = process.env.PORT||3000;
 app.listen(port, () => {

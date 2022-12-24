@@ -13,15 +13,7 @@ body {
   width: 100%;
   position: relative;
 }
-.alert {
-  background-color: rgb(239, 255, 196);
-  display: flex;
-  border: 1px solid rgb(73, 96, 10);
-  align-items: center;
-  justify-content: center;
-  padding: 0.6rem;
-  color: #796d34;
-}
+
 .head {
   display: flex;
   justify-content: space-between;
@@ -57,7 +49,7 @@ body {
 
 .navbar img {
   height: 20px;
-  width: 20px;
+  weight: 20px;
   margin-right: 6px;
 }
 
@@ -77,62 +69,6 @@ body {
   background-color: #3D5656;
 }
 
-.topdiv {
-  height: 100px;
-  width: auto;
-  background-color: white;
-}
-
-.drop1 {
-  background-color: #be955b;
-  color: white;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: auto;
-  padding-bottom: auto;
-  width: 300px;
-  margin-left: 10px;
-  margin-right: 10px;
-  border: 2px solid rgb(194, 93, 31);
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.drop1:hover {
-  width: 300px;
-  padding-left: 12px;
-  padding-right: 12px;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-left: 3px;
-  margin-right: 3px;
-  background-color: #c2835e;
-}
-
-.dropdwn {
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.dropd0wn-c {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.dropd0wn-c a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
 hr {
   border-style: none;
   border-top-style: dotted;
@@ -144,189 +80,254 @@ hr {
 
 .ii-container {
   background-color: #F0E9D2;
-  height: 500px;
+  height: 800px;
   width: auto;
-  display: flex;
 }
 
-.left {
-  background-color:#c5c46680;
-  /* height: auto; */
-  width: 21%;
-}
+*{box-sizing: border-box}
 
-.sidenav {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 55px;
-}
-
-.sidenav button {
-  margin-top: 8px;
-}
-
-.dropdown-btn {
-  background: #a74b36c2;
-  margin: 0 30px 0 30px;
-  /* -webkit-border-radius: 9;
-  -moz-border-radius: 9; */
-  border-radius: 9px;
+/* Set height of body and the document to 100% */
+body, html {
+  /* height: 100%; */
+  margin: 0;
   font-family: Arial;
-  color: #ffffff;
-  font-size: 29px;
-  /* padding: 14px 20px 10px 20px; */
-  border: solid #000000 6px;
-  text-decoration: none;
-  /* margin-top: 10px; */
 }
 
-/* On mouse-over */
-.dropdown-btn:hover {
-  background: #db284b;
-  text-decoration: none;
-}
-
-/* Style the sidenav links and the dropdown button */
-.dropdown-container a {
-  padding: 6px 8px 6px 16px;
-  background-color: brown;
-  text-decoration: none;
-  font-size: 20px;
-  color: black;
-  /* display: block; */
-  border: none;
-  background: none;
-  text-align: left;
-  cursor: pointer;
-  outline: none;
-  height: 62px;
-}
-
-/* Main content */
-.main {
-  margin-left: 200px;
-  /* Same as the width of the sidenav */
-  font-size: 20px;
-  /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}
-
-/* Add an active class to the active dropdown button */
-.active {
-  /* width: 100%; */
-  background-color: green;
+/* Style tab links */
+.tablink {
+  background-color: #555;
   color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 50%;
 }
 
-/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-.dropdown-container {
-  width: auto;
-  display:none;
-  background-color:grey;
-  padding-left: 8px;
-  height: auto;
+.tablink:hover {
+  background-color: #777;
 }
 
-.dropdown-container a{
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: black;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+  width:100%;
+}
+
+#grievance {background-color:#687cec6e;}
+#employee {background-color: #5197c6ad;}
+
+
+
+.navebar {
+  overflow: hidden;
+  background-color:#df5a5ab5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navebar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+  background-color: black;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: azure;
+  min-width: 92%;
+  min-height: 600px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
   display: block;
 }
 
-/* Optional: Style the caret down icon */
-.fa-caret-down {
-  float: right;
-  padding-right: 8px;
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+.table {
+  float: left;
+  border: 1px solid #ccc;
+  background-color:azure;
+  width: 15%;
+  height: auto;
 }
 
-/* Some media queries for responsiveness */
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
-  }
-}
-
-.sidenav buttton {
-  font-size: 18px;
-}
-
-.middle {
-  height: 500px;
-  width: 58%;
-  position: relative;
-}
-
-.topofm {
-  height: 50px;
-  background-color: #c5c46680;
-  position: relative;
-}
-
-.topofm button {
-  position: absolute;
-  right: 12px;
-  bottom: 2px;
-  -webkit-border-radius: 8;
-  -moz-border-radius: 8;
-  border-radius: 8px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  background: #3cb0fd;
-  padding: 5px 20px 5px 20px;
-  border: solid #235eb0 4px;
-  text-decoration: none;
-}
-
-.topofm button:hover {
-  background: #d69846;
-  text-decoration: none;
-}
-
-.bottomofm {
-  height: 50px;
-  background-color: #c5c46680;
-  position: absolute;
-  display: flex;
-  justify-content: space-around;
-  bottom: 0;
+/* Style the buttons inside the tab */
+.table button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
   width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
 }
 
-.bottomofm button {
-  -webkit-border-radius: 8;
-  -moz-border-radius: 8;
-  border-radius: 8px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  background: #3cb0fd;
-  padding: 5px 20px 5px 20px;
-  border: solid #235eb0 4px;
-  text-decoration: none;
-  margin: 5px 0 5px 0;
+/* Change background color of buttons on hover */
+.table button:hover {
+  background-color: #ddd;
 }
 
-.bottomofm button:hover {
-  background: #d69846;
-  text-decoration: none;
+/* Create an active/current "tab button" class */
+.table button.active {
+  background-color:#df5a5ab5;
 }
 
-.right {
-  background-color: white;
-  height: 500px;
-  width: 21%;
-  background-color: #c5c46680;
+/* Style the tab content */
+.tablecontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 80%;
+  border-left: none;
+  height: 550px;
+  background-color: #e1818175;
 }
 
-.sidenav1 {
+.center1{
+    margin-top: 0;
+    padding-top: 10px;
+    width: 100%;
+    height:520px;
+
+    /* changes */
+    background-color:#9773e0;
+
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    -webkit-box-shadow: 17px 20px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 17px 20px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 17px 20px 5px 0px rgba(0,0,0,0.75);
+
+    /* changes */
+
+
+}
+.listone h3{
+    width: 50%;
+
+}
+.view{
+    /* margin-right: 30px; */
+    width: 200px;
+    font-weight: bold;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.listone{
+    background-color: rgb(211 48 48);
+
+    margin-left: 80px;
+    width:70%;
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 55px;
+  border: 2px solid black;
+   margin-right:15px ;
+   align-items: center;
+   justify-content: center;
+
 }
 
-.sidenav1 button {
-  margin-top: 8px;
+.popup{
+    width: 400px;
+    background-color:#fff ;
+    border-radius: 6px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4 ,top 0.4s ;
+}
+.open-popup{
+        visibility: visible;
+        top:50%;
+        transform: translate(-50%,-50%) scale(1);
+}
+
+
+.popup img{
+    width: 100px;
+    margin-top:-50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0 0 0 0.2);
+
+}
+.popup h2{
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+}
+.popup button{
+    width: 50%;
+    margin-top: 30px;
+    padding: 10px 0;
+    background: #6fd649;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0 0 0 0.2);
+}
+
+.popup b{
+    color: #5305ee;
 }
 
 .ft {
@@ -340,7 +341,15 @@ hr {
 .ft div{
   margin-top: 50px;
 }
-
+.alert {
+  background-color: rgb(239, 255, 196);
+  display: flex;
+  border: 1px solid rgb(73, 96, 10);
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+  color: #796d34;
+}
 .ft a{
   text-decoration: none;
 }

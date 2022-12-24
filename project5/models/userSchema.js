@@ -34,7 +34,6 @@ const userSchema = new mongoose.Schema({
         type:"string",
         default:'no'
     }
-
 });
 userSchema.plugin(passportLocalMongoose);
 

@@ -9,17 +9,17 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style> @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@1,600&display=swap'); </style>
-    <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="/css/test.css">
 </head>
 <body>
     <!-- start of heading and nav -->
     <div class="heading">
-        <img src="images/C-DAC.jpg" class="logo" alt="" width="50px" >
+        <img src="/images/C-DAC.jpg" class="logo" alt="" width="50px" >
     <div class="headingmini" >
         <h1>Centre for Development of Advanced Computing</h1>
     <p>public governance system</p>
     </div>
-    <img class="picsilchar" src="images/nit silchar.jpg"   alt="">
+    <img class="picsilchar" src="/images/nit silchar.jpg"   alt="">
 </div>
 <nav>
     <a href="">Home</a>
@@ -27,7 +27,7 @@
     <a href="">Home</a>
     <a href="">Home</a>
     <a href="">Home</a>
-    <a href="" style="width: 6rem;"><i class="fa-solid fa-user"></i> <%= profile.firstName %>!</a>
+    <a href="" style="width: 6rem;"><i class="fa-solid fa-user"></i> <%= user.firstName %>!</a>
     <a href="/logout">logout</a>
 </nav>
  <!-- ending of heading and nav -->
@@ -64,10 +64,10 @@
                   </select></div>
 
                   <!-- Administration -->
-                <form action="/citizen" method="post">
+                <form action="/citizen/<% user.username %> " method="post">
                   <div id="AdministrationArea"   class="mainsr"  >
                     <input type="hidden" value="administrationArea" name="area">
-                  
+                    <input type="hidden" value=<% user._id %> name="complaintBy">
                     <h3>Administration Area</h3>
                     <p >Name of Building: &nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose the option</option>
@@ -84,8 +84,8 @@
                         <option value="garbage">Garbage</option>
                         <option value="water">Water</option>
                         <option value="electricity">Electricity</option>
-                        <option value="Network">Network</option>
-                        <option value="broken furniture">broken furniture</option>
+                        <option value="network">Network</option>
+                        <option value="furniture">Furniture</option>
                         <option value="other">other</option>
                     </select></p>
                     <p >specify the complaint: &nbsp; &nbsp;<textarea name="complaint" id="" cols="40" rows="2"></textarea></p>
@@ -94,9 +94,10 @@
                 </div>
 </form>
                 <!-- AcademicBuildings -->
-                <form action="/citizen" method="post">
+                <form action="/citizen/<% user.username %>" method="post">
                 <div  class="mainsr"  id="AcademicBuildings">
                     <input type="hidden" value="academicBuildings" name="area">
+                    <input type="hidden" value=<% user._id %> name="complaintBy">
                     <h3>Academic Buildings</h3>
                     <p>Name of Building: &nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose the option</option>
@@ -130,9 +131,10 @@
                     <!-- HOSTEL -->
 
 
-                    <form action="/citizen" method="post">
+                    <form action="/citizen/<% user.username %>" method="post">
                 <div  id="Hostels" class="mainsr">
                     <input type="hidden" value="hostel" name="area">
+                    <input type="hidden" value=<% user._id %> name="complaintBy">
                     <h3>Hostels</h3>
                     <p id="hostelname"> Hostel Name:&nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose</option>
@@ -168,8 +170,9 @@
 </form>
 
                         <!-- staff quarter -->
-                        <form action="/citizen" method="post">
+                        <form action="/citizen/<% user.username %>" method="post">
                             <input type="hidden" value="staffQuarters" name="area">
+                            <input type="hidden" value=<% user._id %> name="complaintBy">
                 <div  id="StaffQuarters"  class="mainsr">
                     <h3>StaffQuarters</h3>
                     <p>Name of Building:&nbsp; &nbsp; <select name="building" id="">
@@ -207,9 +210,10 @@
                     </form>      
 
                     <!-- students recreation and sports -->
-                    <form action="/citizen" method="post">
+                    <form action="/citizen/<% user.username %>" method="post">
                 <div  id="StudentRecreationAndSports" class="mainsr">
                     <input type="hidden" value="sudentRecreationAndSports" name="area">
+                    <input type="hidden" value=<% user._id %> name="complaintBy">
                     <h3>Students Recreation & sprots</h3>
                     <p>Name of the building: &nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose the building</option>
@@ -235,9 +239,10 @@
 </form>
 
                 <!-- guesthouse -->
-                <form action="/citizen" method="post">
+                <form action="/citizen/<% user.username %>" method="post">
                 <div  id="GuestHouse" class="mainsr">
                     <input type="hidden" value="guestHouse" name="area">
+                    <input type="hidden" value=<% user._id %> name="complaintBy">
                     <h3>Guest House</h3>
                     <p>Name of the building:&nbsp; &nbsp; <select name="building" id="">
                         <option value="">choose</option>
@@ -350,5 +355,5 @@
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="js/test.js"></script>
+<script src="/js/test.js"></script>
 </html>
