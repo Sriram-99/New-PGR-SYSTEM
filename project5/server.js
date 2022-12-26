@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const path = require('path');
 const bodyParser = require('body-parser');
 const citizenRouter = require('./routes/citizenRouter');
 const forgotPassRouter = require('./routes/forgotPassRouter');
@@ -14,6 +15,7 @@ const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
 const e = require('connect-flash');
+const multer = require('multer');
 
 app.use(flash());
 app.set('view engine', 'ejs');
@@ -42,7 +44,18 @@ passport.use(userModel.createStrategy());
 passport.serializeUser(userModel.serializeUser());
 passport.deserializeUser(userModel.deserializeUser());
 
-app.post('/', (req, res) => {
+const storage = multer.diskStorage({
+    destination:"public/adhar",
+    filename:(req,file,cb)=>{
+        cb(null,file.fieldname+"_"+Date.now()+path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage:storage
+}).single('adharImg');
+
+app.post('/', upload,(req, res) => {
     const username = req.body.username;
     const userno = new userModel({
         firstName: req.body.firstName,
@@ -50,6 +63,8 @@ app.post('/', (req, res) => {
         username: req.body.username,
         password: req.body.password,
         mobile: req.body.mobile,
+        adharNo:req.body.adharNo,
+        adharImg:req.file.filename,
         typeOfPerson: req.body.typeOfPerson
     });
     const originalPass = req.body.password;

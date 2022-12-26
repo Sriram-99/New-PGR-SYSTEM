@@ -64,7 +64,7 @@
                   </select></div>
 
                   <!-- Administration -->
-                <form action="/citizen/<%=user.username %> " method="post">
+                <form action="/citizen/<%=user.username %> " method="post" enctype="multipart/form-data">
                   <div id="AdministrationArea"   class="mainsr"  >
                     <input type="hidden" value="administrationArea" name="area">
                     <input type="hidden" value="<%=user._id %>" name="complaintBy">
@@ -94,7 +94,7 @@
                 </div>
 </form>
                 <!-- AcademicBuildings -->
-                <form action="/citizen/<%= user.username %>" method="post">
+                <form action="/citizen/<%= user.username %>" method="post" enctype="multipart/form-data">
                 <div  class="mainsr"  id="AcademicBuildings">
                     <input type="hidden" value="academicBuildings" name="area">
                     <input type="hidden" value="<%= user._id %>" name="complaintBy">
@@ -170,7 +170,7 @@
 </form>
 
                         <!-- staff quarter -->
-                        <form action="/citizen/<%= user.username %>" method="post">
+                        <form action="/citizen/<%= user.username %>" method="post" enctype="multipart/form-data">
                             <input type="hidden" value="staffQuarters" name="area">
                             <input type="hidden" value="<%= user._id %>" name="complaintBy">
                 <div  id="StaffQuarters"  class="mainsr">
@@ -210,7 +210,7 @@
                     </form>      
 
                     <!-- students recreation and sports -->
-                    <form action="/citizen/<%=user.username %>" method="post">
+                    <form action="/citizen/<%=user.username %>" method="post" enctype="multipart/form-data">
                 <div  id="StudentRecreationAndSports" class="mainsr">
                     <input type="hidden" value="sudentRecreationAndSports" name="area">
                     <input type="hidden" value="<%= user._id %>" name="complaintBy">
@@ -239,7 +239,7 @@
 </form>
 
                 <!-- guesthouse -->
-                <form action="/citizen/<%=user.username %>" method="post">
+                <form action="/citizen/<%=user.username %>" method="post" enctype="multipart/form-data">
                 <div  id="GuestHouse" class="mainsr">
                     <input type="hidden" value="guestHouse" name="area">
                     <input type="hidden" value="<%= user._id %>" name="complaintBy">

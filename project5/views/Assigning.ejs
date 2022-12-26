@@ -104,7 +104,9 @@
                          <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
-                      <button type="button" onclick="closepopup(this)">Reject</button>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <button type="submit" >Reject</button>
+                      </form>
                     </div>
                   </div>
                 </li>
@@ -144,7 +146,9 @@
                          <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
-                      <button type="button" onclick="closepopup(this)">Reject</button>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <button type="submit" >Reject</button>
+                      </form>
                     </div>
                   </div>
                 </li>
@@ -185,7 +189,9 @@
                          <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
-                      <button type="button" onclick="closepopup(this)">Reject</button>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <button type="submit" >Reject</button>
+                      </form>
                     </div>
                   </div>
                 </li>
@@ -225,7 +231,9 @@
                          <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
-                      <button type="button" onclick="closepopup(this)">Reject</button>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <button type="submit" >Reject</button>
+                      </form>
                     </div>
                   </div>
                 </li>
@@ -265,7 +273,9 @@
                          <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
-                      <button type="button" onclick="closepopup(this)">Reject</button>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <button type="submit" >Reject</button>
+                      </form>
                     </div>
                   </div>
                 </li>
@@ -305,7 +315,9 @@
                          <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
-                      <button type="button" onclick="closepopup(this)">Reject</button>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <button type="submit" >Reject</button>
+                      </form>
                     </div>
                   </div>
                 </li>
@@ -345,7 +357,9 @@
                          <button type="submit" onclick="closepopup(this)">Assign</button>
                         </div>
                       </form>
-                      <button type="button" onclick="closepopup(this)">Reject</button>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <button type="submit" >Reject</button>
+                      </form>
                     </div>
                   </div>
                 </li>
@@ -357,51 +371,127 @@
           </div>
         </div>
         <!-- assigned complaints dropdown -->
-        <div class="dropdown">
-          <button class="dropbtn" id="assigned" onclick="mFunction()">Assigned Complaints
+        <div class="dropdwn">
+          <button class="dropbutn" id="assigned" onclick="mFunction()">Assigned Complaints
             <i class="fa fa-caret-down"></i>
           </button>
-          <div class="dropdown-content" id="Dropdown">
-            <div class="table">
-              <button class="tablelinks" onclick="openCity(event, 'ELECTRICAL')" id="defaultopen">Accepted
-                Complaints</button>
-              <button class="tablelinks" onclick="openCity(event, 'CIVIL')">Rejected Complaints</button>
-              <button class="tablelinks" onclick="openCity(event, 'MECHANICAL')"></button>
-              <button class="tablelinks" onclick="openCity(event, 'MECHANICAL')">MECHANICAL</button>
-              <button class="tablelinks" onclick="openCity(event, 'MECHANICAL')">MECHANICAL</button>
-              <button class="tablelinks" onclick="openCity(event, 'MECHANICAL')">MECHANICAL</button>
+          <div class="dropdwn-content" id="Dropdwn">
+            <div class="tabe">
+              <button class="tabelinks" onclick="openCty(event, 'ELECT')" id="defaultpen">Accepted Complaints</button>
+              <button class="tabelinks" onclick="openCty(event, 'CIV')">Rejected Complaints</button>
+              <button class="tabelinks" onclick="openCty(event, 'MECH')">Re-assigned Complaints</button>
             </div>
 
-            <div id="ELECT" class="tablecontent">
-              <h3>ELECTRICAL</h3>
-              <p>New Complaints will add here.</p>
+            <div id="ELECT" class="tabecontent">
+              <h2>Assigned Complaints</h2>
+              <% complaints.forEach((items)=>{ if(items.assigned =="yes" && items.acceptedByOff == "yes"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%=items.subject %></h3>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="">
+                      <h2> Details of Complaint </h2>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %>  </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/reassignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b>  &nbsp; &nbsp; 
+                           <select id="selectarea" name="assignedTo" class="select">
+                             <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                           <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <% }}) %> 
+                         </select>
+                         <button type="submit" onclick="closepopup(this)">ReAssign</button>
+                        </div>
+                      </form>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                      <button type="submit" >Reject</button>
+                    </form>
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }}) %>
             </div>
 
-            <div id="CIV" class="tablecontent">
-              <h3>CIVIL</h3>
-              <p>New Complaints will add here.</p>
+            <div id="CIV" class="tabecontent">
+              <h2>Rejected Complaints</h2>
+              <% complaints.forEach((items)=>{ if(items.acceptedByOff =="no"){%>
+                <ul>
+              <li class="listone">
+                <h3><%=items.subject %></h3>
+                <div>
+                  <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                  <div class="popup">
+                    <img src="/images/ddd.jpg" alt="">
+                    <h2> Details of Complaint </h2>
+                    <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                    <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                    <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %>  </p>
+                    <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                    <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                    <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                    <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                  </div>
+                </div>
+              </li>
+              <br></ul>
+              <% }}) %>
+            
             </div>
 
-            <div id="MECH" class="tablecontent">
-              <h3>MECHANICAL</h3>
-              <p>New Complaints will add here.</p>
-            </div>
-            <div id="MECH" class="tablecontent">
-              <h3>MECHANICAL</h3>
-              <p>New Complaints will add here.</p>
-            </div>
-            <div id="MECH" class="tablecontent">
-              <h3>MECHANICAL</h3>
-              <p>New Complaints will add here.</p>
-            </div>
-            <div id="MECH" class="tablecontent">
-              <h3>MECHANICAL</h3>
-              <p>New Complaints will add here.</p>
+            <div id="MECH" class="tabecontent">
+              <h2>Re-Assigned Complaints</h2>
+              <% complaints.forEach((items)=>{ if(items.reassigned =="yes"){%>
+                <ul>
+              <li class="listone">
+                <h3><%=items.subject %></h3>
+
+                <div>
+                  <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                  <div class="popup">
+                    <img src="/images/ddd.jpg" alt="">
+                    <h2> Details of Complaint </h2>
+                    <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                    <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                    <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %>  </p>
+                    <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                    <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                    <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                    <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                    <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                      <div class="area" id="area">
+                        <b>Assigned To:</b>  &nbsp; &nbsp; 
+                         <select id="selectarea" name="assignedTo" class="select">
+                           <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                         <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                         <option value="AdministrationArea"><%=user.firstName %></option>
+                         <% }}) %> 
+                       </select>
+                       <button type="submit" onclick="closepopup(this)">Assign</button>
+                      </div>
+                    </form>
+                    <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                      <button type="submit" >Reject</button>
+                    </form>
+                  </div>
+                </div>
+              </li>
+              <br></ul>
+              <% }}) %>
+            
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
     <div id="employee" class="tabcontent">
       <h3>employee</h3>
@@ -468,6 +558,21 @@
   <!-- bottom container -->
 
   <script type="text/javascript" src="/js/Assigning.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $("#departments").click(a);
+
+    function a() {
+      $("#myDropdown").css("display", "block");
+      $("#Dropdown").css("display", "none");
+    }
+    $("#assigned").click(b);
+
+    function b() {
+      $("#myDropdown").css("display", "none");
+      $("#Dropdown").css("display", "block");
+    }
+  </script>
 </body>
 
 </html>

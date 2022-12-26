@@ -33,7 +33,7 @@
   <div class="main">
     <div class="register">
       <h2>REGISTRATION FORM</h2>
-      <form class="register" action="/" method="post">
+      <form class="register" action="/" method="post" enctype="multipart/form-data">
         <div class="container">
           <div class="input-box">
             <label for="">First Name:</label>
@@ -63,25 +63,29 @@
             <label for="">Confirm Password:</label>
             <input id="confirm" type="password" name="confirmPass" value="" placeholder="Confirm Password">
           </div>
-          <div class="input-box">
-            <label for="">Aadhaar Id:</label>
-            <input id="Aadhaar" type="text" name="" value="" placeholder="Aadhaar Id">
-          </div>
-          <div class="gender">
+          <!-- <div class="gender">
            <label for="">Type of Person:</label>
             <input type="radio" name="typeOfPerson" value="citizen" id="female">Citizen
             <input type="radio" name="typeOfPerson" value="assigningOfficer" id="male">Assigning Officer
             <input type="radio" name="typeOfPerson" value="technician" id="other">Technician
+          </div> -->
+          <div class="input-box">
+            <label for="">Aadhaar Id:</label>
+            <input id="Aadhaar" type="text" name="adharNo" value="" placeholder="Aadhaar Id">
+          </div>
+          <div class="input-box">
+            <label for="">Aadhaar Image:</label>
+            <input id="Aadhaar" type="file" name="adharImg" value="">
           </div>
         <div class="gender">
-          <p>Gender</p>
-          <!-- <div class="gender-details"> -->
-          <input type="radio" name="gender" id="female">Female
-          <input type="radio" name="gender" id="male">Male
-          <input type="radio" name="gender" id="other">Other
-          <!-- </div> -->
+          <p>Type of Person</p>
+           <div class="gender-details">
+            <input type="radio" name="typeOfPerson" value="citizen" id="female">Citizen
+            <input type="radio" name="typeOfPerson" value="assigningOfficer" id="male">Assigning Officer
+            <input type="radio" name="typeOfPerson" value="technician" id="other">Technician
+         </div>
 
-        </div>
+        </div> 
         <div class="sub">
           <input id="submit" type="submit" name="submit" value="SUBMIT">
         </div>

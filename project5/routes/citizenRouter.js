@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const citizenModel = require("../models/citizenSchema");
 const userModel = require('../models/userSchema');
 const flash = require('connect-flash');
+const multer = require('multer');
+const path = require('path');
 // var fs = require('fs');
 // router.use(express.static('public'));
 router.use(flash());
@@ -12,7 +14,19 @@ router.use(bodyParser.urlencoded({
     extended: true
 }));
 
-router.post('/citizen/:username',(req,res)=>{
+const storage = multer.diskStorage({
+    destination:"public/brokenImg",
+    filename:(req,file,cb)=>{
+        cb(null,file.fieldname+"_"+Date.now()+path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage:storage
+}).single('brokenImg');
+
+
+router.post('/citizen/:username',upload,(req,res)=>{
     const username=req.params.username;
     const citizenComplaint = new citizenModel({
         area:req.body.area,
@@ -21,10 +35,8 @@ router.post('/citizen/:username',(req,res)=>{
         subject:req.body.subject,
         complaint:req.body.complaint,
         complaintBy:req.body.complaintBy,
-        brokenImg: req.body.brokenImg
+        brokenImg: req.file.filename
     });
-    // citizenComplaint.brokenImg.data = fs.readFileSync(req.body.brokenImg);
-    // citizenComplaint.brokenImg.contentType = 'image/png';
     try {
         citizenComplaint.save(()=>{console.log("saved Complaint!")});
         req.flash('message','Complaint has been lodge!');

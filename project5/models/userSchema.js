@@ -25,6 +25,8 @@ const userSchema = new mongoose.Schema({
        
         required:true
     },
+    adharNo:Number,
+    adharImg:String,
     typeOfPerson:{
         type:"string",
         default:'none',

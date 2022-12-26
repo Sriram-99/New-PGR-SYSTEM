@@ -46,4 +46,16 @@ router.post('/assignedTo/:id/:assignedBy',(req,res)=>{
     });
 });
 
+router.post('/rejectByOff/:id/:assignedBy',(req,res)=>{
+    const id = req.params.id;
+    const by = req.params.assignedBy;
+    complaintModel.findByIdAndUpdate({_id:id},{acceptedByOff:"no", progress:"complaint has been rejected"},
+    (err,found)=>{
+        if(err) console.log(err);
+        else{
+            req.flash('message','Complaint has been rejected!');
+            res.redirect('/assignOff/'+by);
+        }
+    });
+});
 module.exports = router;

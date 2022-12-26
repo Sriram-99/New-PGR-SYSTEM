@@ -21,8 +21,7 @@ const citizenSchema = new mongoose.Schema({
         required:true
     },
     brokenImg: { 
-        data: Buffer, 
-        contentType: String 
+       type:String
      },
      date: { 
          type: Date, 
@@ -41,6 +40,14 @@ const citizenSchema = new mongoose.Schema({
      },
      complaintBy :{
         type:String
+     },
+     acceptedByOff:{
+         type:String,
+         default:'yes'
+     },
+     reassigned:{
+         type:String,
+         default:"no"
      }
 });
 
