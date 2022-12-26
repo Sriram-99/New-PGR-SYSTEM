@@ -66,8 +66,9 @@ else{
             const data = {};
             data.user = req.user;
             console.log(user);
+            req.flash('message','something is wrong');
             res.render('registration', {
-                user
+                user, message:req.flash('message')
             });
         } else {
             passport.authenticate('local')(req, res, () => {
@@ -178,6 +179,12 @@ app.get('/forgotUsername', (req, res) => {
 
 app.get('/registration', (req, res) => {
     res.render('registration',{message:req.flash('message')});
+});
+app.get('/about', (req, res) => {
+    res.render('about us');
+});
+app.get('/contact', (req, res) => {
+    res.render('contact');
 });
 
 app.use(citizenRouter);

@@ -1,0 +1,22 @@
+form{
+  background-color: #00ff7657;
+  border-radius: 15px;
+}
+h1{
+  font-weight: bold;
+}
+form li{
+  font-size: 25px;
+}
+h2{
+    font-size: 35px;
+
+}
+.head{
+
+  margin:auto;
+  text-align: center;
+}
+body{
+  background-color: #ff0000a3;
+}
