@@ -27,7 +27,7 @@
         <a href="/contact" class="nav">Contact Us</a>
     <a href="">Home</a>
     <a href="">Home</a>
-    <a href="" style="width: 6rem;"><i class="fa-solid fa-user"></i> <%= user.firstName %>!</a>
+    <a href="/profile" style="width: 6rem;"><i class="fa-solid fa-user"></i> <%= user.firstName %>!</a>
     <a href="/logout">logout</a>
 </nav>
  <!-- ending of heading and nav -->
@@ -299,6 +299,7 @@
                         <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
                         <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%= item.complaintBy %> </p>
                         <button type="button" onclick="closepopup(this)"> ok</button>
+                        <button type="button" onclick="download(this)">Download Pdf</button>
 
                     </div>
                    </div>
@@ -333,7 +334,7 @@
                        <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
                         <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
                         <button type="button" onclick="closepopup(this)"> ok</button>
-
+                        <button type="button" onclick="download(this)">Download Pdf</button>
                     </div>
                   </div>
                 </li>
@@ -349,7 +350,20 @@
     
         <!-- footer -->
 
-        
+        <footer>
+            <p>
+             <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
+             <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
+             <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
+             <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
+             <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
+             <a href="https://www.facebook.com/CDACINDIA/"><img src="/images/pics/facebook.png" alt=""></a>
+             <a href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img src="/images/pics/linkedin.png" alt=""></a>
+             <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="/images/pics/twitter.png" alt=""></a>
+            </p>
+            <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p>
+            <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
+         </footer>
 
 
 

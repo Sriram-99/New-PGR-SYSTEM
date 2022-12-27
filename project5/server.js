@@ -201,6 +201,9 @@ app.get('/about', (req, res) => {
 app.get('/contact', (req, res) => {
     res.render('contact');
 });
+app.get('/profile', (req, res) => {
+    res.render('profile');
+});
 
 app.use(citizenRouter);
 app.use(forgotPassRouter);

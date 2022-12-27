@@ -1,15 +1,17 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
-
 /*@media screen and (max-width: 500px) {
   .navbar a {
     float: none;
     display: block;
   }*/
 .top-container {
-  height: 200px;
+  height: 232px;
   width: 100%;
   position: relative;
 }
@@ -21,7 +23,7 @@ body {
 }
 
 .head img {
-  width: 10%;
+  width: 12%;
 }
 
 #logo {
@@ -32,14 +34,15 @@ body {
   width: 34%;
 }
 
-/* .title {
-  background-color: rgb(194, 162, 162);
+.title {
+  background-color:#75535363;
   width: 56%;
+  color:#d2c8c8d4;
 }
 
-.navbar {
+ .navbar {
   width: 100%;
-  background-color:brown;
+  background-color:#2a1e4700;
   overflow: auto;
   position: absolute;
   bottom: 0;
@@ -60,14 +63,15 @@ body {
   color: white;
   text-decoration: none;
   font-size: 17px;
-  background-color: #04AA6D;
+  /* background-color: #04AA6D; */
   text-align: center;
   border-radius: 6px;
+  text-transform: uppercase;
 }
 
 .navbar a:hover {
   background-color: #3D5656;
-} */
+}
 hr {
   border-style: none;
   border-top-style: dotted;
@@ -78,7 +82,7 @@ hr {
 }
 
 .ii-container {
-  background-color: #F0E9D2;
+  /* background-color: #F0E9D2; */
   height: 800px;
   width: auto;
 }
@@ -88,11 +92,6 @@ hr {
 }
 
 /* Set height of body and the document to 100% */
-body, html {
-  /* height: 100%; */
-  margin: 0;
-  font-family: Arial;
-}
 
 /* Style tab links */
 .tablink {
@@ -105,33 +104,39 @@ body, html {
   padding: 14px 16px;
   font-size: 17px;
   width: 50%;
+  /* border-radius: 8px; */
+  border: 1px  solid;
+  border-bottom: 0px;
+  /* border-color: blue; */
 }
 
 .tablink:hover {
   background-color: #777;
+    border-radius: 8px;
 }
 
 /* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
   color: black;
   display: none;
+  /* background-color: #777; */
   padding: 100px 20px;
   height: 100%;
   width: 100%;
 }
 
 #grievance {
-  background-color: #687cec6e;
+  background-color:rgb(66 78 133);
 }
 
 #employee {
-  background-color: #5197c6ad;
+  background-color: rgba(46, 107, 167, 0.96);
 }
 
 .navebar {
   width: 100%;
   overflow: hidden;
-  background-color: #df5a5ab5;
+  background-color:#c96868;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -164,7 +169,7 @@ body, html {
 }
 
 .navebar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
-  background-color: black;
+  background-color:brown;
 }
 
 #myDropdown {
@@ -209,10 +214,6 @@ body, html {
   box-sizing: border-box
 }
 
-body {
-  font-family: "Lato", sans-serif;
-}
-
 /* Style the tab */
 .table {
   float: left;
@@ -249,7 +250,6 @@ body {
 
 /* Style the tab content */
 .tablecontent {
-  display: flex;
   float: left;
   padding: 0px 12px;
   border: 1px solid #ccc;
@@ -257,7 +257,7 @@ body {
   border-left: none;
   height: 550px;
   background-color: #e1818175;
-  flex-wrap: wrap;
+  overflow: scroll;
 }
 
 /* assigned complaints start */
@@ -281,7 +281,7 @@ body {
 }
 
 .navebar a:hover, .dropdwn:hover .dropbutn, .dropbutn:focus {
-  background-color: black;
+  background-color: brown;
 }
 
 /* #myDropdown {
@@ -328,10 +328,6 @@ body {
   box-sizing: border-box
 }
 
-body {
-  font-family: "Lato", sans-serif;
-}
-
 /* Style the tab */
 .tabe {
   float: left;
@@ -368,14 +364,26 @@ body {
 
 /* Style the tab content */
 .tabecontent {
-  
   float: left;
   padding: 0px 12px;
   border: 1px solid #ccc;
   width: 80%;
   border-left: none;
+  height: 500px;
   background-color: #e1818175;
+  overflow: scroll;
 }
+
+/* EmployeeDropdown */
+#EmployeeDropdown {
+  position: absolute;
+  background-color: azure;
+  min-width: 92%;
+  min-height: 600px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
 
 .center1 {
   margin-top: 0;
@@ -405,7 +413,7 @@ body {
 }
 
 .listone {
-  background-color: rgb(211 48 48);
+  background-color:rgb(255 5 5 / 41%);
   margin-left: 80px;
   width: 70%;
   display: flex;
@@ -473,6 +481,7 @@ body {
   background-color: #dc818187;
   display: flex;
   justify-content: space-around;
+  color: #f1ae4c;
 }
 
 .ft div {
@@ -481,6 +490,7 @@ body {
 
 .ft a {
   text-decoration: none;
+    color: white;
 }
 .alert {
   background-color: rgb(239, 255, 196);

@@ -19,7 +19,24 @@ h1 {
     padding: 0.6rem;
     color: #796d34;
   }
+  footer{
+    padding: 20px;
+    text-align: center;
+    background-color: #50318e;
+    margin-top: 50px;
+    border-radius: 10px;
+    color: rgb(254, 253, 253);
+}
+footer a{
+    padding: 15px;
+    color: rgb(254, 253, 253);
+   
+}
 
+footer img{
+    width: 35px;
+
+}
 p {
     text-transform: capitalize;
 }

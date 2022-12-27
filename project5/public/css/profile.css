@@ -1,0 +1,350 @@
+*{
+    font-family: 'Crimson Text', serif;
+}
+
+
+h1{
+    
+    text-transform: capitalize;
+    text-align: center;
+    margin: auto;
+}
+p{
+    text-transform: capitalize;
+}
+.allcontent p{
+    text-transform: none;
+}
+.headingmini{
+    text-align: center;
+    width: 58%;
+    background-color: #9773e0;
+    border-radius: 10px;
+}
+.logo {
+   position: relative;
+   bottom: 13px;
+
+    border-radius: 50%;
+    width: 15%;
+    height: 110px;
+}
+.heading{
+    display: flex;
+    height: 80px;
+   margin-bottom: 15px;
+   
+}
+.picsilchar{
+    width: 34%;
+}
+body{
+    background-color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+}
+nav{
+    position: sticky;
+    top: 0;
+    display: flex;
+  justify-content: space-evenly; 
+   color: rgb(15, 39, 39);
+   background-color: black;
+  text-transform: capitalize; 
+  margin-bottom: 20px;
+}
+a{
+    text-decoration: none;
+}
+ nav a{
+    text-align: center;
+    width: 65px;
+    height: 20px;
+    padding: 10px;
+    margin: 2px;
+    
+    text-decoration: none;
+    color: white;
+}
+ nav a:hover{
+   margin: 0px;
+     font-size: large;
+     text-align: center;
+    border: 2px solid black;
+    background-color: #6c26f8;
+    border-radius: 5px;
+}
+
+
+
+/* start of new written code */
+
+
+
+.allcontent{
+  
+    border: 3px solid black;
+    width: 60%;
+    height: 1080px;
+    margin: auto;
+  text-align: center;
+margin-top: 100px;
+margin: auto;
+font-size: 25px;
+border-radius: 15px;
+-webkit-box-shadow: 21px 15px 11px 4px rgba(0,0,0,0.75);
+-moz-box-shadow: 21px 15px 11px 4px rgba(0,0,0,0.75);
+box-shadow: 21px 15px 11px 4px rgba(0,0,0,0.75);
+padding-bottom: 20px;
+
+
+}
+#mail{
+    text-transform: none;
+}
+
+#picsart{
+    /* border-radius: 100%; */
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  padding: 2px;
+  border: 2px solid black;
+
+}
+#photobtn{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    position: relative;
+     bottom: 80px;
+     left: 100px;
+    background-image: url("../images/pics/edit8.png");
+    padding: 3px;
+    background-size: 20px;
+    
+    background-position:center;
+    background-size: cover;
+}
+
+li{
+    list-style: none;
+}
+table{
+    text-align: center;
+    margin: auto;
+    border-radius: 20px;
+}
+tr,td,table{
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+#edit{
+    border-radius: 15px;
+
+    width: 100px;
+    height: 60px;
+    background-color: #ebd21d;
+    color:black;
+}
+#edit:hover{
+    padding: 3px;
+    font-size: 20px;
+    ;
+    background-color: rgb(11, 11, 11);
+    color: white;
+}
+ 
+body input ,body select {
+    width: 70%;
+    height: 25px;
+    font-size: large;
+    margin-top: 5px;
+}
+
+td button{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color:#2fae90;
+    background-image: url("../images/pics/edit8.png");
+    background-size: cover;
+    background-position: center;
+
+   
+}
+
+.two{
+    padding-left: 20px;
+    display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+
+span{
+    border: none;
+}
+.two{
+    border: none;
+}
+.one{
+   font-weight: bolder; 
+}
+
+
+
+/* popup */
+
+.popup{
+   width: 500px;
+   border: 5px solid #090909;
+    background-color:#9773e0;
+    border-radius: 15px;
+    position: fixed;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color:white;
+    visibility: hidden;
+    transition: transform 0.4 ,top 0.4s ;
+    text-align: center;
+    padding-top: 40px;
+    -webkit-box-shadow: 14px 15px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 14px 15px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 14px 15px 5px 0px rgba(0,0,0,0.75);
+}
+
+.open-popup{
+    visibility: visible;
+    top:50%;
+    transform: translate(-50%,-50%) scale(1);
+    text-transform: none;
+}
+
+
+.popup button{
+    width: 20%;
+    margin-top: 10px;
+     padding-top: 10px;
+    padding-bottom: 25px;
+    background: rgb(14, 14, 14);
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0 0 0 0.2);
+    text-align: center;
+    text-transform: uppercase;
+    
+   
+}
+.popup button:hover{
+    background-color: rgb(40, 27, 219);
+    
+}
+
+
+#changepic{
+  padding-bottom: 10px;
+}
+
+.popup input{
+    margin: auto;
+    margin-left: 180px;
+    margin-top: 30px;
+    border-radius: 20px;
+}
+.popup input[type="file"]{
+    width: 60px;
+    height: 60px;
+    text-indent: -9999px;
+    background-image: url("../images/pics/add image.png");
+    background-position:center;
+    background-size: contain;
+    border-radius: 50%;
+    margin-left: 0px;
+    position: relative;
+    top:-15px;    
+}
+
+.popup img{
+    width: 300px;
+    height: 300px;
+    border-radius: 7px;
+    padding: 3px;
+    border:2px solid black;
+}
+
+/* open popup2 */
+.open-popup2{
+    visibility: visible;
+    top:50%;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+#close{
+    width: 30px;
+    height: 30px;
+    position: relative;
+   left: 265px;
+   bottom: 50px;
+   background-image: url("../images/pics/close.png");
+   background-position:center;
+   background-size: contain;
+   border-radius: 50%;
+   background-color: white;
+   padding: 0;
+   border: 2px solid black;  
+}
+#close2{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 420px;
+   bottom: 320px;
+   background-image: url("../images/pics/close.png");
+   background-position:center;
+   background-size: contain;
+   border-radius: 50%;
+   background-color: white;
+   padding: 0;
+   border: 2px solid black;
+   
+}
+
+.popup input[type="number"],.popup input[type="email"]{
+    position: relative;
+    right: 100px;
+}
+
+
+/* footer */
+/* footer */
+footer{
+    padding: 15px;
+    text-align: center;
+    background-color: #50318e;
+    margin-top: 100px;
+    border-radius: 10px;
+    color: rgb(254, 253, 253);
+}
+footer a{
+    padding: 15px;
+    color: rgb(254, 253, 253);
+   
+}
+
+footer img{
+    width: 35px;
+
+}
