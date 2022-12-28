@@ -6,19 +6,19 @@ const citizenSchema = new mongoose.Schema({
     },
     building:{
         type:String,
-        required:true
+        required:"Select Bulding"
     },
     room:{
         type:String,
-        required:true
+        required:"Put room number"
     }, 
     subject:{
         type:String,
-        required:true
+        required:"Select Subject"
     },
     complaint:{
         type:String,
-        required:true
+        required:"Put Detail of a complaint"
     },
     brokenImg: { 
        type:String

@@ -36,6 +36,19 @@ router.post('/rejectByAdmin/:id',(req,res)=>{
         }
     });
 });
+router.post('/deleteByAdmin/:id',(req,res)=>{
+    const id = req.params.id;
+    userModel.findByIdAndDelete({_id:id},(err,found)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else{
+            req.flash('message','User deleted!!');
+            res.redirect('/verifiedUsers');
+        }
+    });
+});
 router.get('/admin', (req, res) => {
     userModel.find({},(err,found)=>{
         if(err) console.log(err);

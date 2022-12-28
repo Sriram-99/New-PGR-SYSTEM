@@ -316,12 +316,12 @@
                            <% }}) %> 
                          </select>
                          <button type="submit">Assign</button>
-                         <button  onclick="closepopup(this)">ok</button>
                         </div>
                       </form>
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
                         <button type="submit" >Reject</button>
                       </form>
+                      <button  onclick="closepopup(this)">ok</button>
                     </div>
                   </div>
                 </li>
@@ -359,13 +359,12 @@
                            <% }}) %> 
                          </select>
                          <button type="submit" onclick="closepopup(this)">Assign</button>
-                         <button  onclick="closepopup(this)">ok</button>
                         </div>
                       </form>
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
                         <button type="submit" >Reject</button>
-                        
                       </form>
+                      <button  onclick="closepopup(this)">ok</button>
                     </div>
                   </div>
                 </li>
@@ -421,6 +420,7 @@
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
                       <button type="submit" >Reject</button>
                     </form>
+                    <button  onclick="closepopup(this)">ok</button>
                     </div>
                   </div>
                 </li>
@@ -489,12 +489,12 @@
                     <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
                       <button type="submit" >Reject</button>
                     </form>
+                    <button  onclick="closepopup(this)">ok</button>
                   </div>
                 </div>
               </li>
               <br></ul>
               <% }}) %>
-            
             </div>
           </div>
         </div>

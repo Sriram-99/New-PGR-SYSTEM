@@ -90,6 +90,9 @@
           <p class="card-text">Last name: <%= item.lastName %></p>
           <p class="card-text">Mobile: <%= item.mobile %></p>
           <p class="card-text">Email: <%= item.username %></p>
+          <form action="/deleteByAdmin/<%= item._id %>" method="post">
+            <button type="submit" class="btn btn-primary">Remove Data</button>
+          </form>
         </div>
       </div>
       <%}}}); %>
