@@ -82,7 +82,10 @@
     <% if(item.typeOfPerson==="technician" || item.typeOfPerson==="assigningOfficer") {if(item.verified ==="yes"){%>
     <div class="card" style="width: 18rem;">
         <div class="card-body "> 
-          <img src="..." class="card-img-top" alt="...">
+          <% if(item.adharImg){ %> 
+          <img src="/adhar/<%= item.adharImg %>" class="card-img-top" alt="...">
+          <a href="/adhar/<%= item.adharImg %>" download="<%= item.firstName %> ">download Adhar</a>
+          <% } %> 
           <h5 class="card-title"><%= item.firstName %> - ( <%= item.typeOfPerson %>) </h5>
           <p class="card-text">Last name: <%= item.lastName %></p>
           <p class="card-text">Mobile: <%= item.mobile %></p>

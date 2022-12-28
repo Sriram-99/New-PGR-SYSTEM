@@ -9,6 +9,7 @@ const citizenRouter = require('./routes/citizenRouter');
 const forgotPassRouter = require('./routes/forgotPassRouter');
 const adminRouter = require('./routes/adminRouter');
 const assignRouter = require('./routes/assignRouter');
+const techRouter = require('./routes/techRouter');
 const userModel = require('./models/userSchema');
 const citizenModel = require('./models/citizenSchema');
 const session = require('express-session');
@@ -161,15 +162,15 @@ app.post('/login', (req, res) => {
 //         res.redirect('/');
 //     }
 // });
-app.get('/technician/:username', (req, res) => {
-    if (req.isAuthenticated()) {
-        const data ={};
-        data.user = req.user;
-        res.render('technician',{profile:data.user});
-    } else {
-        res.redirect('/');
-    }
-});
+// app.get('/technician/:username', (req, res) => {
+//     if (req.isAuthenticated()) {
+//         const data ={};
+//         data.user = req.user;
+//         res.render('technician',{profile:data.user});
+//     } else {
+//         res.redirect('/');
+//     }
+// });
 
 app.get('/logout', (req, res, next)=>{
     req.logout((err)=> {
@@ -209,6 +210,7 @@ app.use(citizenRouter);
 app.use(forgotPassRouter);
 app.use(adminRouter);
 app.use(assignRouter);
+app.use(techRouter);
 
 const port = process.env.PORT||3000;
 app.listen(port, () => {

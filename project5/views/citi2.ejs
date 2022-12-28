@@ -296,15 +296,14 @@
                        <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
                        <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
                        <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
-                        <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
-                        <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%= item.complaintBy %> </p>
+                        <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%= item.progress %>  </p>
                         <button type="button" onclick="closepopup(this)"> ok</button>
                         <button type="button" onclick="download(this)">Download Pdf</button>
 
                     </div>
                    </div>
-                   <% if(complaint.length > 0){ %> 
-                   <form action="/deleteComplaint/<%= item._id %>" method="post">
+                   <% if(complaint.length > 0 && item.progress==="Complaint Lodged!"){ %> 
+                   <form action="/deleteComplaint/<%= item._id %>/<%= user.username %> " method="post">
                         <button class="remove" type="submit">Remove</button>
                    </form>
                    <% }%>  
@@ -332,7 +331,7 @@
                        <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
                        <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
                        <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
-                        <p><b>Complaint Progress:&nbsp;&nbsp;</b> Assigned to worker </p>
+                       <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%= item.progress %>  </p>
                         <button type="button" onclick="closepopup(this)"> ok</button>
                         <button type="button" onclick="download(this)">Download Pdf</button>
                     </div>

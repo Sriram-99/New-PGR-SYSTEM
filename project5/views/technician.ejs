@@ -1,123 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/projectprac.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="projectprac.css"> -->
+  <link rel="stylesheet" href="/css/tech.css">
 </head>
+
 <body>
   <div class="head">
-    <img id="logo"src="/images/logo.jpeg" alt="">
-    <div class="title"><p>
-<h1>  National Institute of Technology,Silchar</h1>
-<h3 style="font-size:25px;">Grievance Redressal System</h3> </p>
+    <img id="logo" src="/images/pics/cdac logo.jpg" alt="">
+    <div class="title">
+      <h1> Centre for Development of Advanced Computing,SILCHAR</h1>
+      <h3 style="font-size:30px;">Grievance Redressal System</h3>
     </div>
-        <img id="clg" src="/images/img.jpeg" alt="">
-</div>
-<div class="navbar">
-    <a href="http://127.0.0.1:5500/.vscode/html/project/project5/ruchi/login%20vth%20password.html" class="home "><img src="home.jpeg" alt=""></a>
-      <div class="navmini">
-        <a href="/about" class="nav"> About</a>
-        <a href="/contact" class="nav">Contact Us</a>
-        <a href="" class="nav">Guidelines</a>
-        <a href=""> Hello<%= profile.firstName %>!</a>
-        <a href="/logout" class="nav">Logout</a>
-      </div>
-  
-</div>
-   <div class="middle-container">
-    <div id="flex">
-        <div class="dropdown1 dropdown">
-          <button onclick="myFunction1()" class="dropbtn1 dropbtn">Assigned complaints</button>
-          <div id="myDropdown1" class="dropdown-content1 dropdown-content">
-            <a href="#home">Complaint 1 <button class="tick">✔</button><button class="cross">✖ </button></a>
-            <a href="#about">Complaint 2 <button class="tick">✔</button><button class="cross">✖ </button></a>
-            <a href="#contact">Complaint 3 <button class="tick">✔</button><button class="cross">✖ </button></a>
-          </div>
-        </div>
-        
-        <div class="dropdown2 dropdown">
-          <button onclick="myFunction2()" class="dropbtn2 dropbtn">Accepted complaints</button>
-          <div id="myDropdown2" class="dropdown-content2 dropdown-content">
-            <a href="#home">Complaint 1</a>
-            <a href="#about">Complaint 2</a>
-            <a href="#contact">Complaint 3</a>
-          </div>
-        </div>
-        
-        <div class="dropdown3 dropdown">
-          <button onclick="myFunction3()" class="dropbtn3 dropbtn">Rejected complaints</button>
-          <div id="myDropdown3" class="dropdown-content3 dropdown-content">
-            <a href="#complaint1">Complaint 1</a>
-            <a href="#about">Complaint 2</a>
-            <a href="#contact">Complaint 3</a>
-          </div>
-        </div>
-        </div>
-   </div>
-  <div class="bottomnavbar">
-    <a href="#home">Contact</a>
-            <a href="#about">News</a>
-            <a href="#contact">guidelines</a>
+    <img id="clg" src="/images/pics/images.jpeg" alt="">
   </div>
-  
-<script>
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
-    function myFunction1() {
-      document.getElementById("myDropdown1").classList.toggle("show");
-    }
-    
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-      if (!event.target.matches('.dropbtn1')) {
-        var dropdowns1 = document.getElementsByClassName("dropdown-content1");
-        var i;
-        for (i = 0; i < dropdowns1.length; i++) {
-          var openDropdown = dropdowns1[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-      }
-    }
-    
-    function myFunction2() {
-        document.getElementById("myDropdown2").classList.toggle("show");
-    }
-    
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-      if (!event.target.matches('.dropbtn2')) {
-        var dropdowns2 = document.getElementsByClassName("dropdown-content2");
-        var i;
-        for (i = 0; i < dropdowns2.length; i++) {
-          var openDropdown = dropdowns2[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-      }
-    }
-    function myFunction3() {
-        document.getElementById("myDropdown3").classList.toggle("show");
-    }
-    
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-      if (!event.target.matches('.dropbtn3')) {
-        var dropdowns3= document.getElementsByClassName("dropdown-content3");
-        var i;
-        for (i = 0; i < dropdowns3.length; i++) {
-          var openDropdown = dropdowns3[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-      }
-    }
-    </script>
+  <div class="navbar">
+    <a href="" class="home "><img src="/images/pics/home logo.png" alt=""></a>
+    <div class="navmini">
+      <a href="http://www.nits.ac.in/" class="nav"> About</a>
+      <a href="" class="nav">Feedback </a>
+      <a href="" class="nav">Guidelines</a>
+      <a href="" class="nav"><%= user.firstName %> </a>
+      <a href="/logout" class="nav">logOut</a>
+    </div>
+  </div>
+  <div class="middlecontainer">
+    <div id="main">
+      <div id="top">
+        <button id="topone">Assigned complaints</button>
+        <button id="toptwo">Accepted complaints</button>
+      </div>
+      <!-- begin of center1 -->
+      <div id="center1">
+        <!-- begin of sidebar   -->              
+             
+        <div id="centeroneloo" >
+          <% if(complaint){complaint.forEach((items)=>{if(items.assignedTo === user.username){ %>  
+          <!-- <div class="sidebar1"> -->
+            <button class="click1" onclick="openpopup(this)"><%= items.subject %> </button>
+          <!-- </div> -->
+          <!-- <div class="defualt def1">
+            Select from assigned complaints
+          </div> -->
+          <div class="center1main">
+            <div class="info">
+              <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                    <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                    <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %>  </p>
+                    <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                    <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                    <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                    <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+              <p>VIEW PICTURE<span>:</span><span><img src=""></span></p>
+            </div>
+            <div class="confirm">
+              <button>accept</button>
+              <button>reject</button>
+            </div>
+          </div>
+          <%} })}; %> 
+        </div>
+      </div>
+
+      <div id="center2">
+        <div id="centertwoloo">
+          <div class="sidebar2">
+            <button class="click2">subject of complaint 2</button>
+            <button class="click2">subject of complaint 2</button>
+            <button class="click2">subject of complaint 2</button>
+            <button class="click2">subject of complaint 2</button>
+            <button class="click2">subject of complaint 2</button>
+          </div>
+          <div class="defualt def2">
+            select from accepted complaints
+          </div>
+          <div class="center2main">
+            <div class="info">
+              <p>Subject of coamplaint<span>:</span><span>Network</span></p>
+              <p>Area<span>:</span><span>Boys hostel</span></p>
+              <p>Name Of the building<span>:</span><span>BH6</span></p>
+              <p>Room no<span>:</span><span>6041</span></p>
+              <p>Complaint specification<span>:</span><span>Lan has not been connecting since 3 days </span></p>
+              <p>VIEW PICTURE<span>:</span><span><img src=""></span></p>
+            </div>
+            <div class="confirm">
+              <button>accept</button>
+              <button>reject</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <footer>
+    <p>
+      <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
+      <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
+      <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
+      <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
+      <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
+      <a href="https://www.facebook.com/CDACINDIA/"><img src="/images/pics/facebook.png" alt=""></a>
+      <a href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img
+          src="/images/pics/linkedin.png" alt=""></a>
+      <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img
+          src="/images/pics/twitter.png" alt=""></a>
+    </p>
+    <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p>
+    <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="/js/tech.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </body>
+
 </html>

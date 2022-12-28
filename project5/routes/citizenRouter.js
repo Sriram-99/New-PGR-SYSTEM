@@ -65,14 +65,15 @@ router.get('/citizen/:username', (req, res) => {
         res.redirect('/');
     }
 });
-router.post('/deleteComplaint/:itemId',(req, res)=>{
+router.post('/deleteComplaint/:itemId/:username',(req, res)=>{
     const id = req.params.itemId;
-    citizenModel.findByIdAndDelete({_id:id},(err)=>{
+    const username = req.params.username;
+    citizenModel.findByIdAndDelete({_id:id},(err,found)=>{
          if(err){
              console.log(err);
          }else{
-             res.redirect('/citizen');
-             console.log('deleted');
+            req.flash('message','Complaint has been deleted!');
+            res.redirect('/citizen/'+ username);
          }
      });
  });

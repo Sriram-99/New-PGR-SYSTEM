@@ -95,10 +95,10 @@
                       <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
                         <div class="area" id="area">
                           <b>Assigned To:</b>  &nbsp; &nbsp; 
-                           <select id="selectarea" name="assignedTo" class="select">
+                           <select id="selectarea" name="assignedTo" class="select" >
                              <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <option value="<%= user.username %>"><%=user.firstName %></option>
                            <% }}) %> 
                          </select>
                          <button type="submit" onclick="closepopup(this)">Assign</button>
@@ -107,6 +107,7 @@
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
                         <button type="submit" >Reject</button>
                       </form>
+                      <button  onclick="closepopup(this)">ok</button>
                     </div>
                   </div>
                 </li>
@@ -140,7 +141,7 @@
                            <select id="selectarea" name="assignedTo" class="select">
                              <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <option value="<%= user.username %>"><%=user.firstName %></option>
                            <% }}) %> 
                          </select>
                          <button type="submit" onclick="closepopup(this)">Assign</button>
@@ -149,6 +150,7 @@
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
                         <button type="submit" >Reject</button>
                       </form>
+                      <button  onclick="closepopup(this)">ok</button>
                     </div>
                   </div>
                 </li>
@@ -183,7 +185,7 @@
                            <select id="selectarea" name="assignedTo" class="select">
                              <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <option value="<%= user.username %>"><%=user.firstName %></option>
                            <% }}) %> 
                          </select>
                          <button type="submit" onclick="closepopup(this)">Assign</button>
@@ -192,6 +194,7 @@
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
                         <button type="submit" >Reject</button>
                       </form>
+                      <button  onclick="closepopup(this)">ok</button>
                     </div>
                   </div>
                 </li>
@@ -205,9 +208,7 @@
               <% complaints.forEach((items)=>{ if(items.subject === "devicebreakdown"){if(items.assigned =="no"){%>
               <ul>
                 <li class="listone">
-                  <h3><%=items.subject %></h3>
-
-                  <div>
+                  <h3><%=items.subject %></h3>                  <div>
                     <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
                     <div class="popup">
                       <img src="images/ddd.jpg" alt="">
@@ -225,7 +226,7 @@
                            <select id="selectarea" name="assignedTo" class="select">
                              <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <option value="<%= user.username %>"><%=user.firstName %></option>
                            <% }}) %> 
                          </select>
                          <button type="submit" onclick="closepopup(this)">Assign</button>
@@ -234,6 +235,7 @@
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
                         <button type="submit" >Reject</button>
                       </form>
+                      <button  onclick="closepopup(this)">ok</button>
                     </div>
                   </div>
                 </li>
@@ -267,7 +269,7 @@
                            <select id="selectarea" name="assignedTo" class="select">
                              <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <option value="<%= user.username %>"><%=user.firstName %></option>
                            <% }}) %> 
                          </select>
                          <button type="submit" onclick="closepopup(this)">Assign</button>
@@ -276,6 +278,7 @@
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
                         <button type="submit" >Reject</button>
                       </form>
+                      <button  onclick="closepopup(this)">ok</button>
                     </div>
                   </div>
                 </li>
@@ -309,10 +312,11 @@
                            <select id="selectarea" name="assignedTo" class="select">
                              <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <option value="<%= user.username %>"><%=user.firstName %></option>
                            <% }}) %> 
                          </select>
-                         <button type="submit" onclick="closepopup(this)">Assign</button>
+                         <button type="submit">Assign</button>
+                         <button  onclick="closepopup(this)">ok</button>
                         </div>
                       </form>
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
@@ -351,14 +355,16 @@
                            <select id="selectarea" name="assignedTo" class="select">
                              <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <option value="<%= user.username %>"><%=user.firstName %></option>
                            <% }}) %> 
                          </select>
                          <button type="submit" onclick="closepopup(this)">Assign</button>
+                         <button  onclick="closepopup(this)">ok</button>
                         </div>
                       </form>
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
                         <button type="submit" >Reject</button>
+                        
                       </form>
                     </div>
                   </div>
@@ -406,7 +412,7 @@
                            <select id="selectarea" name="assignedTo" class="select">
                              <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                           <option value="AdministrationArea"><%=user.firstName %></option>
+                           <option value="<%= user.username %>"><%=user.firstName %></option>
                            <% }}) %> 
                          </select>
                          <button type="submit" onclick="closepopup(this)">ReAssign</button>
@@ -474,7 +480,7 @@
                          <select id="selectarea" name="assignedTo" class="select">
                            <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
                          <!-- <option value="AdministrationArea">Choose Technician</option> -->
-                         <option value="AdministrationArea"><%=user.firstName %></option>
+                         <option value="<%= user.username %>"><%=user.firstName %></option>
                          <% }}) %> 
                        </select>
                        <button type="submit" onclick="closepopup(this)">Assign</button>
