@@ -17,7 +17,7 @@ router.use(bodyParser.urlencoded({
 const storage = multer.diskStorage({
     destination:"public/brokenImg",
     filename:(req,file,cb)=>{
-        cb(null,file.fieldname+"_"+Date.now()+path.extname(file.originalname));
+        cb(null,Date.now()+path.extname(file.originalname));
     }
 });
 
@@ -37,28 +37,32 @@ router.post('/citizen/:username',upload,(req,res)=>{
         complaintBy:req.body.complaintBy,
         brokenImg: req.file.filename
     });
-    try {
-        citizenComplaint.save(()=>{console.log("saved Complaint!")});
-        req.flash('message','Complaint has been lodge!');
-        res.redirect('/citizen/'+ username);
-    } catch (error) {
-        console.log(error);
-    }
+         citizenComplaint.save((err)=>{
+            if(err) console.log(err);
+            else{
+                req.flash('message','Complaint has been lodge!');
+                res.redirect('/citizen/'+ username);
+            } 
+        });
+            
+        
+    //  }
+        
+  
 });
 
 router.get('/citizen/:username', (req, res) => {
     if (req.isAuthenticated()) {
             userModel.findOne({username:req.params.username},(error,founduser)=>{
-                citizenModel.find({},(err,found)=>{
                 if(error) console.log(error);
                 else{
+                citizenModel.find({},(err,found)=>{
                      if(err) console.log(err);
                   else{
                 res.render('citi2',{user:founduser,message:req.flash('message'),complaint:found});
                       }
-                }     
             });
-           
+        }
         });
        
     } else {

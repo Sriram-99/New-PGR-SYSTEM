@@ -39,7 +39,7 @@ app.use(passport.session());
 // }).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
 
 //mongoose connect
-mongoose.connect(process.env.MONGODB_LOCAL, {useNewUrlParser: true}).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
+mongoose.connect(process.env.MONGODB_LOCAL, {useNewUrlParser: true}).then(()=>{console.log("DB connected!!");}).catch((err)=>{console.log(err)});
 
 passport.use(userModel.createStrategy());
 passport.serializeUser(userModel.serializeUser());

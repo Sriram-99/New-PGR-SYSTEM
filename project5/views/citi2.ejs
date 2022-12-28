@@ -281,7 +281,7 @@
           <!-- start of center1 -->
           <div class="center1" id="center1">
               
-            <% complaint.forEach((item)=>{ if(item.complaintBy == user._id){%> 
+            <% complaint.forEach((item)=>{if(item.complaintBy == user._id){%> 
               <ul>
                 <li class="listone" >
                    <h3 ><%= item.subject %></h3>
@@ -309,7 +309,7 @@
                    <% }%>  
                 </li>
               </ul>
-              <% }}); %>
+              <%} }); %>
           </div>
         
           <!-- end of center1 -->

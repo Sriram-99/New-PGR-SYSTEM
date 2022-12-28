@@ -25,7 +25,7 @@ const citizenSchema = new mongoose.Schema({
      },
      date: { 
          type: Date, 
-        default: Date().split('G')[0]
+        default: Date()
     },
      progress:{
         type:"string",
