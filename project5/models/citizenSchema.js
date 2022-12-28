@@ -45,10 +45,36 @@ const citizenSchema = new mongoose.Schema({
          type:String,
          default:'yes'
      },
+     acceptedBytech:{
+         type:String,
+         default:'no'
+     },
+     rejectedByTech:{
+        type:String,
+        default:'no'
+     },
+     whyRejetedBytech:{
+         type:String,
+     },
+     whyRejectedByOff:{
+         type:String,
+     },
      reassigned:{
          type:String,
          default:"no"
+     },
+     reassignedTo:{
+         type:String
+     },
+     reassigned:{
+         type:String,
+         default:"no"
+     },
+     resolved:{
+         type:String,
+         default:"no"
      }
+
 });
 
 const citizen = new mongoose.model('citizen',citizenSchema);

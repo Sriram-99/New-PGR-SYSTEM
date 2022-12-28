@@ -45,11 +45,25 @@ router.post('/assignedTo/:id/:assignedBy',(req,res)=>{
         }
     });
 });
+router.post('/reassignedTo/:id/:assignedBy',(req,res)=>{
+    const to = req.body.reassignedTo;
+    const by = req.params.assignedBy;
+    const id = req.params.id;
+    complaintModel.findByIdAndUpdate({_id:id},{ reassignedTo:to,  progress:"complaint has been reassigned", reassigned:"yes"},
+    (err,found)=>{
+        if(err) console.log(err);
+        else{
+            req.flash('message','Complaint has been Reassigned!');
+            res.redirect('/assignOff/'+by);
+        }
+    });
+});
 
 router.post('/rejectByOff/:id/:assignedBy',(req,res)=>{
     const id = req.params.id;
     const by = req.params.assignedBy;
-    complaintModel.findByIdAndUpdate({_id:id},{acceptedByOff:"no", progress:"complaint has been rejected"},
+    const reason = req.params.whyRejectedByOff;
+    complaintModel.findByIdAndUpdate({_id:id},{acceptedByOff:"no", progress:"complaint has been rejected", whyRejectedByOff:reason},
     (err,found)=>{
         if(err) console.log(err);
         else{
