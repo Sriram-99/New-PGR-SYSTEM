@@ -34,7 +34,7 @@
     <div class="navbar">
       <a id="ram" href="#"> Home</a>
       <a href="/about" class="nav"> About</a>
-        <a href="/contact" class="nav">Contact Us</a>
+        <a href="/contact" class="nav">Contact</a>
       <a href="/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
       <!-- <a href="#"><i class="fa fa-fw fa-user"></i> About</a> -->
       <a href="/logout"><i class="fa fa-fw fa-user"></i>Logout</a>
@@ -385,11 +385,13 @@
               <button class="tabelinks" onclick="openCty(event, 'ELECT')" id="defaultpen">Accepted Complaints</button>
               <button class="tabelinks" onclick="openCty(event, 'CIV')">Rejected Complaints</button>
               <button class="tabelinks" onclick="openCty(event, 'MECH')">Re-assigned Complaints</button>
+              <button class="tabelinks" onclick="openCty(event, 'Resolved')">Resolved Complaints</button>
             </div>
 
             <div id="ELECT" class="tabecontent">
               <h2>Assigned Complaints</h2>
-              <% complaints.forEach((items)=>{ if(items.assigned =="yes" && items.acceptedByOff == "yes" && items.rejectedByTech == "no" && items.resolved == "no"){%>
+              <% complaints.forEach((items)=>{ if(items.assigned =="yes" && items.acceptedByOff == "yes" && 
+              items.rejectedByTech == "no" && items.resolved == "no"){%>
               <ul>
                 <li class="listone">
                   <h3><%=items.subject %></h3>
@@ -421,7 +423,8 @@
 
             <div id="CIV" class="tabecontent">
               <h2>Rejected Complaints</h2>
-              <% complaints.forEach((items)=>{ if(items.rejectedByTech == "yes" && items.resolved == "no"){%>
+              <% complaints.forEach((items)=>{ if(items.rejectedByTech == "yes" && items.resolved == "no" 
+               &&items.reassigned =="no"){%>
                 <ul>
               <li class="listone">
                 <h3><%=items.subject %></h3>
@@ -467,7 +470,8 @@
 
             <div id="MECH" class="tabecontent">
               <h2>Re-Assigned Complaints</h2>
-              <% complaints.forEach((items)=>{ if(items.reassigned =="yes" && items.resolved == "no"){%>
+              <% complaints.forEach((items)=>{ if(items.reassigned =="yes" && items.resolved == "no" 
+              && items.rejectedByTech == "yes"){%>
                 <ul>
               <li class="listone">
                 <h3><%=items.subject %></h3>
@@ -496,6 +500,37 @@
               <br></ul>
               <% }}) %>
             </div>
+
+            <div id="Resolved" class="tabecontent">
+              <h2>Resolved</h2>
+              <% complaints.forEach((items)=>{ if( items.resolved === "yes" && items.resolvedByOff === "no"){%>
+                <ul>
+              <li class="listone">
+                <h3><%=items.subject %></h3>
+
+                <div>
+                  <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                  <div class="popup">
+                    <img src="/images/ddd.jpg" alt="">
+                    <h2> Details of Complaint </h2>
+                    <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                    <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                    <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %>  </p>
+                    <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                    <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                    <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                    <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                    <form action="/doneByOff/<%= items._id %>/<%= assignedBy %>" method="post">
+                      <button type="submit" >Mark as done</button>
+                    </form>
+                    <button  onclick="closepopup(this)">ok</button>
+                  </div>
+                </div>
+              </li>
+              <br></ul>
+              <% }}) %>
+            </div>
+            
           </div>
         </div>
 

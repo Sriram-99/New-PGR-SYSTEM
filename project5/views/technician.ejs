@@ -43,7 +43,8 @@
 
       <!-- start of center1 -->
       <div class="center1" id="center1">
-        <% complaint.forEach((item)=>{if(user.username === item.assignedTo && item.acceptedBytech=="no" && item.rejectedByTech=="no"){%>
+        <% complaint.forEach((item)=>{if((user.username === item.assignedTo && item.acceptedBytech=="no"
+         && item.rejectedByTech=="no")||(user.username === item.reassignedTo && item.acceptedBytech=="no")){%>
         <ul id="ulcenter1">
           <li class="listone">
             <button onclick="openpopup(this)" class="view"><%= item.subject %> </button>
@@ -78,7 +79,9 @@
       <!-- end of center1 -->
       <!-- start of center1 -->
       <div class="center2" id="center2">
-        <% complaint.forEach((item)=>{if(user.username === item.assignedTo && item.acceptedBytech=="yes" &&item.resolved == "no"){%>
+        <% complaint.forEach((item)=>{if((user.username === item.assignedTo && item.acceptedBytech=="yes" 
+        && item.resolved == "no") || (user.username === item.reassignedTo && item.acceptedBytech=="yes" 
+        && item.resolved == "no")){%>
         <ul id="ulcenter2">
           <li class="listtwo">
             <button onclick="openpopup2(this)" class="view"><%= item.subject %> </button>

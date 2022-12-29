@@ -27,7 +27,8 @@ router.get('/technician/:username', (req, res) => {
 
 router.post('/acceptByTech/:id',(req,res)=>{
     const id = req.params.id;
-    complaintModel.findByIdAndUpdate({_id:id},{progress:"Complaint has been Accepted by Technician!", acceptedBytech:"yes"},
+    complaintModel.findByIdAndUpdate({_id:id},{progress:"Complaint has been Accepted by Technician!",
+     acceptedBytech:"yes"},
         (err,found)=>{
         if(err) console.log(err);
         else{
@@ -41,7 +42,8 @@ router.post('/acceptByTech/:id',(req,res)=>{
 router.post('/rejectByTech/:id',(req,res)=>{
     const id = req.params.id;
     const reason = req.body.whyRejetedBytech;
-    complaintModel.findByIdAndUpdate({_id:id},{progress:"Complaint has been Rejected By Technician!",whyRejetedBytech:reason,rejectedByTech:'yes'},
+    complaintModel.findByIdAndUpdate({_id:id},{progress:"Complaint has been Rejected By Technician!",
+    whyRejetedBytech:reason,rejectedByTech:'yes',acceptedBytech:"no"},
         (err,found)=>{
         if(err) console.log(err);
         else{

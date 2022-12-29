@@ -21,8 +21,8 @@
     <a href="/">HOME</a>
     <a href="/about" class="nav"> About</a>
         <a href="/contact" class="nav">Contact Us</a>
-    <a href="">FAQ</a>
-    <a href="">GUIDELINES</a>
+    <!-- <a href="">FAQ</a> -->
+    <!-- <a href="">GUIDELINES</a> -->
 
   </div>
   <% if(message.length > 0){ %> 
@@ -37,26 +37,26 @@
         <div class="container">
           <div class="input-box">
             <label for="">First Name:</label>
-            <input type="text" name="firstName" value="firstName" class="first-name" placeholder="First name">
+            <input type="text" name="firstName" value="" class="first-name" placeholder="First name">
           </div>
 
           <div class="input-box">
             <label for="">last Name:</label>
-            <input type="text" name="lastName" value="lastName" id="last-name" placeholder="last name">
+            <input type="text" name="lastName" value="" id="last-name" placeholder="last name">
           </div>
 
           <div class="input-box">
             <label for="">Email Id:</label>
-            <input id="email" type="email" name="username" value="username" placeholder="Email Id">
+            <input id="email" type="email" name="username" value="" placeholder="Email Id">
           </div>
 
           <div class="input-box">
             <label for="">Mobile No:</label>
-            <input id="mobile" type=" text" name="mobile" value="mobile" placeholder="Mobile">
+            <input id="mobile" type=" text" name="mobile" value="" placeholder="Mobile">
           </div>
           <div class="input-box">
             <label for="">Password:</label>
-            <input id="password" type="password" name="password" value="password" placeholder="Password">
+            <input id="password" type="password" name="password" value="" placeholder="Password">
           </div>
 
           <div class="input-box">
@@ -81,7 +81,8 @@
           <p>Type of Person</p>
            <div class="gender-details">
             <input type="radio" name="typeOfPerson" value="citizen" id="female">Citizen
-            <input type="radio" name="typeOfPerson" value="assigningOfficer" id="male">Assigning Officer
+            <input type="radio" name="typeOfPerson" value="assigningOfficer" id="male" checked>
+            Assigning Officer
             <input type="radio" name="typeOfPerson" value="technician" id="other">Technician
          </div>
 

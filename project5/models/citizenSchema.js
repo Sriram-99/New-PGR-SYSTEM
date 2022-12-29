@@ -66,11 +66,11 @@ const citizenSchema = new mongoose.Schema({
      reassignedTo:{
          type:String
      },
-     reassigned:{
+     resolved:{
          type:String,
          default:"no"
      },
-     resolved:{
+     resolvedByOff:{
          type:String,
          default:"no"
      }

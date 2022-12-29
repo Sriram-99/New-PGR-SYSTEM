@@ -373,7 +373,7 @@
           <!-- start of center1 -->
           <div class="center1" id="center1">
               
-            <% complaint.forEach((item)=>{if(item.complaintBy == user._id){%> 
+            <% complaint.forEach((item)=>{if(item.complaintBy == user._id && item.resolved == "no"){%> 
               <ul>
                 <li class="listone" >
                    <h3 ><%= item.subject %></h3>
@@ -411,10 +411,11 @@
           <!-- start of center1 -->
           
           <div class="center2" id="center2">
-            <% complaint.forEach((item)=>{if(item.complaintBy == user._id && item.resolved == "yes"){ %> 
+            <% complaint.forEach((item)=>{if(item.complaintBy == user._id && item.resolvedByOff === "yes"){ %> 
             <ul>
                 <li class="listtwo">
-                   <h3 data-1="BH6",data-2="6042" data-3="regarding failure of ac" , data-4=""><%= item.subject %></h3>
+                   <h3 data-1="BH6",data-2="6042" data-3="regarding failure of ac" , data-4=""><%= item.subject %>
+                </h3>
                   <div>
                     <button class="view" onclick="openpopup(this)">View</button>
                     <div class="popup">
