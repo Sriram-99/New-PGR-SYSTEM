@@ -77,11 +77,11 @@ router.post('/rejectByOff/:id/:assignedBy',(req,res)=>{
 router.post('/doneByOff/:id/:assignedBy',(req,res)=>{
     const id = req.params.id;
     const by = req.params.assignedBy;
-    complaintModel.findByIdAndUpdate({_id:id},{resolvedByOff:"yes"},
-    (err,found)=>{
+    
+    complaintModel.findByIdAndDelete({_id:id},(err,found)=>{
         if(err) console.log(err);
         else{
-            req.flash('message','Complaint has been resolved!');
+            req.flash('message','Complaint has been closed!');
             res.redirect('/assignOff/'+by);
         }
     });

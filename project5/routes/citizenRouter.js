@@ -80,4 +80,18 @@ router.post('/deleteComplaint/:itemId/:username',(req, res)=>{
          }
      });
  });
+
+ router.post('/doneByCiti/:id/:doneBy',(req,res)=>{
+    const id = req.params.id;
+    const by = req.params.doneBy;
+    citizenModel.findByIdAndUpdate({_id:id},{resolvedByCiti:"yes", progress:"Checked by Person who lodged complaint!"},
+    (err,found)=>{
+        if(err) console.log(err);
+        else{
+            req.flash('message','Complaint has been marked done!');
+            res.redirect('/citizen/'+by);
+        }
+    });
+});
+
 module.exports = router;

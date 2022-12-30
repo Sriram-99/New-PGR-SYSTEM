@@ -80,8 +80,8 @@
       <!-- start of center1 -->
       <div class="center2" id="center2">
         <% complaint.forEach((item)=>{if((user.username === item.assignedTo && item.acceptedBytech=="yes" 
-        && item.resolved == "no") || (user.username === item.reassignedTo && item.acceptedBytech=="yes" 
-        && item.resolved == "no")){%>
+        && item.resolvedByTech == "no") || (user.username === item.reassignedTo && item.acceptedBytech=="yes" 
+        && item.resolvedByTech == "no")){%>
         <ul id="ulcenter2">
           <li class="listtwo">
             <button onclick="openpopup2(this)" class="view"><%= item.subject %> </button>

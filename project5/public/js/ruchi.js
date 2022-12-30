@@ -28,3 +28,8 @@ document.getElementById("defaultOpen").click();
    }
  alert('  Dear Customer , your OTP for registration is '+OTP);
  }
+ window.setTimeout(function() {
+  $(".alert").fadeTo(500, 0).slideUp(500, function(){
+      $(this).remove(); 
+  });
+}, 3000);

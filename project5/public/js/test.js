@@ -43,3 +43,9 @@ function msgsubmit(){
    function closepopup(currelement){
     currelement.parentElement.classList.remove("open-popup");
    }
+
+   window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 3000);

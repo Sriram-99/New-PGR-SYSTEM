@@ -358,7 +358,7 @@
                            <option value="<%= user.username %>"><%=user.firstName %></option>
                            <% }}) %> 
                          </select>
-                         <button type="submit" onclick="closepopup(this)">Assign</button>
+                         <button type="submit">Assign</button>
                         </div>
                       </form>
                       <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
@@ -382,7 +382,7 @@
           </button>
           <div class="dropdwn-content" id="Dropdwn">
             <div class="tabe">
-              <button class="tabelinks" onclick="openCty(event, 'ELECT')" id="defaultpen">Accepted Complaints</button>
+              <button class="tabelinks" onclick="openCty(event, 'ELECT')" id="defaultpen">Assigned Complaints</button>
               <button class="tabelinks" onclick="openCty(event, 'CIV')">Rejected Complaints</button>
               <button class="tabelinks" onclick="openCty(event, 'MECH')">Re-assigned Complaints</button>
               <button class="tabelinks" onclick="openCty(event, 'Resolved')">Resolved Complaints</button>
@@ -391,7 +391,7 @@
             <div id="ELECT" class="tabecontent">
               <h2>Assigned Complaints</h2>
               <% complaints.forEach((items)=>{ if(items.assigned =="yes" && items.acceptedByOff == "yes" && 
-              items.rejectedByTech == "no" && items.resolved == "no"){%>
+              items.rejectedByTech == "no" && items.resolvedByCiti == "no"){%>
               <ul>
                 <li class="listone">
                   <h3><%=items.subject %></h3>
@@ -423,7 +423,7 @@
 
             <div id="CIV" class="tabecontent">
               <h2>Rejected Complaints</h2>
-              <% complaints.forEach((items)=>{ if(items.rejectedByTech == "yes" && items.resolved == "no" 
+              <% complaints.forEach((items)=>{ if(items.rejectedByTech == "yes" && items.resolvedByCiti == "no" 
                &&items.reassigned =="no"){%>
                 <ul>
               <li class="listone">
@@ -470,7 +470,7 @@
 
             <div id="MECH" class="tabecontent">
               <h2>Re-Assigned Complaints</h2>
-              <% complaints.forEach((items)=>{ if(items.reassigned =="yes" && items.resolved == "no" 
+              <% complaints.forEach((items)=>{ if(items.reassigned =="yes" && items.resolvedByCiti == "no" 
               && items.rejectedByTech == "yes"){%>
                 <ul>
               <li class="listone">
@@ -503,7 +503,7 @@
 
             <div id="Resolved" class="tabecontent">
               <h2>Resolved</h2>
-              <% complaints.forEach((items)=>{ if( items.resolved === "yes" && items.resolvedByOff === "no"){%>
+              <% complaints.forEach((items)=>{ if( items.resolvedByCiti === "yes" && items.resolvedByOff === "no"){%>
                 <ul>
               <li class="listone">
                 <h3><%=items.subject %></h3>
@@ -521,7 +521,7 @@
                     <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
                     <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
                     <form action="/doneByOff/<%= items._id %>/<%= assignedBy %>" method="post">
-                      <button type="submit" >Mark as done</button>
+                      <button type="submit" >Close Complaint</button>
                     </form>
                     <button  onclick="closepopup(this)">ok</button>
                   </div>
@@ -530,14 +530,235 @@
               <br></ul>
               <% }}) %>
             </div>
-            
           </div>
         </div>
+        </div>
+        </div>
 
+        <!-- employee tab start -->
     <div id="employee" class="tabcontent">
-      <h3>employee</h3>
-      <p>Some news this fine day!</p>
+      <h2 class = "wish">Department wise employee details</h2>
+      <br>
+      <div class="navebar">
+        <!-- departments dropdown -->
+        <div class="dropdown">
+          <button class="dropbtn" id="departments" onclick="myFunction()">DEPARTMENTS
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <!-- departments -->
+          <div class="dropdown-content" id="EmployeeDropdown">
+            <div class="table">
+              <button class="tablelinks" onclick="openCity(event, 'ele')" id="defaultopen">ELECTRICAL</button>
+              <button class="tablelinks" onclick="openCity(event, 'net')">Network</button>
+              <button class="tablelinks" onclick="openCity(event, 'Fur')">Furnitures</button>
+              <button class="tablelinks" onclick="openCity(event, 'Dev')">DeviceBreakdown</button>
+              <button class="tablelinks" onclick="openCity(event, 'Wat')">Water</button>
+              <button class="tablelinks" onclick="openCity(event, 'Gar')">Garbage</button>
+              <button class="tablelinks" onclick="openCity(event, 'Toi')">Toilets</button>
+            </div>
+
+            <div id="ele" class="tablecontent">
+              <h2>Employees under power department</h2>
+             
+              <ul>
+                <li class="listone">
+                  <h3>Suresh</h3>
+                  <div>
+                    <!-- <p>Available</p> -->
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:Suresh</b></p>
+                      <p><b>Skills: Electrician</b></p>
+                      <p><b>ID number:A1982E4</b></p>
+                      <p><b>Phone:9908264650</b></p>
+                      <p><b>Email:suresh123@gmail.com</b></p>
+                      <p><b>Department:Electrical</b></p>
+                      <p><b>Shift:morning(8am-1pm)</b></p>
+
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              
+              
+            </div>
+
+            <div id="net" class="tablecontent">
+              <h2>Network</h2>
+                <ul>
+                  <li class="listone">
+                    <h3>Ramesh</h3>
+                    <div>
+                      <!-- <p>Available</p> -->
+                      <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                      <div class="popup">
+                        <img src="" alt="profile pic">
+                        <h2> Details of Employee </h2>
+                        <p><b>Name:</b></p>
+                        <p><b>Skills:</b></p>
+                        <p><b>ID number:</b></p>
+                        <p><b>Phone:</b></p>
+                        <p><b>Email:</b></p>
+                        <p><b>Department:</b></p>
+                        <p><b>Shift:</b></p>
+  
+                        <button type="button" onclick="closepopup(this)">OK</button>
+                        <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                      </div>
+                    </div>
+                  </li>
+                  <br>
+                </ul>
+            </div>
+
+            <div id="Fur" class="tablecontent">
+              <h2>Furnitures</h2>
+              <ul>
+                <li class="listone">
+                  <h3>Mukesh</h3>
+                  <div>
+                    <!-- <p>Available</p> -->
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:</b></p>
+                      <p><b>Skills:</b></p>
+                      <p><b>ID number:</b></p>
+                      <p><b>Phone:</b></p>
+                      <p><b>Email:</b></p>
+                      <p><b>Department:</b></p>
+                      <p><b>Shift:</b></p>
+
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+            </div>
+
+            <div id="Dev" class="tablecontent">
+              <h2>Device Breakdown</h2>
+              <ul>
+                <li class="listone">
+                  <h3>dipesh</h3>
+                  <div>
+                    <!-- <p>Available</p> -->
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:</b></p>
+                      <p><b>Skills:</b></p>
+                      <p><b>ID number:</b></p>
+                      <p><b>Phone:</b></p>
+                      <p><b>Email:</b></p>
+                      <p><b>Department:</b></p>
+                      <p><b>Shift:</b></p>
+
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+            </div>
+
+            <div id="Wat" class="tablecontent">
+              <h2>Water</h2>
+              <ul>
+                <li class="listone">
+                  <h3>Naresh</h3>
+                  <div>
+                    <!-- <p>Available</p> -->
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:</b></p>
+                      <p><b>Skills:</b></p>
+                      <p><b>ID number:</b></p>
+                      <p><b>Phone:</b></p>
+                      <p><b>Email:</b></p>
+                      <p><b>Department:</b></p>
+                      <p><b>Shift:</b></p>
+
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+            </div>
+
+            <div id="Gar" class="tablecontent">
+              <h2>Garbage</h2>
+              <ul>
+                <li class="listone">
+                  <h3>Somesh</h3>
+                  <div>
+                    <!-- <p>Available</p> -->
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:</b></p>
+                      <p><b>Skills:</b></p>
+                      <p><b>ID number:</b></p>
+                      <p><b>Phone:</b></p>
+                      <p><b>Email:</b></p>
+                      <p><b>Department:</b></p>
+                      <p><b>Shift:</b></p>
+
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+            </div>
+            
+            <div id="Toi" class="tablecontent">
+              <h2>Toilets</h2>
+              <ul>
+                <li class="listone">
+                  <h3>Bhargav</h3>
+                  <div>
+                    <!-- <p>Available</p> -->
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:</b></p>
+                      <p><b>Skills:</b></p>
+                      <p><b>ID number:</b></p>
+                      <p><b>Phone:</b></p>
+                      <p><b>Email:</b></p>
+                      <p><b>Department:</b></p>
+                      <p><b>Shift:</b></p>
+
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+            </div>
+          </div>
+        </div>
     </div>
+    <!-- employee tab end -->
   </div>
   <!-- middle container end -->
   <br>

@@ -57,7 +57,7 @@ router.post('/rejectByTech/:id',(req,res)=>{
 router.post('/resolved/:id/:username',(req,res)=>{
     const id = req.params.id;
     const username = req.params.username;
-    complaintModel.findByIdAndUpdate({_id:id},{progress:"Complaint has been Resolved!", resolved:"yes"},
+    complaintModel.findByIdAndUpdate({_id:id},{progress:"Complaint has been Resolved!", resolvedByTech:"yes"},
         (err,found)=>{
         if(err) console.log(err);
         else{

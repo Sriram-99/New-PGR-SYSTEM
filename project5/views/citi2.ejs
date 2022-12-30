@@ -373,7 +373,7 @@
           <!-- start of center1 -->
           <div class="center1" id="center1">
               
-            <% complaint.forEach((item)=>{if(item.complaintBy == user._id && item.resolved == "no"){%> 
+            <% complaint.forEach((item)=>{if(item.complaintBy == user._id && item.resolvedByTech == "no"){%> 
               <ul>
                 <li class="listone" >
                    <h3 ><%= item.subject %></h3>
@@ -411,7 +411,7 @@
           <!-- start of center1 -->
           
           <div class="center2" id="center2">
-            <% complaint.forEach((item)=>{if(item.complaintBy == user._id && item.resolvedByOff === "yes"){ %> 
+            <% complaint.forEach((item)=>{if(item.complaintBy == user._id && item.resolvedByTech === "yes"){ %> 
             <ul>
                 <li class="listtwo">
                    <h3 data-1="BH6",data-2="6042" data-3="regarding failure of ac" , data-4=""><%= item.subject %>
@@ -428,6 +428,9 @@
                        <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
                        <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
                        <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%= item.progress %>  </p>
+                       <form action="/doneByCiti/<%= item._id %>/<%= user.username %>" method="post">
+                        <button type="submit" >Mark as done</button>
+                      </form>
                         <button type="button" onclick="closepopup(this)"> ok</button>
                         <button type="button" onclick="download(this)">Download Pdf</button>
                     </div>

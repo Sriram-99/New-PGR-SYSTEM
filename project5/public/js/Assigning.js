@@ -76,6 +76,12 @@ function openpopup(currelement){
 // popup form end
 
 
+window.setTimeout(function() {
+  $(".alert").fadeTo(500, 0).slideUp(500, function(){
+      $(this).remove(); 
+  });
+}, 4000);
+
 
 
 

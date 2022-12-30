@@ -38,6 +38,9 @@ const citizenSchema = new mongoose.Schema({
      assignedTo :{
          type:String
      },
+     assignedBy :{
+         type:String
+     },
      complaintBy :{
         type:String
      },
@@ -66,11 +69,15 @@ const citizenSchema = new mongoose.Schema({
      reassignedTo:{
          type:String
      },
-     resolved:{
+     resolvedByTech:{
          type:String,
          default:"no"
      },
      resolvedByOff:{
+         type:String,
+         default:"no"
+     },
+     resolvedByCiti:{
          type:String,
          default:"no"
      }
