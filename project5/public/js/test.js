@@ -43,6 +43,12 @@ function msgsubmit(){
    function closepopup(currelement){
     currelement.parentElement.classList.remove("open-popup");
    }
+   function openpopup1(currelement){
+    currelement.parentElement.children[3].classList.add("open-popup")
+   }
+   function closepopup1(currelement){
+    currelement.parentElement.classList.remove("open-popup");
+   }
 
    window.setTimeout(function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){

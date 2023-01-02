@@ -94,6 +94,9 @@
               <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
               <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
               <p><b>Complaint Progress</b> &nbsp;&nbsp;<%= item.progress %></p>
+              <%if(item.issue){%>
+              <p style="color: crimson;"><b>Issue Raised:</b> &nbsp;&nbsp;<%= item.issue %></p>
+              <%}%>
               <p><b>Contact of complaint raised person:</b> &nbsp;&nbsp;9912912XXX</p>
               <p><b>Photo of the complaint:</b> &nbsp;&nbsp;</p>
               <form action="/resolved/<%= item._id %>/<%= user.username %>" method="post" style="margin-top: 0.5rem;">

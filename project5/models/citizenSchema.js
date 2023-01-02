@@ -80,6 +80,12 @@ const citizenSchema = new mongoose.Schema({
      resolvedByCiti:{
          type:String,
          default:"no"
+     },
+     issue:{
+         type:String
+     },
+     issueImg:{
+        type:String
      }
 
 });

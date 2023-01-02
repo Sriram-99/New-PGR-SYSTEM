@@ -177,7 +177,7 @@
                         <option value="water">Water</option>
                         <option value="electricity">Electricity</option>
                         <option value="Network">Network</option>
-                        <option value="furniture">Furniture</option>
+                        <option value="broken furniture">Furniture</option>
                         <option value="other">other</option>
                     </select></p>
                     <p >specify the complaint: &nbsp; &nbsp;<textarea name="complaint" id="" cols="40" rows="2"></textarea></p>
@@ -210,7 +210,7 @@
                         <option value="water">Water</option>
                         <option value="electricity">Electricity</option>
                         <option value="Network">Network</option>
-                        <option value="brokenfurniture">broken furniture</option>
+                        <option value="broken furniture">broken furniture</option>
                         <option value="brokenapparatus">broken lab apparatus</option>
                         <option value="other">other</option>
                     </select></p>
@@ -433,6 +433,15 @@
                       </form>
                         <button type="button" onclick="closepopup(this)"> ok</button>
                         <button type="button" onclick="download(this)">Download Pdf</button>
+                    </div>
+                    <button class="view" onclick="openpopup1(this)">have issue</button>
+                    <div class="popup">
+                    <form action="/issueSend/<%= item._id %>/<%= user.username %>" method="post">                        
+                        <p><b>Write the Issue here : </b>&nbsp;&nbsp;</p> <input type="text" name="issue" id="">
+                        <p><b>Put Image of issue here</b>&nbsp;</p> <input type="file" name="issueImg" id="">
+                        <button type="submit"> Send</button>
+                    </form>
+                    <button type="button" onclick="closepopup1(this)"> ok</button>
                     </div>
                   </div>
                 </li>

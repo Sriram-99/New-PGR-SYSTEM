@@ -414,7 +414,7 @@ textarea {
 
 .view {
     margin-right: 30px;
-    width: 70px;
+    width:70px;
     font-weight: bold;
     height: 50px;
 }
@@ -492,7 +492,7 @@ textarea {
     font-size: 22px;
     font-weight: 500;
     border-radius: 30px;
-
+    width: fit-content;
 }
 
 .view:hover {
