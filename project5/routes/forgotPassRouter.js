@@ -7,11 +7,15 @@ const bodyParser = require('body-parser');
 const userModel = require('../models/userSchema');
 const jwt = require('jsonwebtoken');
 const flash = require('connect-flash');
+const nodemailer = require('nodemailer');
+const fs = require('fs');
 
 router.use(flash());
 router.use(bodyParser.urlencoded({
     extended: true
 }));
+
+
 // const JWT_SECRET = process.env.JWT_SECRET;
 router.post('/resetPass/:id', (req, res, next) => {
     const id = req.params.id;
@@ -52,6 +56,13 @@ router.post('/resetPass/:id', (req, res, next) => {
 
 });
 
+let mailTransporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth:{
+        user: "trupteeundre49@gmail.com",
+        pass: "Truptee@123"
+    }
+});
 router.post('/forgotPass', (req, res, next) => {
     const username = req.body.username;
     userModel.findOne({
@@ -64,10 +75,24 @@ router.post('/forgotPass', (req, res, next) => {
             res.redirect('/forgotPass');
         }
        else if(found){
+        //    let mailDetails = {
+        //        from:"trupteeundre492002@gmail.com",
+        //        to:"trupteeundre49@gmail.com",
+        //        subject:'Password reset link!',
+        //        text:`http://localhost:3000/resetPass/${found._id}`
+        //    }
+        //    mailTransporter.sendMail(mailDetails,(err,data)=>{
+        //        if(err) console.log(err);
+        //        else{
+        //         req.flash('message','Reset password link has been sent to your email!!');
+        //         res.redirect('/forgotPass');
+        //        }
+        //    })
             const link = `http://localhost:3000/resetPass/${found._id}`;
             console.log(link);
             req.flash('message','Reset password link has been sent to your email!!');
             res.redirect('/forgotPass');
+           
         }
     });
 });
