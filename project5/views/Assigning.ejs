@@ -4,8 +4,10 @@
 <head>
   <meta charset="utf-8">
   <title>Admin's page</title>
-
   <link rel="stylesheet" href="/css/Assigining.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style media="screen">
     #ram {
       background-color: #C147E9;
@@ -35,9 +37,10 @@
       <a id="ram" href="#"> Home</a>
       <a href="/about" class="nav"> About</a>
         <a href="/contact" class="nav">Contact</a>
-      <a href="/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
+        <a href="/<%= profile.username %>/profile" class="nav"><i class="fa-solid fa-user"></i> <%= profile.firstName %></a>
+      <a href="/admin"> Verify</a>
       <!-- <a href="#"><i class="fa fa-fw fa-user"></i> About</a> -->
-      <a href="/logout"><i class="fa fa-fw fa-user"></i>Logout</a>
+      <a href="/logout">Logout</a>
     </div>
   </div>
   <!-- top container end-->

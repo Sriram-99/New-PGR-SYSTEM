@@ -24,102 +24,8 @@
 <nav>
     <a href="">Home</a>
     <a href="/about" class="nav"> About</a>
-        <a href="/contact" class="nav">Contact Us</a>
-    <!-- profile start -->
-    <!-- <div>
-    <button onclick="openpopup(this)"  id="btn"  class="view">
-         <%= user.firstName %>!
-    </button>
-    <div class="allcontent popup"  >
-        <br> <br>
-        <h1>PROFILE</h1>
-       <br> 
-            <img id="picsart" src="/images/pics/mahesh.jpg" alt="">
-           <div>
-            <button id="photobtn"  onclick="openpopup3(this)"   class="view" ></button>
-            <div class="popup3" id="sriram11">
-                <button id="close2" onclick="closepopup3(this)"></button>
-                <img src="/images/pics/mahesh.jpg" alt="">
-               <p>Upload new profile picture:  <input type="file" name="" id="inputpic"></p>
-               <button type="submit" id="changepic" onclick="changepic(this)" >change</button>
-            </div>
-           </div>
-            <br><br>
-            <table>
-                <tr>
-                    <td width="200px" height="50px" class="one">Last Name:</td>
-                    <td  width="350px" class="two"   height="50px" id="lastname" width="50%"><span>Divvi</span> <button id="btn1" onclick="btnone(this)" type="button" value="edit" ></button></td>
-                </tr>
-                <tr>
-                    <td width="200px"   height="50px" class="one">First Name:</td>
-                    <td width="350px"  height="50px" id="firstname" class="two"><span>Satya Sriram</span> <button id="btn2" onclick="btntwo(this)" type="button" value="edit" ></button></td>
-                </tr>
-                <tr>
-                    <td  width="200px"  height="50px" class="one">Date of Birth:</td>
-                    <td   width="350px"  height="50px" id="dateofbirth" class="two"><span>2003-06-18</span>
-                        <button id="btn4" onclick="btnfour(this)" type="button" value="edit" ></button></td>
-                </tr>
-                <tr>
-                    <td  width="200px"  height="50px" class="one">Age:</td>
-                    <td   width="350px"  height="50px" id="age" class="two"><span>20</span> <button id="btn3" onclick="btnthree(this)" type="button" value="edit" ></button></td>
-                </tr>
-                
-                <tr>
-                    <td width="200px" height="50px" class="one">Gender:</td>
-                    <td  width="350px" height="50px" id="gender" class="two"><span>Male</span>
-                        <button id="btn5" onclick="btnfive(this)" type="button" value="edit" ></button></td>
-                </tr>
-                
-                <tr>
-                    <td  width="200px"  height="50px" class="one">Phone Number:</td>
-                    <td   width="350px"  height="50px" id="phonenumber" class="two"><span>6301166944</span>
-                        <div class="popup" id="">
-                            <button id="close" onclick="closepopup(this)"></button>
-                            <p><span class="one">Old Mobile Number:</span> <span>6301166947</span></p>
-                            <p><span class="one">New Mobile Number:</span> <input type="number" name="" id=""></p>
-                            <button type=" submit">Get otp</button>
-                            <p><b>enter the otp:</b> <input type="number" name="" id=""></p>
-                            <button type="submit" > Verify</button>
-                        </div>  <button id="btn6" onclick="openpopup2(this)" type="button" value="edit" ></button></td>
-
-                </tr>
-                <tr>
-                    <td  width="200px"  height="50px" class="one">Role:</td>
-                    <td   width="350px"  height="50px"  class="two"><span>Student</span>
-                        </td>
-
-                </tr>
-
-                <tr>
-                    <td width="200px" height="50px" class="one"> Email:</td>
-                    <td width="350px" height="50px" id="mail" class="two"> <span>divvisatyasriram@gmail.com</span>
-                        <div class="popup" id="emailpopup">
-                            <button id="close" onclick="closepopup(this)"></button>
-                            <p><span class="one">Old Email id:</span> divvisatyasriram@gmail.com<span></span></p>
-                            <p><span class="one">New Email id:</span> <input type="email" name="" id=""></p>
-                            <button type=" submit">Get otp</button>
-                            <p><b>Enter the otp:</b> <input type="number" name="" id=""></p>
-                            <button type="submit" > Verify</button>
-                        </div>  <button id="btn6" onclick="openpopup2(this)" type="button" value="edit" ></button></td>
-                </tr>
-                <tr>
-                    <td width="200px" height="50px" class="one">Aadhaar Number:</td>
-                    <td width="350px" height="50px" id="aanum" class="two"><span>200001302552010</span>
-                        <div class="popup" id="">
-                            <button id="close" onclick="closepopup(this)"></button>
-                            <p><span class="one">Old Aadhaar Number:</span> 200001302552010<span></span></p>
-                            <p><span class="one">New Aadhaar Number:</span> <input type="number" name="" id=""></p>
-                            
-                            <p><b>upload Aadhaar phote:</b> <input type="file" name="" id=""></p>
-                            <button type="submit" > submit</button>
-                        </div>  <button id="btn6" onclick="openpopup2(this)" type="button" value="edit" ></button></td>
-                </tr>
-                    
-            </table>
-            <br>
-        </div>
-    </div> -->
-    <!-- profile end -->
+    <a href="/contact" class="nav">Contact Us</a>
+    <a href="/<%= user.username %>/profile" class="nav"><i class="fa-solid fa-user"></i> <%= user.firstName %></a>
     <a href="/logout">logout</a>
 </nav>
  <!-- ending of heading and nav -->
@@ -169,7 +75,8 @@
                         <option value="aa4">Staff Canteen</option>
                     </select></p>
                     <p class="para">  Room Number: &nbsp;  &nbsp;<input type="number" name="room" id=""></p>
-                    <p class="sofc" id="sofcaa"> Subject  of Complaint:&nbsp; &nbsp; <select name="subject" id="">
+                    <p class="sofc" id="sofcaa"> Subject  of Complaint:&nbsp; &nbsp; 
+                        <select name="subject" id="">
                         <option value="">choose the option</option>
                         <option value="toilets">Toilets</option>
                         <option value="devicebreakdown">Device Breakdown</option>

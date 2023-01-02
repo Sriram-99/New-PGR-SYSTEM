@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="/css/tech.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -23,7 +26,9 @@
     <a href="" class="nav">Home</a>
     <a href="http://www.nits.ac.in/" class="nav"> About Us</a>
     <a href="" class="nav">Contact Us </a>
-    <a href="" class="nav"><%= user.firstName %></a>
+    
+    <a href="/<%= user.username %>/profile" class="nav"><i class="fa-solid fa-user"></i> <%= user.firstName %></a>
+    
     <a href="/logout" class="nav">LOGOUT</a>
 
   </div>

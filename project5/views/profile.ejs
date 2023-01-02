@@ -1,144 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style> @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap'); </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap');
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/profile.css">
     <!-- <link rel="shortcut icon" href="<i class="fa-solid fa-user"></i>" type="image/x-icon"> -->
     <title>profile</title>
 </head>
+
 <body>
     <!-- start of heading and nav -->
     <div class="heading">
-        <img src="/images/C-DAC.jpg" class="logo" alt="" width="50px" >
-    <div class="headingmini" >
-        <h1>Centre for Development of Advanced Computing</h1>
-    <p>public governance system</p>
+        <img src="/images/C-DAC.jpg" class="logo" alt="" width="50px">
+        <div class="headingmini">
+            <h1>Centre for Development of Advanced Computing</h1>
+            <p>public governance system</p>
+        </div>
+        <img class="picsilchar" src="/images/nit silchar.jpg" alt="">
     </div>
-    <img class="picsilchar" src="/images/nit silchar.jpg"   alt="">
-</div>
-<nav>
-    <a href="">Home</a>
-    <a href="/about" class="nav"> About</a>
+    <nav>
+        <a href="">Home</a>
+        <a href="/about" class="nav"> About</a>
         <a href="/contact" class="nav">Contact Us</a>
-    <a href="">Home</a>
-    <a href="">Home</a>
-    <a href="/logout">logout</a>
-</nav>
+        <a href="/logout">logout</a>
+    </nav>
+    <% if(message.length > 0){ %> 
+        <div class="alert">
+          <%= message %> 
+        </div>
+      <% } %>
     <div class="allcontent">
         <br> <br>
-        <h1>PROFILE</h1>
-       <br> 
-            <img id="picsart" src="/images/pics/mahesh.jpg" alt="">
-           <div>
-            <button id="photobtn"  onclick="openpopup(this)"   class="view" ></button>
+        <h1>Hello <%= user.firstName %>!!</h1>
+        <br>
+        <img id="picsart" src="/profile/<%= user.profileImg %>" alt="no such img">
+        <div>
+            <button id="photobtn" onclick="openpopup(this)" class="view"></button>
             <div class="popup" id="sriram11">
                 <button id="close2" onclick="closepopup(this)"></button>
-                <img src="/images/pics/mahesh.jpg" alt="">
-               <p>Upload new profile picture:  <input type="file" name="" id="inputpic"></p>
-               <button type="submit" id="changepic" onclick="changepic(this)" >change</button>
+                <img src="/profile/<%= user.profileImg %>" alt="no such image">
+                <form action="/<%= user._id %>/edit/profileImg" method="post" enctype="multipart/form-data">
+                <p>Upload new profile picture: <input type="file" name="profileImg" id="inputpic"></p>
+                <button type="submit">change</button>
+            </form>
             </div>
-           </div>
-            <br><br>
-            <table>
-                <tr>
-                    <td width="200px" height="50px" class="one">Last Name:</td>
-                    <td  width="350px" class="two"   height="50px" id="lastname" width="50%"><span>Divvi</span> <button id="btn1" onclick="btnone(this)" type="button" value="edit" ></button></td>
-                </tr>
-                <tr>
-                    <td width="200px"   height="50px" class="one">First Name:</td>
-                    <td width="350px"  height="50px" id="firstname" class="two"><span>Satya Sriram</span> <button id="btn2" onclick="btntwo(this)" type="button" value="edit" ></button></td>
-                </tr>
-                <tr>
+        </div>
+        <br><br>
+        <table>
+            <tr>
+                <td width="200px" height="50px" class="one">Last Name:</td>
+                    <td width="350px" class="two" height="50px" id="lastname" width="50%"><span><%= user.lastName %></span>
+                    <button id="btn1" onclick="btnone(this)" type="submit" value="edit"></button>
+                    </td>
+            </tr>
+            <tr>
+                <td width="200px" height="50px" class="one">First Name:</td>
+                <td width="350px" height="50px" id="firstname" class="two"><span><%= user.firstName %></span> <button
+                        id="btn2" onclick="btntwo(this)" type="button" value="edit"></button></td>
+            </tr>
+            <!-- <tr>
                     <td  width="200px"  height="50px" class="one">Date of Birth:</td>
                     <td   width="350px"  height="50px" id="dateofbirth" class="two"><span>2003-06-18</span>
                         <button id="btn4" onclick="btnfour(this)" type="button" value="edit" ></button></td>
-                </tr>
-                <tr>
-                    <td  width="200px"  height="50px" class="one">Age:</td>
-                    <td   width="350px"  height="50px" id="age" class="two"><span>20</span> <button id="btn3" onclick="btnthree(this)" type="button" value="edit" ></button></td>
-                </tr>
-                
-                <tr>
-                    <td width="200px" height="50px" class="one">Gender:</td>
-                    <td  width="350px" height="50px" id="gender" class="two"><span>Male</span>
-                        <button id="btn5" onclick="btnfive(this)" type="button" value="edit" ></button></td>
-                </tr>
-                
-                <tr>
-                    <td  width="200px"  height="50px" class="one">Phone Number:</td>
-                    <td   width="350px"  height="50px" id="phonenumber" class="two"><span>6301166944</span>
-                        <div class="popup" id="">
-                            <button id="close" onclick="closepopup(this)"></button>
-                            <p><span class="one">Old Mobile Number:</span> <span>6301166947</span></p>
-                            <p><span class="one">New Mobile Number:</span> <input type="number" name="" id=""></p>
-                            <button type=" submit">Get otp</button>
-                            <p><b>enter the otp:</b> <input type="number" name="" id=""></p>
-                            <button type="submit" > Verify</button>
-                        </div>  <button id="btn6" onclick="openpopup2(this)" type="button" value="edit" ></button></td>
+                </tr> -->
+            <tr>
+                <td width="200px" height="50px" class="one">Age:</td>
+                <td width="350px" height="50px" id="age" class="two">
+                    <% if(user.age){ %> 
+                    <span><%= user.age %></span> 
+                    <% } else{ %> 
+                        <form action="/<%= user._id %>/edit/age" method="post">
+                        <input type="text" name="age" id="">
+                        <!-- <button id="btn3" onclick="btnthree(this)" type="submit"></button> -->
+                        <button type="submit"></button>
+                    </form>
+                    <% } %> 
+                </td>
+            </tr>
 
-                </tr>
-                <tr>
-                    <td  width="200px"  height="50px" class="one">Role:</td>
-                    <td   width="350px"  height="50px"  class="two"><span>Student</span>
-                        </td>
+            <tr>
+                <td width="200px" height="50px" class="one">Gender:</td>
+                <td width="350px" height="50px" id="gender" class="two">
+                    <% if(user.gender){ %> 
+                    <span><%= user.gender %></span>
+                    <% } else{ %> 
+                    <form action="/<%= user._id %>/edit/gender" method="post">
+                        <input type="text" name="gender" id="">
+                    <!-- <button id="btn5" onclick="btnfive(this)" type="button" value="edit"></button> -->
+                    <button type="submit"></button>
+                    </form>
+                    <% } %> 
+                </td>
+            </tr>
 
-                </tr>
+            <tr>
+                <td width="200px" height="50px" class="one">Phone Number:</td>
+                <td width="350px" height="50px" id="phonenumber" class="two"><span><%= user.mobile %></span>
+                    <div class="popup" id="">
+                        <button id="close" onclick="closepopup(this)"></button>
+                        <p><span class="one">Old Mobile Number:</span> <span>6301166947</span></p>
+                        <p><span class="one">New Mobile Number:</span> <input type="number" name="" id=""></p>
+                        <button type=" submit">Get otp</button>
+                        <p><b>enter the otp:</b> <input type="number" name="" id=""></p>
+                        <button type="submit"> Verify</button>
+                    </div> <button id="btn6" onclick="openpopup2(this)" type="button" value="edit"></button>
+                </td>
+            </tr>
+            <tr>
+                <td width="200px" height="50px" class="one">Role:</td>
+                <td width="350px" height="50px" class="two"><span><%= user.typeOfPerson %></span>
+                </td>
 
-                <tr>
-                    <td width="200px" height="50px" class="one"> Email:</td>
-                    <td width="350px" height="50px" id="mail" class="two"> <span>divvisatyasriram@gmail.com</span>
-                        <div class="popup" id="emailpopup">
-                            <button id="close" onclick="closepopup(this)"></button>
-                            <p><span class="one">Old Email id:</span> divvisatyasriram@gmail.com<span></span></p>
-                            <p><span class="one">New Email id:</span> <input type="email" name="" id=""></p>
-                            <button type=" submit">Get otp</button>
-                            <p><b>Enter the otp:</b> <input type="number" name="" id=""></p>
-                            <button type="submit" > Verify</button>
-                        </div>  <button id="btn6" onclick="openpopup2(this)" type="button" value="edit" ></button></td>
-                </tr>
-                <tr>
-                    <td width="200px" height="50px" class="one">Aadhaar Number:</td>
-                    <td width="350px" height="50px" id="aanum" class="two"><span>200001302552010</span>
-                        <div class="popup" id="">
-                            <button id="close" onclick="closepopup(this)"></button>
-                            <p><span class="one">Old Aadhaar Number:</span> 200001302552010<span></span></p>
-                            <p><span class="one">New Aadhaar Number:</span> <input type="number" name="" id=""></p>
-                            
-                            <p><b>upload Aadhaar phote:</b> <input type="file" name="" id=""></p>
-                            <button type="submit" > submit</button>
-                        </div>  <button id="btn6" onclick="openpopup2(this)" type="button" value="edit" ></button></td>
-                </tr>
-                    
-            </table>
-            <br>
-
+            </tr>
+            <% if(user.typeOfPerson === "technician"){%> 
+            <tr>
+                <td width="200px" height="50px" class="one">Skill Sets:</td>
+                <td width="350px" height="50px" class="two">
+                    <% if(user.skills){ %> 
+                        <span><%= user.skills %></span>
+                        <% } else{ %> 
+                        <form action="/<%= user._id %>/edit/skills" method="post">
+                            <select name="skills" id="">
+                                <option value="">choose the option</option>
+                                <option value="toilets">Toilets</option>
+                                <option value="devicebreakdown">Device Breakdown</option>
+                                <option value="garbage">Garbage</option>
+                                <option value="water">Water</option>
+                                <option value="electricity">Electricity</option>
+                                <option value="Network">Network</option>
+                                <option value="broken furniture">Furniture</option>
+                                <option value="other">other</option>
+                            </select>
+                        <!-- <button id="btn5" onclick="btnfive(this)" type="button" value="edit"></button> -->
+                        <button type="submit"></button>
+                        </form>
+                        <% } %> 
+                </td>
+            </tr>
             
-       
-        
+            <tr>
+                <td width="200px" height="50px" class="one">Availbility Hours:</td>
+                <td width="350px" height="50px" class="two">
+                    <% if(user.availability){ %> 
+                        <span><%= user.availability %></span>
+                        <% } else{ %> 
+                        <form action="/<%= user._id %>/edit/availability" method="post">
+                        <input type="text" name="availability" id="">
+                        <!-- <button id="btn5" onclick="btnfive(this)" type="button" value="edit"></button> -->
+                        <button type="submit"></button>
+                        </form>
+                        <% } %> 
+                </td>
+            </tr>
+            <% } %> 
+            <tr>
+                <td width="200px" height="50px" class="one"> Email:</td>
+                <td width="350px" height="50px" id="mail" class="two"> <span><%= user.username %></span>
+                    <div class="popup" id="emailpopup">
+                        <button id="close" onclick="closepopup(this)"></button>
+                        <p><span class="one">Old Email id:</span> divvisatyasriram@gmail.com<span></span></p>
+                        <p><span class="one">New Email id:</span> <input type="email" name="" id=""></p>
+                        <button type=" submit">Get otp</button>
+                        <p><b>Enter the otp:</b> <input type="number" name="" id=""></p>
+                        <button type="submit"> Verify</button>
+                    </div> <button id="btn6" onclick="openpopup2(this)" type="button" value="edit"></button>
+                </td>
+            </tr>
+            <tr>
+                <td width="200px" height="50px" class="one">Aadhaar Number:</td>
+                <td width="350px" height="50px" id="aanum" class="two">
+                    <% if(user.adharNo){ %> 
+                        <span><%= user.adharNo %></span>
+                        <% } else{ %> 
+                        <form action="/<%= user._id %>/edit/adharNo" method="post">
+                        <input type="text" name="adharNo" id="">
+                        <!-- <button id="btn5" onclick="btnfive(this)" type="button" value="edit"></button> -->
+                        <button type="submit"></button>
+                        </form>
+                        <% } %>
+                    <div class="popup" id="">
+                        <button id="close" onclick="closepopup(this)"></button>
+                        <p><span class="one">Old Aadhaar Number:</span> 200001302552010<span></span></p>
+                        <p><span class="one">New Aadhaar Number:</span> <input type="number" name="" id=""></p>
 
-        
+                        <p><b>upload Aadhaar phote:</b> <input type="file" name="" id=""></p>
+                        <button type="submit"> submit</button>
+                    </div> <button id="btn6" onclick="openpopup2(this)" type="button" value="edit"></button>
+                </td>
+            </tr>
+
+        </table>
+        <br>
+
     </div>
     <footer>
         <p>
-         <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
-         <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
-         <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
-         <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
-         <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
-         <a href="https://www.facebook.com/CDACINDIA/"><img src="/images/pics/facebook.png" alt=""></a>
-         <a href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img src="/images/pics/linkedin.png" alt=""></a>
-         <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="/images/pics/twitter.png" alt=""></a>
+            <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
+            <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
+            <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
+            <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
+            <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
+            <a href="https://www.facebook.com/CDACINDIA/"><img src="/images/pics/facebook.png" alt=""></a>
+            <a
+                href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img
+                    src="/images/pics/linkedin.png" alt=""></a>
+            <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img
+                    src="/images/pics/twitter.png" alt=""></a>
         </p>
         <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p>
         <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
-     </footer>
-    
+    </footer>
+
 </body>
 <script src="/js/profile2.js"></script>
+
 </html>

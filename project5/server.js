@@ -9,6 +9,7 @@ const citizenRouter = require('./routes/citizenRouter');
 const forgotPassRouter = require('./routes/forgotPassRouter');
 const adminRouter = require('./routes/adminRouter');
 const assignRouter = require('./routes/assignRouter');
+const profileRouter = require('./routes/profileRouter');
 const techRouter = require('./routes/techRouter');
 const userModel = require('./models/userSchema');
 const citizenModel = require('./models/citizenSchema');
@@ -65,7 +66,7 @@ app.post('/', upload,(req, res) => {
         password: req.body.password,
         mobile: req.body.mobile,
         adharNo:req.body.adharNo,
-        adharImg:req.file.filename,
+        // adharImg:req.file.filename,
         typeOfPerson: req.body.typeOfPerson
     });
     const originalPass = req.body.password;
@@ -100,7 +101,7 @@ else{
                             res.redirect('/registration');
                         }   
                     }
-                    if(found.typeOfPerson === "admin")res.redirect('/admin');
+                    // if(found.typeOfPerson === "admin")res.redirect('/admin');
                    else if(found.typeOfPerson === "technician")
                    {   if(found.verified === 'yes')  res.redirect('/technician/'+ username);
                    else{
@@ -139,7 +140,7 @@ app.post('/login', (req, res) => {
                         res.redirect('/');
                     }   
                 }
-                    if(found.typeOfPerson === "admin")res.redirect('/admin');
+                    // if(found.typeOfPerson === "admin")res.redirect('/admin');
                    else if(found.typeOfPerson === "technician")
                    {   if(found.verified === 'yes')  res.redirect('/technician/'+ username);
                    else{
@@ -202,15 +203,13 @@ app.get('/about', (req, res) => {
 app.get('/contact', (req, res) => {
     res.render('contact');
 });
-app.get('/profile', (req, res) => {
-    res.render('profile');
-});
 
 app.use(citizenRouter);
 app.use(forgotPassRouter);
 app.use(adminRouter);
 app.use(assignRouter);
 app.use(techRouter);
+app.use(profileRouter);
 
 const port = process.env.PORT||3000;
 app.listen(port, () => {
