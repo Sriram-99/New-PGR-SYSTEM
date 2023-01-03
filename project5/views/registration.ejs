@@ -22,9 +22,6 @@
     <a href="/">HOME</a>
     <a href="/about" class="nav"> About</a>
         <a href="/contact" class="nav">Contact Us</a>
-    <!-- <a href="">FAQ</a> -->
-    <!-- <a href="">GUIDELINES</a> -->
-
   </div>
   <% if(message.length > 0){ %> 
     <div class="alert">
@@ -33,30 +30,32 @@
   <% } %>
   <div class="main">
     <div class="register">
-      <h2>REGISTRATION FORM</h2>
+      <h2>REGISTRATION FORM</h2><p style="font-weight:400; margin-left: 8rem; color:crimson">(*required fields)</p>
       <form class="register" action="/" method="post" enctype="multipart/form-data">
         <div class="container">
           <div class="input-box">
-            <label for="">First Name:</label>
+            <label for="">First Name*:</label>
             <input type="text" name="firstName" value="" class="first-name" placeholder="First name">
           </div>
 
           <div class="input-box">
-            <label for="">last Name:</label>
+            <label for="">last Name*:</label>
             <input type="text" name="lastName" value="" id="last-name" placeholder="last name">
           </div>
 
           <div class="input-box">
-            <label for="">Email Id:</label>
+            <label for="">Email Id*:</label>
             <input id="email" type="email" name="username" value="" placeholder="Email Id">
           </div>
 
           <div class="input-box">
-            <label for="">Mobile No:</label>
+            <label for="">Mobile Number*:</label>
             <input id="mobile" type=" text" name="mobile" value="" placeholder="Mobile">
           </div>
           <div class="input-box">
             <label for="">Password:</label>
+              <p style="font-size:medium; color:crimson">(*Password should contains minimum 8 letters, </p>
+              <p style="font-size:medium; color:crimson">One special character, and at least one digit)</p>
             <input id="password" type="password" name="password" value="" placeholder="Password">
           </div>
 
@@ -69,15 +68,15 @@
             <input id="Age" type="text" name="age" value="" placeholder="Age">
         </div>
           <div class="input-box">
-            <label for="">Aadhaar Id:</label>
-            <input id="Aadhaar" type="text" name="adharNo" value="" placeholder="Aadhaar Id">
+            <label for=""> Aadhaar ID/Voter ID/PAN Card ID:*:</label>
+            <input id="Aadhaar" type="text" name="adharNo" value="" placeholder="Id">
           </div>
           <div class="input-box">
-            <label for="">Aadhaar Image:</label>
+            <label for="">Aadhaar ID/Voter ID/PAN Card ID Proof:*:</label>
             <input id="Aadhaar" type="file" name="adharImg" value="">
           </div>
         <div class="gender">
-          <p>Type of Person</p>
+          <p>Type of Person*</p>
            <div class="gender-details">
             <input type="radio" name="typeOfPerson" value="citizen" id="female">End User (Complaint
             Reporting Person)

@@ -19,19 +19,13 @@ const userSchema = new mongoose.Schema({
     },
     mobile:{
         type:"Number",
-        required:[true,'MObile Number required'],
-            min: 100000000,
-            max: 999999999
+        required:[true,'MObile Number required']
     },
     adharNo:{
         type:Number,
-        required:[true,'MObile Number required'],
-        min: 10000000000,
-        max: 99999999999
+        required:[true,'MObile Number required']
     },
-    adharImg:{
-        type:String,
-    },
+    adharImg:String,
     typeOfPerson:{
         type:"string",
         default:'none',

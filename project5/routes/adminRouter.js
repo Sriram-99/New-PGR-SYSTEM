@@ -50,20 +50,29 @@ router.post('/deleteByAdmin/:id',(req,res)=>{
     });
 });
 router.get('/admin', (req, res) => {
-    userModel.find({},(err,found)=>{
+    if(req.isAuthenticated()){
+        const data ={};
+        data.user = req.user;
+         userModel.find({},(err,found)=>{
         if(err) console.log(err);
         else{
-            res.render('admin',{user:found,message:req.flash('message')});
+            res.render('admin',{user:found,message:req.flash('message'),assign:data.user});
         }
         });
+    }
+   
 });
 router.get('/verifiedUsers', (req, res) => {
+    if(req.isAuthenticated()){
+        const data ={};
+        data.user = req.user;
     userModel.find({},(err,found)=>{
         if(err) console.log(err);
         else{
-            res.render('adminVerified',{user:found,message:req.flash('message')});
+            res.render('adminVerified',{user:found,message:req.flash('message'),assign:data.user});
         }
         });
+    }
 });
 
 module.exports = router;

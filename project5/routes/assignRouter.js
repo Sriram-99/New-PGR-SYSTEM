@@ -14,7 +14,7 @@ router.use(bodyParser.urlencoded({
     extended: true
 }));
 
-router.get('/assignOff/:username', (req, res) => {
+router.get('/assigningOfficer/:username', (req, res) => {
     const usernameAssign = req.params.username;
     if (req.isAuthenticated()) {
         const data ={};

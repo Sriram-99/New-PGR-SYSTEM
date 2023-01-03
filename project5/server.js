@@ -69,13 +69,29 @@ app.post('/', upload,(req, res) => {
         // adharImg:req.file.filename,
         typeOfPerson: req.body.typeOfPerson
     });
-    let error = userno.validateSync();
-    assert.equal(error.errors['mobile'].message,'Invalid Mobile No.');
     const originalPass = req.body.password;
     const confirmPass = req.body.confirmPass;
-    if(confirmPass !== originalPass)
+    const mobile = req.body.mobile;
+    const adharNo = req.body.adharNo;
+    const password = req.body.password;
+    if(mobile.length!=10)
     {
-        req.flash('message','Confirm Pass not matched!');
+       req.flash('message','Enter Valid mobile No');
+       res.redirect('/registration');
+    }
+    if(adharNo.length!=12)
+    {
+       req.flash('message','Enter Valid Identity No');
+       res.redirect('/registration');
+    }
+    if(confirmPass!=originalPass)
+    {
+       req.flash('message','Password not Matched!');
+       res.redirect('/registration');
+    }
+    if(password.length<8)
+    {
+       req.flash('message','Password is weak');
        res.redirect('/registration');
     }
 else{
@@ -97,7 +113,7 @@ else{
                     }
                     if(found.typeOfPerson === "citizen")res.redirect('/citizen/'+ username);
                     if(found.typeOfPerson === "assigningOfficer")
-                    {   if(found.verified === 'yes')  res.redirect('/assignOff/' + username);
+                    {   if(found.verified === 'yes')  res.redirect('/assigningOfficer/' + username);
                         else{
                             req.flash('message','Verification Takes some days!');
                             res.redirect('/registration');
@@ -140,7 +156,7 @@ app.post('/login', (req, res) => {
                     }
                     if(found.typeOfPerson === "citizen")res.redirect('/citizen/' + username);
                     if(found.typeOfPerson === "assigningOfficer")
-                    {   if(found.verified === 'yes')  res.redirect('/assignOff/' + username);
+                    {   if(found.verified === 'yes')  res.redirect('/assigningOfficer/' + username);
                     else{
                         req.flash('message','Verification Takes some days!');
                         res.redirect('/');
