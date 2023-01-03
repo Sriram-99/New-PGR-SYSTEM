@@ -18,7 +18,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const e = require('connect-flash');
 const multer = require('multer');
-
+const assert = require('assert');
 app.use(flash());
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -40,7 +40,7 @@ app.use(passport.session());
 // }).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
 
 //mongoose connect
-mongoose.connect(process.env.MONGODB_LOCAL, {useNewUrlParser: true}).then(()=>{console.log("DB connected!!");}).catch((err)=>{console.log(err)});
+mongoose.connect(process.env.MONGODB_LOCAL, {useNewUrlParser: true}).then(()=>{console.log("DB connected!!");}).catch((err)=>{console.log(err);});
 
 passport.use(userModel.createStrategy());
 passport.serializeUser(userModel.serializeUser());
@@ -69,6 +69,8 @@ app.post('/', upload,(req, res) => {
         // adharImg:req.file.filename,
         typeOfPerson: req.body.typeOfPerson
     });
+    let error = userno.validateSync();
+    assert.equal(error.errors['mobile'].message,'Invalid Mobile No.');
     const originalPass = req.body.password;
     const confirmPass = req.body.confirmPass;
     if(confirmPass !== originalPass)
@@ -83,7 +85,7 @@ else{
             const data = {};
             data.user = req.user;
             console.log(user);
-            req.flash('message','something is wrong');
+            req.flash('message','this user is already present');
             res.render('registration', {
                 user, message:req.flash('message')
             });
@@ -125,7 +127,11 @@ app.post('/login', (req, res) => {
     req.login(userno, (err) => {
         if (err) {
             console.log(err);
-        } 
+        }
+        // else if(!user){
+        //     req.flash('message','No such user found!');
+        //     res.redirect('/');
+        // }
         else {
             passport.authenticate('local')(req, res, () => {
                 userModel.findOne({username:username},(err,found)=>{

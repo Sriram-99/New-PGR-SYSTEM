@@ -8,13 +8,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
 </head>
 
-<body>
+<body style="background-image:url(/images/img1.jpg);">
   <div class="head">
     <img id="logo" src="images/cdac logo.jpg" alt="">
     <div class="title">
-      <h1> Centre for Development of Advanced Computing,SILCHAR</h1>
-      <h3 style="font-size:30px;">Grievance Redressal System</h3>
-    </div>
+      <h1> Centre for Development of Advanced Computing Center in North East SILCHAR</h1>
+
+      <h3 style="font-size:30px;"> Public Grievance Redressal System</h3>
+  </div>
     <img id="clg" src="/images/WhatsApp Image 2022-12-19 at 3.45.10 PM.jpeg" alt="">
   </div>
   <div class="home">
@@ -63,12 +64,10 @@
             <label for="">Confirm Password:</label>
             <input id="confirm" type="password" name="confirmPass" value="" placeholder="Confirm Password">
           </div>
-          <!-- <div class="gender">
-           <label for="">Type of Person:</label>
-            <input type="radio" name="typeOfPerson" value="citizen" id="female">Citizen
-            <input type="radio" name="typeOfPerson" value="assigningOfficer" id="male">Assigning Officer
-            <input type="radio" name="typeOfPerson" value="technician" id="other">Technician
-          </div> -->
+          <div class="formdesign">
+            <label for="">Age:</label>
+            <input id="Age" type="text" name="age" value="" placeholder="Age">
+        </div>
           <div class="input-box">
             <label for="">Aadhaar Id:</label>
             <input id="Aadhaar" type="text" name="adharNo" value="" placeholder="Aadhaar Id">
@@ -80,7 +79,8 @@
         <div class="gender">
           <p>Type of Person</p>
            <div class="gender-details">
-            <input type="radio" name="typeOfPerson" value="citizen" id="female">Citizen
+            <input type="radio" name="typeOfPerson" value="citizen" id="female">End User (Complaint
+            Reporting Person)
             <input type="radio" name="typeOfPerson" value="assigningOfficer" id="male" checked>
             Assigning Officer
             <input type="radio" name="typeOfPerson" value="technician" id="other">Technician
@@ -98,54 +98,20 @@
   </div>
 
 
-  <footer class="ft">
-  <div class="ft-main__item">
-    <img
-      src="/images/cdac logo.jpg"
-      alt="">
-  </div>
-  <div class="">
-    <h3 class="">General</h3>
-    <ul>
-      <li><a href="/about">About Us</a></li>
-      <li><a href="">Grievance Solutions</a></li>
-      <li><a href="">Report</a></li>
-      <li><a href="">Partners</a></li>
-    </ul>
-  </div>
-  <div class="">
-    <h3 class="">Connect</h3>
-    <ul>
-      <li><a href="">Careers</a></li>
-      <li><a href="">Contact us</a></li>
-      <li><a href="" target="">Blog</a></li>
-    </ul>
-  </div>
-  <div class="" id="legal">
-    <h3 class="">Legal</h3>
-    <ul>
-      <li><a href="">Terms &amp; Conditions</a></li>
-      <li><a href="">Privacy Policy</a></li>
-      <li><a href="">Grievance Policy</a></li>
-      <li><a href="">Privacy Policy</a></li>
-      <li><a href="">Privacy Policy</a></li>
-    </ul>
-  </div>
-  <div>
-    <ul class="icon">
-      <li><a href="" target="_blank"><img
-            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNLjM3MS4wNmgzMy4zOTV2MzMuMDU3SC4zN3oiLz48L2RlZnM+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48bWFzayBpZD0iYiIgZmlsbD0iI2ZmZiI+PHVzZSB4bGluazpocmVmPSIjYSIvPjwvbWFzaz48cGF0aCBkPSJNOC43MTcgMTAuOTI3YzEuNDIzIDAgMi42MDgtMS4xNzUgMi41OTEtMi41NjgtLjAxNi0xLjM5Ni0xLjIyOC0yLjU2NS0yLjYzNS0yLjU0LTEuMzg3LjAyMy0yLjUzNyAxLjE3NS0yLjU0MyAyLjU0OC0uMDA2IDEuNDIgMS4xNDcgMi41NiAyLjU4NyAyLjU2ek02LjUyMyAyNi45N2g0LjM0NFYxMi45MDJINi41MjNWMjYuOTd6bTExLjY0LjAwMnYtLjgyM2MwLTIuMDgtLjAxLTQuMTYuMDA5LTYuMjQxYTcuODA1IDcuODA1IDAgMDEuMTcyLTEuNmMuMTk2LS44ODguNjczLTEuNTY3IDEuNjMtMS44MSAxLjgwNi0uNDU2IDMuMDQ4LjQyMyAzLjA5NCAyLjI5NS4wNiAyLjQ0Ni4wMzYgNC44OTUuMDQ4IDcuMzQydi44MDhoNC40MjVjMC0zLjA2OC4wMDgtNi4wNzQtLjAwOC05LjA4LS4wMDMtLjQ4Ni0uMDg2LS45NzYtLjE3OC0xLjQ1NS0uNDctMi40NTQtMS45NzItMy43MjktNC40ODgtMy44ODYtMS45Ni0uMTIzLTMuNTkuNDU2LTQuODkxIDIuMjY4di0xLjg4N2gtNC4yMnYxNC4wN2g0LjQwOHpNMTUuNzg3LjA2aDIuNTI2Yy4xNC4wMzguMjc2LjA5OC40MTcuMTEyIDYuNjk2LjY1IDEyLjM3NiA1LjIzOCAxNC4yODggMTEuNjA1LjM0OCAxLjE1OC41MDQgMi4zNzMuNzQ5IDMuNTYxdjIuNDk4Yy0uMDU2LjM1OC0uMTE1LjcxNS0uMTY3IDEuMDczLTEuMzAzIDkuMDIxLTkuODIyIDE1LjM0NS0xOC45MTEgMTQuMDM3QzUuODM5IDMxLjY3My0uMzY4IDIzLjg3Mi40NDIgMTUuMDQzIDEuMDU4IDguMzM3IDUuNzA4IDIuNjk1IDEyLjI1Mi43ODZjMS4xNS0uMzM1IDIuMzU1LS40ODggMy41MzQtLjcyNnoiIGZpbGw9IiMwMDAiIG1hc2s9InVybCgjYikiLz48L2c+PC9zdmc+"
-            alt="LinkedIn Logo"></a></li>
-      <li><a href="" target="_blank"><img
-            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUiIGhlaWdodD0iMjkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMjUuMDhjMy44MjEuMzEzIDcuMjctLjYwNCAxMC4zOTctMi44OC0zLjI2NC0uMjctNS40NDgtMS44NDgtNi42NTctNC44MTQgMS4wOTkuMTQgMi4xMTguMTUyIDMuMTU0LS4xMy00LjA3LS45NTktNS43NDctNC40NTUtNS42MDgtNi44MzkuOTc4LjQ1NyAxLjk3OC43ODYgMy4xNy44MTRDMi42NSA5Ljk1NyAxLjYxMyA4LjMyOCAxLjM2NyA2LjI3NmMtLjE3OC0xLjQ4NS4xMTUtMi44OTguOTE2LTQuMjMxIDMuODU4IDQuMzg5IDguNzM0IDYuODAyIDE0LjY5NiA3LjIwOC0uMDQ0LS40MDgtLjEwNy0uNzgxLS4xMjMtMS4xNTctLjExOS0yLjc5MiAxLjA3LTQuOTI3IDMuNTEzLTYuMzg5IDIuNjA3LTEuNTYgNi4yMy0xLjE2OSA4LjQzOC44OTMuMjc4LjI2LjUxLjMxNi44ODYuMjI3YTE1LjQxIDE1LjQxIDAgMDAzLjkzNC0xLjUyMWMuMDAyLjg1LTEuMjEyIDIuNDA4LTIuODQ2IDMuNzUuNDE4LS4wNzMuODQtLjEzMyAxLjI1My0uMjI1LjQ0LS4wOTguODc4LS4yMTQgMS4zMDktLjM0Ny40MTctLjEyOC44MjMtLjI4NyAxLjIzNC0uNDMybC4wNy4wN2MtLjU3LjY0NC0xLjExIDEuMzE1LTEuNzE2IDEuOTI1LS40ODUuNDg4LTEuMDQxLjkxLTEuNTgyIDEuMzQ0YS41MjIuNTIyIDAgMDAtLjIyMy40NzJjLjA5IDQuNzkxLTEuMzkgOS4wOTQtNC40MDEgMTIuODg0LTMuMDUgMy44NC03LjA3MiA2LjE5LTExLjk5NiA3LjA1Ni0zLjczNS42NTgtNy40MDIuMzg1LTEwLjk3My0uODg5QTE3Ljg4MyAxNy44ODMgMCAwMTAgMjUuMDgxIiBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4="
-            alt="Twitter Logo"></a></li>
-      <li><a href="" target="_blank"><img
-            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIxLjcgMTcuMDQybC40LTMuNTkzaC0zLjQ1NWMwLS44MjgtLjAzMy0xLjYwNC4wMTMtMi4zNzYuMDI4LS40NzEuMzc3LS43MS44OTgtLjcyLjQ4LS4wMTEuOTYtLjAwNCAxLjQ0LS4wMDRoMS4wMjFWNi44Yy0xLjU2NS4wNTEtMy4xMTMuMDI2LTQuNjQyLjE3Ny0xLjE1OS4xMTUtMi4wNy43NTItMi42NjkgMS43MS0uNDgxLjc3LS42NTcgMS42MTItLjY2NiAyLjQ5LS4wMDcuNzQtLjAwMSAxLjQ4LS4wMDEgMi4yNjhoLTIuMTR2My42MDdoMi4xNDRWMjcuMmg0LjU3OFYxNy4wNDJIMjEuN3pNMTYuOTgyIDBDMjYuMzQ3LS4wMzIgMzMuOTQyIDcuNTQgMzQgMTYuOTY1Yy4wNTYgOS4zNjgtNy41NjUgMTcuMDEzLTE2Ljk4NCAxNy4wMzVDNy42MjMgMzQuMDIyIDAgMjYuNDA2IDAgMTcgMCA3LjYwOCA3LjU3LjAzMiAxNi45ODIgMHoiIGZpbGw9IiMwMDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg=="
-            alt="Fb Logo"></a></li>
-    </ul>
-  </div>
-</footer>
-
+  <footer>
+    <p>
+     <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
+     <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
+     <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
+     <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
+     <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
+     <a href="https://www.facebook.com/CDACINDIA/"><img src="/images/pics/facebook.png" alt=""></a>
+     <a href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img src="/images/pics/linkedin.png" alt=""></a>
+     <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="/images/pics/twitter.png" alt=""></a>
+    </p>
+    <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p>
+    <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
+ </footer>
 </body>
 
 </html>
