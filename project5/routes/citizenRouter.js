@@ -25,7 +25,7 @@ router.use(bodyParser.urlencoded({
 //     storage:storage
 // }).single('brokenImg');
 
-router.post('/citizen/:username', async(req,res)=>{
+router.post('/citizen/:username', (req,res)=>{
     const username=req.params.username;
     const citizenComplaint = new citizenModel({
         area:req.body.area,
@@ -36,7 +36,7 @@ router.post('/citizen/:username', async(req,res)=>{
         complaintBy:req.body.complaintBy,
         // brokenImg: req.file.filename
     });
-          await citizenComplaint.save((err)=>{
+           citizenComplaint.save((err)=>{
             if(err) console.log(err);
             else{
                 req.flash('message','Complaint has been lodge!');
