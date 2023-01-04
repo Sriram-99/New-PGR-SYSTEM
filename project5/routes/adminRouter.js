@@ -31,7 +31,7 @@ router.post('/rejectByAdmin/:id',(req,res)=>{
             console.log(err);
         }
         else{
-            req.flash('message','User rejected!!');
+            req.flash('message','User Rejected!!');
             res.redirect('/admin');
         }
     });
@@ -39,8 +39,7 @@ router.post('/rejectByAdmin/:id',(req,res)=>{
 router.post('/deleteByAdmin/:id',(req,res)=>{
     const id = req.params.id;
     userModel.findByIdAndDelete({_id:id},(err,found)=>{
-        if(err)
-        {
+        if(err){
             console.log(err);
         }
         else{

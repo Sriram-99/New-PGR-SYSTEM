@@ -11,6 +11,38 @@
 .card-img-top:hover{
     cursor: pointer;
 }
+.title-admin{
+  display: flex; 
+  justify-content: center; 
+  margin-top: 2rem;
+}
+.title-admin div{
+  background-color:rgb(6, 9, 72);
+  border-radius: 5px;
+  padding: 0.7rem;
+  width: max-content;
+}
+.all-container{
+  display: flex;
+  justify-content:space-around;
+  margin-top: 20px;
+}
+
+.private-container{
+  min-height: 35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  padding: 10px;
+  overflow:auto;
+  width: 30%;
+  box-shadow: 0 15px 15px 0 black;
+}
+.title-user{
+  color: aliceblue;
+}
 footer{
     padding: 20px;
     text-align: center;

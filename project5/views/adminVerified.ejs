@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,48 +17,168 @@
 </head>
 <body style="background-image:url(/images/img1.jpg); min-height:50rem;">
   <div class="head">
-    <img id="logo" src="images/cdac logo.jpg" alt="">
+    <img id="logo" src="/images/cdac logo.jpg" alt="">
     <div class="title">
-      <h1> Centre for Development of Advanced Computing Center in North East SILCHAR</h1>
-      <h3 style="font-size:30px;"> Public Grievance Redressal System</h3>
-  </div>
-    <img id="clg" src="/images/WhatsApp Image 2022-12-19 at 3.45.10 PM.jpeg" alt="">
+      <h1> Centre for Development of Advanced Computing Center in North East,SILCHAR</h1>
+      <h3 style="font-size:30px;">Public Grievance Redressal System</h3>
+    </div>
+    <img id="clg" src="/images/WhatsApp Image 2022-12-13 at 3.43.23 PM.jpeg" alt="">
   </div>
   <div class="home">
     <a href="/assigningOfficer/<%= assign.username %>">HOME</a>
     <a href="/about" class="nav"> About</a>
     <a href="/contact" class="nav">Contact Us</a>
-    <a href="/verifiedUsers" class="nav">verified</a>
+    <a href="/admin" class="nav">To verify</a>
   </div>
   <% if(message.length > 0){ %> 
     <div class="alert alert-success">
       <%= message %> 
     </div>
   <% } %>  
-  <div style="display: flex; justify-content: center; margin-top: 2rem;">
-    <h3  style="color: aliceblue;"> Verified Users !</h3>
-</div>
-   
-  <div class="cardContainer" >
-    <% user.forEach((item)=>{%>
-    <% if(item.typeOfPerson==="technician" || item.typeOfPerson==="assigningOfficer") {if(item.verified ==="yes"){%>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body "> 
-          <% if(item.adharImg){ %> 
-          <img src="/adhar/<%= item.adharImg %>" class="card-img-top" alt="...">
-          <a href="/adhar/<%= item.adharImg %>" download="<%= item.firstName %>">download Adhar</a>
-          <% } %> 
-          <h5 class="card-title"><%= item.firstName %> - ( <%= item.typeOfPerson %>) </h5>
-          <p class="card-text">Last name: <%= item.lastName %></p>
-          <p class="card-text">Mobile: <%= item.mobile %></p>
-          <p class="card-text">Email: <%= item.username %></p>
-          <form action="/deleteByAdmin/<%= item._id %>" method="post">
-            <button type="submit" class="btn btn-primary">Remove Data</button>
-          </form>
+  <div class="title-admin">
+    <div>
+      <h3 style="color: aliceblue;">Verified Users!!</h3>
+    </div>
+  </div>
+
+  <div class="all-container">
+    <div class="private-container">
+      <!-- Button trigger modal -->
+      <h5 class="title-user">End Users here</h5>
+      <% user.forEach((item)=>{ if(item.typeOfPerson==="citizen" && item.verified ==="yes"){%>
+      <button type="button" class="btn" style="background-color: #755353c7; color: azure;" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop">
+       Please Verify me ( <%= item.firstName %> )
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <% if(item.adharImg){ %>
+              <img src="/adhar/<%= item.adharImg %>" alt="...">
+              <a href="/adhar/<%= item.adharImg %>" download="<%= item.firstName %> ">download Adhar</a>
+              <% } %>
+              <h5><p >First name: <%= item.firstName %> - ( <%= item.typeOfPerson %>) </h5>
+              <p >Last name: <%= item.lastName %></p>
+              <p >Mobile: <%= item.mobile %></p>
+              <p >Email: <%= item.username %></p>
+              <p >Adhar Id: <%= item.adharNo %></p>
+              <p >Age: <%= item.age %></p>
+              <!-- <p class="card-text">Verification Id:</p> -->
+              <div style="display: flex; justify-content: space-around;">
+                <form action="/deleteByAdmin/<%= item._id %>" method="post">
+                  <button type="submit" class="btn btn-primary">Remove Data</button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <%}}}); %>
+      <%}}); %>
     </div>
+    <div class="private-container">
+      <!-- Button trigger modal -->
+      <h5 class="title-user">Technicians here</h5>
+      <% user.forEach((item)=>{ if(item.typeOfPerson==="technician" && item.verified ==="yes"){%>
+      <button type="button" class="btn" style="background-color: #755353c7; color: azure;" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop">
+        Please Verify me ( <%= item.firstName %> )
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <% if(item.adharImg){ %>
+              <img src="/adhar/<%= item.adharImg %>" alt="...">
+              <a href="/adhar/<%= item.adharImg %>" download="<%= item.firstName %> ">download Adhar</a>
+              <% } %>
+              <h5><p >First name: <%= item.firstName %> - ( <%= item.typeOfPerson %>) </h5>
+              <p >Last name: <%= item.lastName %></p>
+              <p >Mobile: <%= item.mobile %></p>
+              <p >Email: <%= item.username %></p>
+              <p >Adhar Id: <%= item.adharNo %></p>
+              <p >Age: <%= item.age %></p>
+              <!-- <p class="card-text">Verification Id:</p> -->
+              <div style="display: flex; justify-content: space-around;">
+                <form action="/deleteByAdmin/<%= item._id %>" method="post">
+                  <button type="submit" class="btn btn-primary">Remove Data</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%}}); %>
+    </div>
+    <div class="private-container">
+      <!-- Button trigger modal -->
+      <h5 class="title-user">AssigningOfficer here</h5>
+      <% user.forEach((item)=>{ if(item.typeOfPerson==="assigningOfficer" && item.verified ==="yes"){%>
+      <button type="button" class="btn" style="background-color: #755353c7; color: azure;" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop">
+        Please Verify me ( <%= item.firstName %> )
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <% if(item.adharImg){ %>
+              <img src="/adhar/<%= item.adharImg %>" alt="...">
+              <a href="/adhar/<%= item.adharImg %>" download="<%= item.firstName %> ">download Adhar</a>
+              <% } %>
+              <h5><p >First name: <%= item.firstName %> - ( <%= item.typeOfPerson %>) </h5>
+              <p >Last name: <%= item.lastName %></p>
+              <p >Mobile: <%= item.mobile %></p>
+              <p >Email: <%= item.username %></p>
+              <p >Adhar Id: <%= item.adharNo %></p>
+              <p >Age: <%= item.age %></p>
+              <!-- <p class="card-text">Verification Id:</p> -->
+              <div style="display: flex; justify-content: space-around;">
+                <form action="/deleteByAdmin/<%= item._id %>" method="post">
+                  <button type="submit" class="btn btn-primary">Remove Data</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%}}); %>
+    </div>
+  </div>
+  <footer>
+    <p>
+      <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
+      <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
+      <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
+      <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
+      <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
+      <a href="https://www.facebook.com/CDACINDIA/"><img src="/images/pics/facebook.png" alt=""></a>
+      <a href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img
+          src="/images/pics/linkedin.png" alt=""></a>
+      <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img
+          src="/images/pics/twitter.png" alt=""></a>
+    </p>
+    <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p>
+    <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
+  </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
