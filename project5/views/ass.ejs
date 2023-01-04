@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Admin's page</title>
+
+  <link rel="stylesheet" href="/css/Assigining.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <!-- <style media="screen">
+    #ram {
+      background-color: #C147E9;
+    }
+
+    #ram:hover {
+      background-color: #393E46;
+    }
+  </style> -->
+</head>
+
+<body style="background-image: url(/images/img1.jpg);">
+
+  <!-- top container -->
+  <div class="top-container">
+    <div class="head">
+      <img id="logo" src="/images/cdac logo.jpg" alt="">
+      <div class="title">
+        <h1> Centre for Development of Advanced Computing Center in North East,SILCHAR</h1>
+        <h3 style="font-size:30px;">Public Grievance Redressal System</h3>
+      </div>
+      <img id="clg" src="/images/WhatsApp Image 2022-12-13 at 3.43.23 PM.jpeg" alt="">
+    </div>
+
+    <!-- navbar div -->
+    <div class="navbar">
+      <a href="#"><i class="bi bi-house"></i>&nbsp Home</a>
+      <a href="/about"><i class="bi bi-file-earmark-person-fill"></i>&nbsp About</a>
+      <a href="/contact"><i class="bi bi-person-lines-fill"></i>&nbsp Contact</a>
+      <a href="/admin"> Verify</a>
+      <a href="/<%= profile.username %>/profile"><i class="bi bi-person-fill"></i><%= profile.firstName %></a>
+      <!-- <a href="#"><i class="fa fa-fw fa-user"></i> About</a> -->
+      <a href="/logout"><i class="bi bi-box-arrow-right"></i>&nbsp Logout</a>
+    </div>
+  </div>
+  <!-- top container end-->
+  <br>
+  <!-- <br>
+  <br>
+  <hr>
+  <br>
+  <br> -->
+  <!-- middle container start-->
+  <div class="ii-container">
+    <button class="tablink" onclick="openPage('grievance', this, 'rgb(124 84 89 / 54%)')" id="defaultOpen"><i
+        class="fa-regular fa-rectangle-list"></i>&nbsp <strong> ALL COMPLAINTS</strong></button>
+    <button class="tablink" onclick="openPage('employee', this, 'rgb(42 91 140 / 82%)')"><i
+        class="bi bi-person-vcard"></i>&nbsp <strong> Details of EMPLOYEES</strong></button>
+
+    <% if(message.length > 0){ %>
+    <div class="alert alert-warning">
+      <%= message %>
+    </div>
+    <% } %>
+
+    <div id="grievance" class="tabcontent">
+      <h2 class="wish"> Hello <%= profile.firstName %>! These are your list of complaints</h2>
+      <br>
+      <div class="navebar">
+        <!-- departments dropdown -->
+        <div class="dropdown">
+          <button class="dropbtn" id="departments" onclick="myFunction()"><i class="bi bi-building"></i>&nbsp
+            DEPARTMENTS
+          </button>
+          <div class="dropdown-content" id="myDropdown">
+            <div class="table">
+              <button class="tablelinks" onclick="openCity(event, 'ELECTRICAL')" id="defaultopen"><i
+                  class="fa-solid fa-plug-circle-bolt"></i>&nbsp ELECTRICAL</button>
+              <button class="tablelinks" onclick="openCity(event, 'CIVIL')"><i class="bi bi-wifi"></i>&nbsp
+                NETWORK</button>
+              <button class="tablelinks" onclick="openCity(event, 'Furnitures')"><i class="fa-solid fa-chair"></i>&nbsp
+                FURNITURES</button>
+              <button class="tablelinks" onclick="openCity(event, 'DeviceBreakdown')"><i
+                  class="fa-solid fa-hard-drive"></i> DEVICE BREAKDOWN</button>
+              <button class="tablelinks" onclick="openCity(event, 'Water')"><i class="bi bi-droplet-fill"></i>&nbsp
+                WATER</button>
+              <button class="tablelinks" onclick="openCity(event, 'Garbage')"><i class="bi bi-trash3-fill"></i>&nbsp
+                GARBAGE</button>
+              <button class="tablelinks" onclick="openCity(event, 'Toilets')"><i
+                  class="fa-solid fa-toilet-portable"></i>&nbsp TOILETS</button>
+            </div>
+            <div id="ELECTRICAL" class="tablecontent">
+              <h2>Power Related Complaints</h2>
+              <% complaints.forEach((items)=>{ if(items.subject === "electricity"){if(items.assigned =="no" &&items.rejectedByOff=="no"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%=items.subject %></h3>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                    <div class="popup">
+                      <img src="" alt="">
+                      <h2> Details of Complaint </h2>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date %> </p>
+                      <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b> &nbsp; &nbsp;
+                          <select id="selectarea" name="assignedTo" class="select">
+                            <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                            <% }}) %>
+                          </select>
+                          <button type="submit" onclick="closepopup(this)">Assign</button>
+                        </div>
+                      </form>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
+                        <input type="text" name="whyRejectedByOff" id="">
+                        <button type="submit">Reject</button>
+                      </form>
+                      <button onclick="closepopup(this)">ok</button>
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }}}) %>
+
+            </div>
+
+            <div id="CIVIL" class="tablecontent">
+              <h2>Network Related complaints</h2>
+              <% complaints.forEach((items)=>{ if(items.subject === "Network"){ if(items.assigned =="no" &&items.rejectedByOff=="no"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%=items.subject %></h3>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="">
+                      <h2> Details of Complaint </h2>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp;<%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b><%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b> &nbsp; &nbsp;
+                          <select id="selectarea" name="assignedTo" class="select">
+                            <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                            <% }}) %>
+                          </select>
+                          <button type="submit" onclick="closepopup(this)">Assign</button>
+                        </div>
+                      </form>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
+                        <input type="text" name="whyRejectedByOff" id="">
+                        <button type="submit">Reject</button>
+                      </form>
+                      <button onclick="closepopup(this)">ok</button>
+                    </div>
+                  </div>
+                </li>
+
+                <br>
+              </ul>
+              <% }}}) %>
+            </div>
+
+            <div id="Furnitures" class="tablecontent">
+              <h2>Furnitures Related complaints</h2>
+              <% complaints.forEach((items)=>{ if(items.subject === "furniture"){if(items.assigned =="no" &&items.rejectedByOff=="no"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%=items.subject %></h3>
+
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="">
+                      <h2> Details of Complaint </h2>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b> &nbsp; &nbsp;
+                          <select id="selectarea" name="assignedTo" class="select">
+                            <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                              <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                              <% }}) %>
+                          </select>
+                          <button type="submit" onclick="closepopup(this)">Assign</button>
+                        </div>
+                      </form>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
+                        <input type="text" name="whyRejectedByOff" id="">
+                        <button type="submit">Reject</button>
+                      </form>
+                      <button onclick="closepopup(this)">ok</button>
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <%} }}) %>
+            </div>
+
+            <div id="DeviceBreakdown" class="tablecontent">
+              <h2>Device Breakdown Related complaints</h2>
+              <% complaints.forEach((items)=>{ if(items.subject === "devicebreakdown"){if(items.assigned =="no" &&items.rejectedByOff=="no"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%=items.subject %></h3>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                    <div class="popup">
+                      <img src="images/ddd.jpg" alt="">
+                      <h2> Details of Complaint </h2>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp;<%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b> &nbsp; &nbsp;
+                          <select id="selectarea" name="assignedTo" class="select">
+                            <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                            <% }}) %>
+                          </select>
+                          <button type="submit" onclick="closepopup(this)">Assign</button>
+                        </div>
+                      </form>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
+                        <input type="text" name="whyRejectedByOff" id="">
+                        <button type="submit">Reject</button>
+                      </form>
+                      <button onclick="closepopup(this)">ok</button>
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }}}) %>
+            </div>
+
+            <div id="Water" class="tablecontent">
+              <h2>Water Related complaints</h2>
+              <% complaints.forEach((items)=>{ if(items.subject === "water"){ if(items.assigned =="no"&&items.rejectedByOff=="no"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%=items.subject %></h3>
+
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                    <div class="popup">
+                      <img src="images/ddd.jpg" alt="">
+                      <h2> Details of Complaint </h2>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp;<%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b> &nbsp; &nbsp;
+                          <select id="selectarea" name="assignedTo" class="select">
+                            <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                            <% }}) %>
+                          </select>
+                          <button type="submit" onclick="closepopup(this)">Assign</button>
+                        </div>
+                      </form>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
+                        <input type="text" name="whyRejectedByOff" id="">
+                        <button type="submit">Reject</button>
+                      </form>
+                      <button onclick="closepopup(this)">ok</button>
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }}}) %>
+            </div>
+
+            <div id="Garbage" class="tablecontent">
+              <h2>Garbage Related complaints</h2>
+              <% complaints.forEach((items)=>{ if(items.subject === "garbage"){if(items.assigned =="no"&&items.rejectedByOff=="no"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%=items.subject %></h3>
+
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="">
+                      <h2> Details of Complaint </h2>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp; <%=items.building %> </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp;<%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b> &nbsp; &nbsp;
+                          <select id="selectarea" name="assignedTo" class="select">
+                            <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                            <% }}) %>
+                          </select>
+                          <button type="submit">Assign</button>
+                        </div>
+                      </form>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
+                        <input type="text" name="whyRejectedByOff" id="">
+                        <button type="submit">Reject</button>
+                      </form>
+                      <button onclick="closepopup(this)">ok</button>
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }}}) %>
+            </div>
+
+            <div id="Toilets" class="tablecontent">
+              <h2>Toilets Related complaints</h2>
+              <% complaints.forEach((items)=>{ if(items.subject === "toilets"){if(items.assigned =="no" &&items.rejectedByOff=="no"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%=items.subject %></h3>
+
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="">
+                      <h2> Details of Complaint </h2>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %> </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/assignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b> &nbsp; &nbsp;
+                          <select id="selectarea" name="assignedTo" class="select">
+                            <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                            <!-- <option value="AdministrationArea">Choose Technician</option> -->
+                            <option value="<%= user.username %>"><%=user.firstName %> <%= items.lastName %></option>
+                            <% }}) %>
+                          </select>
+                          <button type="submit" onclick="closepopup(this)">Assign</button>
+                        </div>
+                      </form>
+                      <form action="/rejectByOff/<%= items._id %>/<%= assignedBy %> " method="post">
+                        <p><b>Why to reject:&nbsp;&nbsp;</b></p>
+                        <input type="text" name="whyRejectedByOff" id="">
+                        <button type="submit">Reject</button>
+                      </form>
+                      <button onclick="closepopup(this)">ok</button>
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }}}) %>
+            </div>
+
+          </div>
+        </div>
+        <!-- assigned complaints dropdown -->
+        <div class="dropdwn">
+          <button class="dropbutn" id="assigned" onclick="mFunction()"><i class="bi bi-calendar-check"></i>&nbsp
+            ASSIGNED COMPLAINTS
+          </button>
+          <div class="dropdwn-content" id="Dropdwn">
+            <div class="tabe">
+              <button class="tabelinks" onclick="openCty(event, 'ELECT')" id="defaultpen"
+                style="padding:22px 0 22px 5px;"><i class="fa-solid fa-check-to-slot"></i>&nbsp Accepted
+                Complaints</button>
+              <button class="tabelinks" onclick="openCty(event, 'CIV')" style="padding:22px 0 22px 5px;"><i
+                  class="fa-solid fa-xmark"></i>&nbsp Rejected Complaints</button>
+              <button class="tabelinks" onclick="openCty(event, 'MECH')" style="padding:22px 0 22px 2px;"><i
+                  class="fa-solid fa-repeat"></i>&nbsp Re-assigned Complaints</button>
+              <button class="tabelinks" onclick="openCty(event, 'Resolved')" style="padding:22px 0 22px 5px;"><i
+                  class="fa-solid fa-check-double"></i>&nbsp Resolved Complaints</button>
+            </div>
+
+            <div id="ELECT" class="tabecontent">
+              <h2>Assigned Complaints to Technicians</h2>
+              <% complaints.forEach((items)=>{ if(items.assigned =="yes" && items.acceptedByOff == "yes" && 
+              items.rejectedByTech == "no" && items.resolvedByCiti == "no" && items.resolvedByTech == "no"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%=items.subject %></h3>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="">
+                      <h2> Details of Complaint </h2>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %> </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/reassignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+
+                      </form>
+                      <button onclick="closepopup(this)">ok</button>
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }}) %>
+            </div>
+
+            <div id="CIV" class="tabecontent">
+              <h2>Complaints rejected by technician</h2>
+              <% complaints.forEach((items)=>{ if((items.rejectedByTech == "yes" && items.resolvedByCiti == "no" 
+               && items.reassigned =="no")){%>
+              <ul>
+                <li class="listone">
+                  <h3><%=items.subject %></h3>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="">
+                      <h2> Details of Complaint </h2>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %> </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <% if(items.whyRejetedBytech){ %>
+                      <p><b>Why Rejected:&nbsp;&nbsp;</b> <%=items. whyRejetedBytech %> </p>
+                      <% } %>
+                      <form action="/reassignedTo/<%=items._id %>/<%= assignedBy %>" method="post">
+                        <div class="area" id="area">
+                          <b>Assigned To:</b> &nbsp; &nbsp;
+                          <select id="selectarea" name="reassignedTo" class="select">
+                            <% users.forEach((user)=>{if(user.typeOfPerson === "technician"){%>
+                            <option value="<%= user.username %>"><%=user.firstName %></option>
+                            <% }}) %>
+                          </select>
+                          <button type="submit">Reassign</button>
+                        </div>
+                      </form>
+                      <button onclick="closepopup(this)">ok</button>
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }}) %>
+
+            </div>
+
+            <div id="MECH" class="tabecontent">
+              <h2>Re-Assigned Complaints to Technicians</h2>
+              <% complaints.forEach((items)=>{ if(items.reassigned =="yes" && items.resolvedByCiti == "no" 
+              && items.rejectedByTech == "yes"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%=items.subject %></h3>
+
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="">
+                      <h2> Details of Complaint </h2>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %> </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <button onclick="closepopup(this)">ok</button>
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }}) %>
+            </div>
+
+            <div id="Resolved" class="tabecontent">
+              <h2>Resolved and Checked by Person who Lodged complaint </h2>
+              <% complaints.forEach((items)=>{ if( items.resolvedByCiti === "yes" && items.resolvedByOff === "no"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%=items.subject %></h3>
+
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Complaint</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="">
+                      <h2> Details of Complaint </h2>
+                      <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%=items.date %></p>
+                      <p><b>Area:</b> &nbsp;&nbsp; <%=items.area %></p>
+                      <p><b>Hostel Name:</b>&nbsp;&nbsp;<%=items.building %> </p>
+                      <p><b>Room Number: </b>&nbsp;&nbsp; <%=items.room %></p>
+                      <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%=items.subject %></p>
+                      <p><b>Details of complaint:</b> &nbsp;&nbsp;<%=items.complaint %></p>
+                      <p><b>Complaint Progress:&nbsp;&nbsp;</b> <%=items.progress %> </p>
+                      <form action="/doneByOff/<%= items._id %>/<%= assignedBy %>" method="post">
+                        <button type="submit">Close Complaint</button>
+                      </form>
+                      <button onclick="closepopup(this)">ok</button>
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }}) %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- employee tab start -->
+    <div id="employee" class="tabcontent">
+      <h2 class="wish">Department wise employee details</h2>
+      <br>
+      <div class="navebar">
+        <!-- departments dropdown -->
+        <div class="dropdown">
+          <button class="dropbtn" id="departments" onclick="myFunction()"><i class="bi bi-building"></i>&nbsp
+            DEPARTMENTS
+          </button>
+          <!-- departments -->
+          <div class="dropdown-content" id="EmployeeDropdown">
+            <div class="table">
+              <button class="tablelinks" onclick="openCity(event, 'ele')" id="defaultopen"><i
+                  class="fa-solid fa-plug-circle-bolt"></i>&nbsp ELECTRICAL</button>
+              <button class="tablelinks" onclick="openCity(event, 'net')"><i class="bi bi-wifi"></i>&nbsp
+                NETWORK</button>
+              <button class="tablelinks" onclick="openCity(event, 'Fur')"><i class="fa-solid fa-chair"></i>&nbsp
+                FURNITURES</button>
+              <button class="tablelinks" onclick="openCity(event, 'Dev')"><i class="fa-solid fa-hard-drive"></i> DEVICE
+                BREAKDOWN</button>
+              <button class="tablelinks" onclick="openCity(event, 'Wat')"><i class="bi bi-droplet-fill"></i>&nbsp
+                WATER</button>
+              <button class="tablelinks" onclick="openCity(event, 'Gar')"><i class="bi bi-trash3-fill"></i>&nbsp
+                GARBAGE</button>
+              <button class="tablelinks" onclick="openCity(event, 'Toi')"><i
+                  class="fa-solid fa-toilet-portable"></i>&nbsp TOILETS </button>
+            </div>
+
+            <div id="ele" class="tablecontent">
+              <h2>Employees under power department</h2>
+              <% users.forEach((items)=>{if(items.skills=="electricity"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%= items.firstName %></h3>
+                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:</b> &nbsp&nbsp
+                        :&nbsp&nbsp <%= items.firstName %> <%= items.lastName %></p>
+                      <p><b>Skills</b>&nbsp&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>ID number</b>&nbsp&nbsp:&nbsp&nbsp A1982E4</p>
+                      <p><b>Department</b>&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>Phone</b>&nbsp&nbsp:&nbsp&nbsp <%= items.mobile %></p>
+                      <p><b>Shift</b>&nbsp&nbsp:&nbsp&nbsp <%= items.availability %></p>
+                      <p><b>Email</b>&nbsp&nbsp:&nbsp&nbsp <%= items.username%></p>
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }})%>
+            </div>
+
+            <div id="net" class="tablecontent">
+              <h2>Network Employees</h2>
+              <% users.forEach((items)=>{if(items.skills=="Network"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%= items.firstName %></h3>
+                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:</b> &nbsp&nbsp
+                        :&nbsp&nbsp <%= items.firstName %> <%= items.lastName %></p>
+                      <p><b>Skills</b>&nbsp&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>ID number</b>&nbsp&nbsp:&nbsp&nbsp A1982E4</p>
+                      <p><b>Department</b>&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>Phone</b>&nbsp&nbsp:&nbsp&nbsp <%= items.mobile %></p>
+                      <p><b>Shift</b>&nbsp&nbsp:&nbsp&nbsp <%= items.availability %></p>
+                      <p><b>Email</b>&nbsp&nbsp:&nbsp&nbsp <%= items.username%></p>
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }})%>
+            </div>
+
+            <div id="Fur" class="tablecontent">
+              <h2>Furnitures Employees</h2>
+              <% users.forEach((items)=>{if(items.skills=="furniture"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%= items.firstName %></h3>
+                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:</b> &nbsp&nbsp
+                        :&nbsp&nbsp <%= items.firstName %> <%= items.lastName %></p>
+                      <p><b>Skills</b>&nbsp&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>ID number</b>&nbsp&nbsp:&nbsp&nbsp A1982E4</p>
+                      <p><b>Department</b>&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>Phone</b>&nbsp&nbsp:&nbsp&nbsp <%= items.mobile %></p>
+                      <p><b>Shift</b>&nbsp&nbsp:&nbsp&nbsp <%= items.availability %></p>
+                      <p><b>Email</b>&nbsp&nbsp:&nbsp&nbsp <%= items.username%></p>
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }})%>
+            </div>
+
+            <div id="Dev" class="tablecontent">
+              <h2>Device Breakdown Employees</h2>
+              <% users.forEach((items)=>{if(items.skills=="devicebreakdown"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%= items.firstName %></h3>
+                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:</b> &nbsp&nbsp
+                        :&nbsp&nbsp <%= items.firstName %> <%= items.lastName %></p>
+                      <p><b>Skills</b>&nbsp&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>ID number</b>&nbsp&nbsp:&nbsp&nbsp A1982E4</p>
+                      <p><b>Department</b>&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>Phone</b>&nbsp&nbsp:&nbsp&nbsp <%= items.mobile %></p>
+                      <p><b>Shift</b>&nbsp&nbsp:&nbsp&nbsp <%= items.availability %></p>
+                      <p><b>Email</b>&nbsp&nbsp:&nbsp&nbsp <%= items.username%></p>
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }})%>
+            </div>
+
+            <div id="Wat" class="tablecontent">
+              <h2>Water Employees</h2>
+              <% users.forEach((items)=>{if(items.skills=="water"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%= items.firstName %></h3>
+                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:</b> &nbsp&nbsp
+                        :&nbsp&nbsp <%= items.firstName %> <%= items.lastName %></p>
+                      <p><b>Skills</b>&nbsp&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>ID number</b>&nbsp&nbsp:&nbsp&nbsp A1982E4</p>
+                      <p><b>Department</b>&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>Phone</b>&nbsp&nbsp:&nbsp&nbsp <%= items.mobile %></p>
+                      <p><b>Shift</b>&nbsp&nbsp:&nbsp&nbsp <%= items.availability %></p>
+                      <p><b>Email</b>&nbsp&nbsp:&nbsp&nbsp <%= items.username%></p>
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }})%>
+            </div>
+
+            <div id="Gar" class="tablecontent">
+              <h2>Garbage Employees</h2>
+              <% users.forEach((items)=>{if(items.skills=="garbage"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%= items.firstName %></h3>
+                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:</b> &nbsp&nbsp
+                        :&nbsp&nbsp <%= items.firstName %> <%= items.lastName %></p>
+                      <p><b>Skills</b>&nbsp&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>ID number</b>&nbsp&nbsp:&nbsp&nbsp A1982E4</p>
+                      <p><b>Department</b>&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>Phone</b>&nbsp&nbsp:&nbsp&nbsp <%= items.mobile %></p>
+                      <p><b>Shift</b>&nbsp&nbsp:&nbsp&nbsp <%= items.availability %></p>
+                      <p><b>Email</b>&nbsp&nbsp:&nbsp&nbsp <%= items.username%></p>
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }})%>
+            </div>
+
+            <div id="Toi" class="tablecontent">
+              <h2>Toilets Employees</h2>
+              <% users.forEach((items)=>{if(items.skills=="toilets"){%>
+              <ul>
+                <li class="listone">
+                  <h3><%= items.firstName %></h3>
+                  <p style="margin-right: 10px; font-size:20px; color: azure;"><%= items.availability %></p>
+                  <div>
+                    <button onclick="openpopup(this)" id="btn" class="view">View Details</button>
+                    <div class="popup">
+                      <img src="/images/ddd.jpg" alt="profile pic">
+                      <h2> Details of Employee </h2>
+                      <p><b>Name:</b> &nbsp&nbsp
+                        :&nbsp&nbsp <%= items.firstName %> <%= items.lastName %></p>
+                      <p><b>Skills</b>&nbsp&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>ID number</b>&nbsp&nbsp:&nbsp&nbsp A1982E4</p>
+                      <p><b>Department</b>&nbsp:&nbsp&nbsp <%= items.skills %></p>
+                      <p><b>Phone</b>&nbsp&nbsp:&nbsp&nbsp <%= items.mobile %></p>
+                      <p><b>Shift</b>&nbsp&nbsp:&nbsp&nbsp <%= items.availability %></p>
+                      <p><b>Email</b>&nbsp&nbsp:&nbsp&nbsp <%= items.username%></p>
+                      <button type="button" onclick="closepopup(this)">OK</button>
+                      <!-- <button type="button" onclick="closepopup(this)">Reject</button> -->
+                    </div>
+                  </div>
+                </li>
+                <br>
+              </ul>
+              <% }})%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- employee tab end -->
+    </div>
+    <!-- middle container end -->
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <!-- bottom container -->
+    <footer class="ft">
+      <div class="ft-main__item">
+        <img
+          src="https://w7.pngwing.com/pngs/183/500/png-transparent-national-institute-of-technology-silchar-national-institutes-of-technology-national-institute-of-technology-karnataka-malaviya-national-institute-of-technology-jaipur-others-text-orange-logo-thumbnail.png"
+          alt="">
+      </div>
+      <div class="">
+        <h3 class="">General</h3>
+        <ul>
+          <li><a href="">About Us</a></li>
+          <li><a href="">Grievance Solutions</a></li>
+          <li><a href="">Report</a></li>
+          <li><a href="">Partners</a></li>
+        </ul>
+      </div>
+      <div class="">
+        <h3 class="">Connect</h3>
+        <ul>
+          <li><a href="">Careers</a></li>
+          <li><a href="">Contact us</a></li>
+          <li><a href="" target="">Blog</a></li>
+        </ul>
+      </div>
+      <div class="" id="legal">
+        <h3 class="">Legal</h3>
+        <ul>
+          <li><a href="">Terms &amp; Conditions</a></li>
+          <li><a href="">Privacy Policy</a></li>
+          <li><a href="">Grievance Policy</a></li>
+          <li><a href="">Privacy Policy</a></li>
+          <li><a href="">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="ft-main__item__icon-container ft-main__item__media-icon-container">
+          <li><a
+              href="https://www.linkedin.com/in/cdac-silchar-a17b1921a/?trk=people-guest_people_search-card&originalSubdomain=in"
+              target="_blank"><img
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNLjM3MS4wNmgzMy4zOTV2MzMuMDU3SC4zN3oiLz48L2RlZnM+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48bWFzayBpZD0iYiIgZmlsbD0iI2ZmZiI+PHVzZSB4bGluazpocmVmPSIjYSIvPjwvbWFzaz48cGF0aCBkPSJNOC43MTcgMTAuOTI3YzEuNDIzIDAgMi42MDgtMS4xNzUgMi41OTEtMi41NjgtLjAxNi0xLjM5Ni0xLjIyOC0yLjU2NS0yLjYzNS0yLjU0LTEuMzg3LjAyMy0yLjUzNyAxLjE3NS0yLjU0MyAyLjU0OC0uMDA2IDEuNDIgMS4xNDcgMi41NiAyLjU4NyAyLjU2ek02LjUyMyAyNi45N2g0LjM0NFYxMi45MDJINi41MjNWMjYuOTd6bTExLjY0LjAwMnYtLjgyM2MwLTIuMDgtLjAxLTQuMTYuMDA5LTYuMjQxYTcuODA1IDcuODA1IDAgMDEuMTcyLTEuNmMuMTk2LS44ODguNjczLTEuNTY3IDEuNjMtMS44MSAxLjgwNi0uNDU2IDMuMDQ4LjQyMyAzLjA5NCAyLjI5NS4wNiAyLjQ0Ni4wMzYgNC44OTUuMDQ4IDcuMzQydi44MDhoNC40MjVjMC0zLjA2OC4wMDgtNi4wNzQtLjAwOC05LjA4LS4wMDMtLjQ4Ni0uMDg2LS45NzYtLjE3OC0xLjQ1NS0uNDctMi40NTQtMS45NzItMy43MjktNC40ODgtMy44ODYtMS45Ni0uMTIzLTMuNTkuNDU2LTQuODkxIDIuMjY4di0xLjg4N2gtNC4yMnYxNC4wN2g0LjQwOHpNMTUuNzg3LjA2aDIuNTI2Yy4xNC4wMzguMjc2LjA5OC40MTcuMTEyIDYuNjk2LjY1IDEyLjM3NiA1LjIzOCAxNC4yODggMTEuNjA1LjM0OCAxLjE1OC41MDQgMi4zNzMuNzQ5IDMuNTYxdjIuNDk4Yy0uMDU2LjM1OC0uMTE1LjcxNS0uMTY3IDEuMDczLTEuMzAzIDkuMDIxLTkuODIyIDE1LjM0NS0xOC45MTEgMTQuMDM3QzUuODM5IDMxLjY3My0uMzY4IDIzLjg3Mi40NDIgMTUuMDQzIDEuMDU4IDguMzM3IDUuNzA4IDIuNjk1IDEyLjI1Mi43ODZjMS4xNS0uMzM1IDIuMzU1LS40ODggMy41MzQtLjcyNnoiIGZpbGw9IiMwMDAiIG1hc2s9InVybCgjYikiLz48L2c+PC9zdmc+"
+                alt="LinkedIn Logo"></a></li>
+          <li><a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+              target="_blank"><img
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUiIGhlaWdodD0iMjkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMjUuMDhjMy44MjEuMzEzIDcuMjctLjYwNCAxMC4zOTctMi44OC0zLjI2NC0uMjctNS40NDgtMS44NDgtNi42NTctNC44MTQgMS4wOTkuMTQgMi4xMTguMTUyIDMuMTU0LS4xMy00LjA3LS45NTktNS43NDctNC40NTUtNS42MDgtNi44MzkuOTc4LjQ1NyAxLjk3OC43ODYgMy4xNy44MTRDMi42NSA5Ljk1NyAxLjYxMyA4LjMyOCAxLjM2NyA2LjI3NmMtLjE3OC0xLjQ4NS4xMTUtMi44OTguOTE2LTQuMjMxIDMuODU4IDQuMzg5IDguNzM0IDYuODAyIDE0LjY5NiA3LjIwOC0uMDQ0LS40MDgtLjEwNy0uNzgxLS4xMjMtMS4xNTctLjExOS0yLjc5MiAxLjA3LTQuOTI3IDMuNTEzLTYuMzg5IDIuNjA3LTEuNTYgNi4yMy0xLjE2OSA4LjQzOC44OTMuMjc4LjI2LjUxLjMxNi44ODYuMjI3YTE1LjQxIDE1LjQxIDAgMDAzLjkzNC0xLjUyMWMuMDAyLjg1LTEuMjEyIDIuNDA4LTIuODQ2IDMuNzUuNDE4LS4wNzMuODQtLjEzMyAxLjI1My0uMjI1LjQ0LS4wOTguODc4LS4yMTQgMS4zMDktLjM0Ny40MTctLjEyOC44MjMtLjI4NyAxLjIzNC0uNDMybC4wNy4wN2MtLjU3LjY0NC0xLjExIDEuMzE1LTEuNzE2IDEuOTI1LS40ODUuNDg4LTEuMDQxLjkxLTEuNTgyIDEuMzQ0YS41MjIuNTIyIDAgMDAtLjIyMy40NzJjLjA5IDQuNzkxLTEuMzkgOS4wOTQtNC40MDEgMTIuODg0LTMuMDUgMy44NC03LjA3MiA2LjE5LTExLjk5NiA3LjA1Ni0zLjczNS42NTgtNy40MDIuMzg1LTEwLjk3My0uODg5QTE3Ljg4MyAxNy44ODMgMCAwMTAgMjUuMDgxIiBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4="
+                alt="Twitter Logo"></a></li>
+          <li><a href="https://www.facebook.com/cdacsilcharassam/following" target="_blank"><img
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTIxLjcgMTcuMDQybC40LTMuNTkzaC0zLjQ1NWMwLS44MjgtLjAzMy0xLjYwNC4wMTMtMi4zNzYuMDI4LS40NzEuMzc3LS43MS44OTgtLjcyLjQ4LS4wMTEuOTYtLjAwNCAxLjQ0LS4wMDRoMS4wMjFWNi44Yy0xLjU2NS4wNTEtMy4xMTMuMDI2LTQuNjQyLjE3Ny0xLjE1OS4xMTUtMi4wNy43NTItMi42NjkgMS43MS0uNDgxLjc3LS42NTcgMS42MTItLjY2NiAyLjQ5LS4wMDcuNzQtLjAwMSAxLjQ4LS4wMDEgMi4yNjhoLTIuMTR2My42MDdoMi4xNDRWMjcuMmg0LjU3OFYxNy4wNDJIMjEuN3pNMTYuOTgyIDBDMjYuMzQ3LS4wMzIgMzMuOTQyIDcuNTQgMzQgMTYuOTY1Yy4wNTYgOS4zNjgtNy41NjUgMTcuMDEzLTE2Ljk4NCAxNy4wMzVDNy42MjMgMzQuMDIyIDAgMjYuNDA2IDAgMTcgMCA3LjYwOCA3LjU3LjAzMiAxNi45ODIgMHoiIGZpbGw9IiMwMDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg=="
+                alt="Fb Logo"></a></li>
+        </ul>
+      </div>
+    </footer>
+    <!-- bottom container -->
+
+    <script type="text/javascript" src="/js/Assigning.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+      $("#departments").click(a);
+
+      function a() {
+        $("#myDropdown").css("display", "block");
+        $("#Dropdown").css("display", "none");
+      }
+      $("#assigned").click(b);
+
+      function b() {
+        $("#myDropdown").css("display", "none");
+        $("#Dropdown").css("display", "block");
+      }
+    </script>
+</body>
+
+</html>

@@ -23,7 +23,7 @@ router.get('/assigningOfficer/:username', (req, res) => {
             if(err) console.log(err);
             complaintModel.find({},(error,foundcomplaints)=>{
                 if(err) console.log(error);
-                res.render('Assigning',{profile:data.user,users:foundusers,complaints:foundcomplaints,message:req.flash('message'),assignedBy:usernameAssign});
+                res.render('ass',{profile:data.user,users:foundusers,complaints:foundcomplaints,message:req.flash('message'),assignedBy:usernameAssign});
             });
         });
        
@@ -41,7 +41,7 @@ router.post('/assignedTo/:id/:assignedBy',(req,res)=>{
         if(err) console.log(err);
         else{
             req.flash('message','Complaint has been Assigned!');
-            res.redirect('/assignOff/'+by);
+            res.redirect('/assigningOfficer/'+by);
         }
     });
 });
@@ -55,7 +55,7 @@ router.post('/reassignedTo/:id/:assignedBy',(req,res)=>{
         if(err) console.log(err);
         else{
             req.flash('message','Complaint has been Reassigned!');
-            res.redirect('/assignOff/'+by);
+            res.redirect('/assigningOfficer/'+by);
         }
     });
 });
@@ -63,13 +63,13 @@ router.post('/reassignedTo/:id/:assignedBy',(req,res)=>{
 router.post('/rejectByOff/:id/:assignedBy',(req,res)=>{
     const id = req.params.id;
     const by = req.params.assignedBy;
-    const reason = req.params.whyRejectedByOff;
-    complaintModel.findByIdAndUpdate({_id:id},{acceptedByOff:"no", progress:"complaint has been rejected", whyRejectedByOff:reason},
+    const reason = req.body.whyRejectedByOff;
+    complaintModel.findByIdAndUpdate({_id:id},{acceptedByOff:"no",rejectedByOff:"yes", progress:"complaint has been rejected by officer", whyRejectedByOff:reason},
     (err,found)=>{
         if(err) console.log(err);
         else{
             req.flash('message','Complaint has been rejected!');
-            res.redirect('/assignOff/'+by);
+            res.redirect('/assigningOfficer/'+by);
         }
     });
 });
@@ -82,7 +82,7 @@ router.post('/doneByOff/:id/:assignedBy',(req,res)=>{
         if(err) console.log(err);
         else{
             req.flash('message','Complaint has been closed!');
-            res.redirect('/assignOff/'+by);
+            res.redirect('/assigningOfficer/'+by);
         }
     });
 });

@@ -19,12 +19,41 @@ body{
     width: 30%;
     /* height: 150px; */
 }
-.title{
-    background-color:#a5a393;
-    width: 60%;
-}
+
+body {
+    position: relative;
+  /* width: 1470px; */
+    height:100%;
+    /* width:100%; */
+    margin:0;
+  
+    /* background-image:url(img1.jpg); */
+    background-repeat: no-repeat;
+    background-size: 100% 100% ;
+  
+  }
+  .head{
+      display: flex;
+   justify-content: space-between;
+   text-align: center;
+  }
+  
+  .head img{
+      width:10%;
+  }
+  #logo{
+  
+      background-color: rgb(192, 179, 179);
+  }
+  #clg{
+      width: 20%;
+  }
+  .title{
+      background-color:#755353c7;
+      width: 70%;
+      color:#cbd2cbe0;
+  }
 .navbar{
-    
     top: 0;
     background-color: #403a39;
     display:flex;
@@ -68,13 +97,10 @@ button{
     
     background-repeat: no-repeat;
     background-position:center;
-    
-    margin-top: 10px;
    height:750px;
    width: 100%;
-   background-color:#b1af9c;
-   /* background-color: rgb(234, 165, 142); */
-  
+   background-color:#755353c7;
+    
   }
 /* #topone,#toptwo{
     width: 50%;
@@ -136,7 +162,7 @@ footer img{
     width: 50%;
 padding-top: 20px;
 padding-bottom: 10px;
-background-color:#56613b;
+background-color:rgb(96 107 178 / 40%);
 color: white;
 border-top-left-radius: 15px;
 font-weight:600;
@@ -168,7 +194,7 @@ border-top-right-radius: 15px;
     height:600px;
     overflow: scroll;
     /* changes */
-    background-color:#545945;
+    background-color:rgb(96 107 178 / 40%);
 
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -296,7 +322,7 @@ footer{
        display:block ;
       top: 315px;
         border: 2px solid black;
-        height: 72%;
+        height:fit-content;
         left:31%;
         margin: auto;
         
@@ -345,23 +371,22 @@ footer{
 
 /* footer */
 footer{
-    padding: 10px;
+    padding: 20px;
     text-align: center;
-    background-color: #494d44;
-    margin-top: 5px;
+    background-color:#755353c7;
+    margin-top: 50px;
     border-radius: 10px;
     color: rgb(254, 253, 253);
-}
-footer a{
+  }
+  footer a{
     padding: 15px;
     color: rgb(254, 253, 253);
    
-}
-
-footer img{
+  }
+  footer img{
     width: 35px;
-
-}
+  
+  }
 
 .uploadpics{
     padding-right: 100px;

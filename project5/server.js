@@ -195,6 +195,21 @@ app.post('/login', (req, res) => {
 //     }
 // });
 
+app.get('/:type/:username/about',(req,res)=>{
+    const type=req.body.type;
+    const username=req.body.username;
+    if(req.isAuthenticated()){
+        const data ={};
+        data.user = req.user;
+        res.render('about us',{user:req.user,type:type,username:username});
+    }
+});
+app.get('/:type/:username/contact',(req,res)=>{
+    if(req.isAuthenticated()){
+
+    }
+});
+
 app.get('/logout', (req, res, next)=>{
     req.logout((err)=> {
       if (err) { return next(err); }

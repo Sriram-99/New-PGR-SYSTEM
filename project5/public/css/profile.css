@@ -2,6 +2,39 @@
     font-family: 'Crimson Text', serif;
 }
 
+body {
+    position: relative;
+  /* width: 1470px; */
+    height:100%;
+    /* width:100%; */
+    margin:0;
+  
+    /* background-image:url(img1.jpg); */
+    background-repeat: no-repeat;
+    background-size: 100% 100% ;
+  
+  }
+  .head{
+      display: flex;
+   justify-content: space-between;
+   text-align: center;
+  }
+  
+  .head img{
+      width:10%;
+  }
+  #logo{
+  
+      background-color: rgb(192, 179, 179);
+  }
+  #clg{
+      width: 20%;
+  }
+  .title{
+      background-color:#755353c7;
+      width: 70%;
+      color:#cbd2cbe0;
+  }
 
 h1{
     
@@ -58,7 +91,7 @@ a{
 }
  nav a{
     text-align: center;
-    width: 65px;
+    width:fit-content;
     height: 20px;
     padding: 10px;
     margin: 2px;
@@ -197,7 +230,21 @@ span{
    font-weight: bolder; 
 }
 
-
+div.allcontent{
+    /* background-color: rgba(212, 140, 147, 0.471); */
+    -webkit-box-shadow: 15px 18px 8px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 15px 18px 8px 0px rgba(0,0,0,0.75);
+    box-shadow: 15px 18px 8px 0px rgba(0,0,0,0.75);
+    background-color: rgba(57, 53, 53, 0.5);
+    width:80%;
+    height:95%;
+    font-size:18px;
+    border-radius: 10px;
+    border:1px solid rgba(255,255,255, 0.3);
+    box-shadow:2px 2px 15px rgba(0, 0, 0, 0.3);
+    color:#f5f6f9;
+  }
+  
 
 /* popup */
 
@@ -339,20 +386,19 @@ span{
 /* footer */
 /* footer */
 footer{
-    padding: 15px;
+    padding: 20px;
     text-align: center;
-    background-color: #50318e;
-    margin-top: 100px;
+    background-color:#755353c7;
+    margin-top: 50px;
     border-radius: 10px;
     color: rgb(254, 253, 253);
-}
-footer a{
+  }
+  footer a{
     padding: 15px;
     color: rgb(254, 253, 253);
    
-}
-
-footer img{
+  }
+  footer img{
     width: 35px;
-
-}
+  
+  }

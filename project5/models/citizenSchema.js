@@ -56,6 +56,10 @@ const citizenSchema = new mongoose.Schema({
         type:String,
         default:'no'
      },
+     rejectedByOff:{
+        type:String,
+        default:'no'
+     },
      whyRejetedBytech:{
          type:String,
      },
