@@ -220,12 +220,12 @@ app.get('/logout', (req, res, next)=>{
       if (err) { return next(err); }
       else{
           req.flash('message','You have been log Out!!');
-           res.redirect('/');
+           res.redirect('/login');
       }
      
     });
   });
-app.get('/', (req, res) => {
+app.get('/login', (req, res) => {
     res.render('login vth password',{message:req.flash('message')});
 });
 
@@ -244,6 +244,15 @@ app.get('/about', (req, res) => {
 });
 app.get('/contact', (req, res) => {
     res.render('contact');
+});
+app.get('/', (req, res) => {
+    res.render('home');
+});
+app.get('/techHome', (req, res) => {
+    res.render('techHome');
+});
+app.get('/offHome', (req, res) => {
+    res.render('offHome');
 });
 
 app.use(citizenRouter);

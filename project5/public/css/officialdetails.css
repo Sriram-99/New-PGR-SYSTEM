@@ -1,0 +1,103 @@
+.head{
+    display: flex;
+ justify-content: space-between;
+ text-align: center;
+}
+.head h3{
+  position: relative;
+  top:-15px;
+}
+
+#logo{
+  width: 10%;
+    background-color: #AC3B61;
+}
+#clg{
+    width: 30%;
+    /* height: 150px; */
+}
+.title{
+    background-color:#bea0a0;
+    width: 60%;
+}
+  .nav{
+     
+    width: 100%;
+    background-color:#6e0747;
+    /* position: absolute; */
+    /* bottom: 0; */
+    display: flex;
+    justify-content: space-around;
+    height: 40px;
+    margin-top: 4px;
+
+  }
+  .nav a{
+   margin: auto;
+    width: 150px;
+  float: left;
+  color: white;
+  text-decoration: none;
+  font-size:18px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  }
+  .sign {
+    margin: auto;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 10%;
+    background: #efa325;
+    font-weight:1000;
+  }
+  .sign i {
+    font-size: 20px;
+  }
+  .top{
+    text-align: center;
+    background-color: #6b535b;
+    color: white;
+    margin: 10px auto 5px;
+    width :95%;
+  }
+  table {
+    font-family: arial, sans-serif;
+    /* border-collapse: collapse; */
+    width: 95%;
+    margin: auto;
+    height: 10px;
+  }
+  th{
+      background-color: #d1dba8;
+  }
+  
+  td, th {
+      /* border-collapse:collapse ; */
+    /* border: 1px solid #dddddd; */
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #dddddd;
+  }
+  footer{
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    background-color: #473e43;
+    margin-top: 30px;
+    border-radius: 10px;
+    color: rgb(254, 253, 253);
+  }
+  footer a{
+    padding: 15px;
+    color: rgb(254, 253, 253);
+   
+  }
+  
+  footer img{
+    width: 35px;
+  
+  }
