@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/trackbyid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+    <!-- start of heading and nav -->
+    <div class="top-container">
+        <div class="head">
+            <img id="logo" src="/images/cdac logo.jpg" alt="">
+            <div class="title">
+                <h1 style="font-size:28px;font-weight: 800" ;>Centre for Development of Advanced Computing Center<br> in
+                    North
+                    East<span style="font-size:34px" ;>(CINE)</span>, Silchar</h1>
+                <h3 style="font-size:23px" ;> Public Grievance Redress and Monitoring System(PGRAMS)</h3>
+            </div>
+            <img id="clg" src="/images/WhatsApp Image 2022-12-19 at 3.45.10 PM.jpeg" alt="">
+        </div>
+        <div class="nav">
+            <a href="/"><i class="bi bi-house"></i>&nbsp Home</a>
+            <a href="/status"><i class="bi bi-search"></i>&nbsp View Status</a>
+            <a href="/about"><i class="bi bi-file-earmark-person-fill"></i>&nbsp About</a>
+            <a href="/contact"><i class="bi bi-person-lines-fill"></i>&nbsp Contact</a>
+            <a href="/login" class="sign" style="font-size:20px;font-weight:800" ;> <i
+                    class="fa-solid fa-right-to-bracket"></i>&nbsp Sign In</a>
+            <!-- <a href="#"><i class="fa fa-fw fa-user"></i> About</a> -->
+        </div>
+    </div>
+    </div>
+    <!-- ending of heading and nav -->
+
+    <form action="/status" method="post">
+        <input type="" name="statusId" id="input1" placeholder="Enter the Complaint id">
+        <button type="submit" id="button1">view status</button>
+    </form>
+    <% if(complaint && assignedTo){%>
+    <div id="status">
+        <p><span class="span1">Date of Registration :</span><span class="span2"><%= complaint.date.toString().substring(0,21) %> </span></p>
+        <p><span class="span1">complaint Type:</span><span class="span2"><%= complaint.subject %></span></p>
+        <p><span class="span1">status of complaint:</span> <span class="span2" style="color:green;"><b><%= complaint.progress %></b></span></p>
+        <p><span class="span1">Mobile Number of technician:</span> <span class="span2"><%= assignedTo.mobile %></span></p>
+    </div>
+    <% } %>
+    <footer>
+        <p>
+            <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
+            <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
+            <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
+            <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
+            <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
+            <a href="https://www.facebook.com/CDACINDIA/"><img src="pics/facebook.png" alt=""></a>
+            <a
+                href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img
+                    src="pics/linkedin.png" alt=""></a>
+            <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img
+                    src="pics/twitter.png" alt=""></a>
+        </p>
+        <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p>
+        <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
+    </footer>
+</body>
+
+</html>

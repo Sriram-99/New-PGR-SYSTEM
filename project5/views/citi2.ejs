@@ -289,7 +289,8 @@
                     <div class="popup">
                         <img src="/images/ddd.jpg" alt="">
                        <h2> Details of Complaint </h2>
-                       <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%= item.date %></p>
+                       <p><b>Complaint Id:</b>&nbsp;&nbsp; <%= item._id %></p>
+                       <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%= item.date.toString().substring(0,21) %></p>
                        <p><b>Area:</b>  &nbsp;&nbsp; <%= item.area %></p>
                        <p><b>Specific Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
                        <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
@@ -331,7 +332,8 @@
                     <div class="popup">
                          <img src="images/ddd.jpg" alt="">
                        <h2> Details of Complaint </h2>
-                       <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%= item.date %></p>
+                       <p><b>Complaint Id:</b>&nbsp;&nbsp; <%= item._id %></p>
+                       <p><b>Date &Time of Registion:</b>&nbsp;&nbsp; <%= item.date.toString().substring(0,21) %></p>
                        <p><b>Area:</b>  &nbsp;&nbsp; <%= item.area %></p>
                        <p><b>Specific Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
                        <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>

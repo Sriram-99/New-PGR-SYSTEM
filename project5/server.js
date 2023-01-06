@@ -19,6 +19,7 @@ const flash = require('connect-flash');
 const e = require('connect-flash');
 const multer = require('multer');
 const assert = require('assert');
+const { findById } = require('./models/userSchema');
 app.use(flash());
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -247,6 +248,20 @@ app.get('/contact', (req, res) => {
 });
 app.get('/', (req, res) => {
     res.render('home');
+});
+app.get('/status', (req, res) => {
+    res.render('status',{complaint:req.flash('message'),assignedTo:""});
+});
+app.post('/status', (req, res) => {
+    const id = req.body.statusId;
+    citizenModel.findById(id,(err,found)=>{
+        userModel.findOne({username:found.assignedTo},(err,foundUser)=>{
+            if(err) console.log(err);
+            else{
+                res.render('status',{complaint:found,assignedTo:foundUser});
+            }
+        });
+    });
 });
 app.get('/techHome', (req, res) => {
     userModel.find({typeOfPerson:"technician"},(err,found)=>{
