@@ -250,7 +250,7 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 app.get('/status', (req, res) => {
-    res.render('status',{complaint:req.flash('message'),assignedTo:""});
+    res.render('status',{complaint:"",assignedTo:""});
 });
 app.post('/status', (req, res) => {
     const id = req.body.statusId;

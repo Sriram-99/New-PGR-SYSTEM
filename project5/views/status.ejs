@@ -42,12 +42,19 @@
         <input type="" name="statusId" id="input1" placeholder="Enter the Complaint id">
         <button type="submit" id="button1">view status</button>
     </form>
-    <% if(complaint && assignedTo){%>
+    <% if(complaint){%>
     <div id="status">
         <p><span class="span1">Date of Registration :</span><span class="span2"><%= complaint.date.toString().substring(0,21) %> </span></p>
         <p><span class="span1">complaint Type:</span><span class="span2"><%= complaint.subject %></span></p>
         <p><span class="span1">status of complaint:</span> <span class="span2" style="color:green;"><b><%= complaint.progress %></b></span></p>
-        <p><span class="span1">Mobile Number of technician:</span> <span class="span2"><%= assignedTo.mobile %></span></p>
+        
+        <p><span class="span1">Mobile Number of technician:</span> <span class="span2">
+            <% if(assignedTo){%> 
+                <%= assignedTo.mobile %> 
+            <% }else{ %>
+                Not yet Assigned!
+           <% } %>
+    </span></p>
     </div>
     <% } %>
     <footer>
