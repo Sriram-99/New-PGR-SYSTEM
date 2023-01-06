@@ -148,7 +148,8 @@ app.post('/login', (req, res) => {
         //     req.flash('message','No such user found!');
         //     res.redirect('/');
         // }
-        else {
+        
+        else if(req.body.inputCaptcha === req.body.captcha){
             passport.authenticate('local')(req, res, () => {
                 userModel.findOne({username:username},(err,found)=>{
                     if(err){
@@ -173,6 +174,10 @@ app.post('/login', (req, res) => {
                 });
                 
             });
+        }
+        else if(req.body.inputCaptcha != req.body.captch){
+            req.flash('message','Wrong Captcha');
+            res.redirect('/');
         }
     });
 });

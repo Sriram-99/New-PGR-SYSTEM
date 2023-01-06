@@ -1,17 +1,21 @@
-function openPage(pageName, elmnt, color) {
+function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
-  tablinks = document.getElementsByClassName("tablink");
+  tablinks = document.getElementsByClassName("tablinks");
   for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  document.getElementById(pageName).style.display = "block";
-  elmnt.style.backgroundColor = color;
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
 }
+
+// Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+
+
 
 let imagesAreaImages = document.querySelectorAll('.images-area img');
  let imagesAreaFirstImage = document.querySelector('.images-area .firstImage');
@@ -62,7 +66,7 @@ function nextImage() {
 
   paginationCircls[currentImageMinusOne].classList.add('active');
 
-  imagesAreaFirstImage.style.marginLeft = `-${600 * currentImageMinusOne}px`;
+  imagesAreaFirstImage.style.marginLeft = `-${ 835.550* currentImageMinusOne}px`;
   console.log(600 * currentImageMinusOne);
 })();
 
@@ -95,47 +99,6 @@ setInterval(() => {
 
 // document.querySelector(".form > div.w0.pr.ln3.p16.remember")
 
-(function(){
-  // const fonts = ["cursive","sans-serif","serif","monospace"];
-  const fonts=["bolder"];
-  let captchaValue = "";
-  function generateCaptcha(){
-    let value = btoa(Math.random()*1000000000);
-    value = value.substr(0,5+Math.random()*5);
-    captchaValue = value;
-  }
-  function setCaptcha(){
-    let html = captchaValue.split("").map((char)=>{
-      const rotate = -20 + Math.trunc(Math.random()*30);
-      const font = Math.trunc(Math.random()*fonts.length);
-      return `<span 
-        style="
-          transform:rotate(${rotate}deg);
-          font-family:${fonts[font]}
-        "
-      >${char}</span>`;
-    }).join("");
-    document.querySelector(".login-form .captcha .preview").innerHTML = html;
-  }
-  function initCaptcha(){
-    document.querySelector(".login-form .captcha .captcha-refresh").addEventListener("click",function(){
-      generateCaptcha();
-      setCaptcha();
-    });
-    generateCaptcha();
-    setCaptcha();
-  }
-  initCaptcha();
-  
-  document.querySelector(".login-form #login-btn").addEventListener("click",function(){
-    let inputCaptchaValue = document.querySelector(".login-form .captcha input").value;
-    if(inputCaptchaValue === captchaValue){
-      swal("", "Logging In!", "success");
-    } else {
-      swal("Invalid captcha");
-    }
-  });
-})();
 
 
 
@@ -157,8 +120,57 @@ setInterval(() => {
 //  }
 
 
-window.setTimeout(function() {
-  $(".alert").fadeTo(500, 0).slideUp(500, function(){
-      $(this).remove(); 
+ 
+
+
+(function(){
+  const fonts = ["bolder"];
+  let captchaValue = "";
+  function gencaptcha()
+  {
+      let value = btoa(Math.random()*1000000000);
+      value = value.substr(0,5 + Math.random()*5);
+      captchaValue = value;
+  }
+
+  function setcaptcha()
+  {
+      let html = captchaValue.split("").map((char)=>{
+          const rotate = -20 + Math.trunc(Math.random()*30);
+          const font = Math.trunc(Math.random()*fonts.length);
+          return`<span
+          style="
+          transform:rotate(${rotate}deg);
+          font-family:${font[font]};
+          "
+         >${char} </span>`;
+      }).join("");
+      document.querySelector(".tabcontent #captcha .preview").innerHTML = html;
+  }
+
+  function initCaptcha()
+  {
+      document.querySelector(".tabcontent #captcha .captcha_refersh").addEventListener("click",function(){
+          gencaptcha();
+          setcaptcha();
+      });
+      gencaptcha();
+      setcaptcha();
+  }
+  initCaptcha();
+
+  document.querySelector(".tabcontent .form_button").addEventListener("click",function(){
+      let inputcaptchavalue = document.querySelector(".tabcontent #captcha .form_input_captcha").value;
+      document.querySelector(".input").value=captchaValue;
+
+      // if (inputcaptchavalue === captchaValue) 
+      // {
+      //     // swal("","Log in","success");
+      //     alert("Log in success");
+      // }else
+      // {
+      //     // swal("Invalid Captcha");
+      //     alert("Invalid Captcha");
+      // }
   });
-}, 3000);
+})();

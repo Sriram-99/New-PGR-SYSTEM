@@ -13,9 +13,19 @@ margin-left:150px;
 h1{
   color:#f6c6b9;
   font-weight: bold;
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+}
+h3{
+  color:#f6c6b9;
+  font-weight: bold;
+  font-size: 35px;
+  margin:25px 100px 0px 120px;
 }
 form li{
   font-size: 25px;
+  margin:0px 100px 0px 100px;
 }
 h2{
   margin:0;
@@ -25,6 +35,10 @@ h2{
     font-size: 35px;
     color:white;
 
+}
+.form p{
+  font-size: 25px;
+margin:25px 100px 0px 100px;
 }
 .head{
 
@@ -104,7 +118,7 @@ footer{
   padding: 20px;
   text-align: center;
   background-color:#755353c7;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   border-radius: 10px;
   color: rgb(254, 253, 253);
 }
