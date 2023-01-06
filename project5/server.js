@@ -249,10 +249,21 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 app.get('/techHome', (req, res) => {
-    res.render('techHome');
+    userModel.find({typeOfPerson:"technician"},(err,found)=>{
+        if(err) console.log(err);
+        else{
+            res.render('techHome',{user:found});
+        }
+    });
+    
 });
 app.get('/offHome', (req, res) => {
-    res.render('offHome');
+    userModel.find({typeOfPerson:"assigningOfficer"},(err,found)=>{
+        if(err) console.log(err);
+        else{
+            res.render('offHome',{user:found}); 
+        }
+    });
 });
 
 app.use(citizenRouter);
