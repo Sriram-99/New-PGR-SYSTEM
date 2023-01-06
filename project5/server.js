@@ -177,7 +177,7 @@ app.post('/login', (req, res) => {
         }
         else if(req.body.inputCaptcha != req.body.captch){
             req.flash('message','Wrong Captcha');
-            res.redirect('/');
+            res.redirect('/login');
         }
     });
 });
