@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
 <body style="background-image:url(/images/img1.jpg);">
@@ -25,9 +27,9 @@
   </div>
   <div class="navbar">
 
-    <a href="" class="nav">Home</a>
-    <a href="http://www.nits.ac.in/" class="nav"> About Us</a>
-    <a href="/contact" class="nav">Contact Us </a>
+    <a href="" class="nav"><i class="bi bi-house"></i>Home</a>
+    <a href="http://www.nits.ac.in/" class="nav"><i class="bi bi-person-lines-fill"></i> About Us</a>
+    <a href="/contact" class="nav"><i class="bi bi-file-earmark-person-fill"></i> Contact Us </a>
 
     <a href="/<%= user.username %>/profile" class="nav"><i class="fa-solid fa-user"></i> <%= user.firstName %></a>
 
@@ -57,7 +59,7 @@
             <button onclick="openpopup(this)" class="view"><%= item.subject %> </button>
             <div class="popup">
               <h2><%= item.subject %> </h2>
-              <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%= item.date %></p>
+              <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%= item.date.toString().substring(0,21) %></p>
               <p><b>Area:</b> &nbsp;&nbsp; <%= item.area %></p>
               <p><b>Hostel Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
               <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
@@ -95,7 +97,7 @@
             <button onclick="openpopup2(this)" class="view"><%= item.subject %> </button>
             <div class="popup">
               <h2><%= item.subject %> </h2>
-              <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%= item.date %></p>
+              <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;<%= item.date.toString().substring(0,21) %></p>
               <p><b>Area:</b> &nbsp;&nbsp; <%= item.area %></p>
               <p><b>Hostel Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
               <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
@@ -118,6 +120,7 @@
               <p><b>Upload Photo of Fixed Image:</b> &nbsp;&nbsp;<input type="file" name="fixedImg" id=""></p>
               <button type="submit">Resolved</button>
               </form>
+              <button type="button" onclick="closepopup(this)" style="margin-top: 10px;">Ok</button>
             </div>
           </li>
         </ul>
