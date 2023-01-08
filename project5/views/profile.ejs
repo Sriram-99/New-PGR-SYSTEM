@@ -41,7 +41,11 @@
         <br> <br>
         <h1>Hello <%= user.firstName %>!!</h1>
         <br>
+        <% if(!user.profileImg){ %> 
+            <img id="picsart" src="/images/user.png" alt="no such img">
+            <% } else{ %> 
         <img id="picsart" src="/profile/<%= user.profileImg %>" alt="no such img">
+        <% } %> 
         <div>
             <button id="photobtn" onclick="openpopup(this)" class="view"></button>
             <div class="popup" id="sriram11">
@@ -58,13 +62,13 @@
             <tr>
                 <td width="200px" height="50px" class="one">Last Name:</td>
                     <td width="350px" class="two" height="50px" id="lastname" width="50%"><span><%= user.lastName %></span>
-                    <button id="btn1" onclick="btnone(this)" type="submit" value="edit"></button>
+                    <!-- <button id="btn1" onclick="btnone(this)" type="submit" value="edit"></button> -->
                     </td>
             </tr>
             <tr>
                 <td width="200px" height="50px" class="one">First Name:</td>
-                <td width="350px" height="50px" id="firstname" class="two"><span><%= user.firstName %></span> <button
-                        id="btn2" onclick="btntwo(this)" type="button" value="edit"></button></td>
+                <td width="350px" height="50px" id="firstname" class="two"><span><%= user.firstName %></span>
+                    <!-- <button id="btn2" onclick="btntwo(this)" type="button" value="edit"></button></td> -->
             </tr>
             <!-- <tr>
                     <td  width="200px"  height="50px" class="one">Date of Birth:</td>

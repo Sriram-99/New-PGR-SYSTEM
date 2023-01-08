@@ -20,9 +20,9 @@ const citizenSchema = new mongoose.Schema({
         type:String,
         required:"Put Detail of a complaint"
     },
-    brokenImg: { 
-       type:String
-     },
+    brokenImg: {
+        type:String
+    },
      date: { 
          type: Date, 
         default: Date()
@@ -90,6 +90,9 @@ const citizenSchema = new mongoose.Schema({
      },
      issueImg:{
         type:String
+     },
+     fixedImg:{
+         type:String
      }
 
 });

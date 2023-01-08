@@ -36,8 +36,13 @@
         </div>
     </div>
     </div>
+    <% if(message.length > 0){ %> 
+        <div class="alert">
+          <%= message %> 
+        </div>
+      <% } %>
     <!-- ending of heading and nav -->
-
+<div class="status">
     <form action="/status" method="post">
         <input type="" name="statusId" id="input1" placeholder="Enter the Complaint id">
         <button type="submit" id="button1">view status</button>
@@ -57,6 +62,8 @@
     </span></p>
     </div>
     <% } %>
+</div>
+    
     <footer>
         <p>
             <a href="https://www.cdac.in/index.aspx?id=help">Help</a>

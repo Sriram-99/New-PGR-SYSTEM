@@ -9,7 +9,8 @@ const complaintModel = require('../models/citizenSchema');
 const flash = require('connect-flash');
 const { findByIdAndUpdate } = require('../models/userSchema');
 // const e = require('connect-flash');
-
+const multer = require('multer');
+const path = require('path');
 router.get('/technician/:username', (req, res) => {
     if (req.isAuthenticated()) {
         const data ={};
@@ -39,6 +40,20 @@ router.post('/acceptByTech/:id',(req,res)=>{
         
     });
 });
+const storage = multer.diskStorage({
+    destination:"public/fixedImg",
+    filename:(req,file,cb)=>{
+        cb(null,file.fieldname+"_"+Date.now()+path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage:storage
+}).single('fixedImg');
+
+
+
+
 router.post('/rejectByTech/:id',(req,res)=>{
     const id = req.params.id;
     const reason = req.body.whyRejetedBytech;
@@ -54,10 +69,11 @@ router.post('/rejectByTech/:id',(req,res)=>{
         
     });
 });
-router.post('/resolved/:id/:username',(req,res)=>{
+router.post('/resolved/:id/:username',upload,(req,res)=>{
     const id = req.params.id;
     const username = req.params.username;
-    complaintModel.findByIdAndUpdate({_id:id},{progress:"Complaint has been Resolved!", resolvedByTech:"yes"},
+    const fixedImg = req.file.filename;
+    complaintModel.findByIdAndUpdate({_id:id},{progress:"Complaint has been Resolved!", resolvedByTech:"yes",fixedImg:fixedImg},
         (err,found)=>{
         if(err) console.log(err);
         else{

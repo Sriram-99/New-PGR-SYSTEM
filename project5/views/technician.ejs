@@ -8,8 +8,8 @@
   <title>Document</title>
   <link rel="stylesheet" href="/css/tech.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body style="background-image:url(/images/img1.jpg);">
@@ -18,7 +18,7 @@
   <div class="head">
     <img id="logo" src="/images/cdac logo.jpg" alt="">
     <div class="title">
-      <h1> Centre for Development of Advanced Computing Center in North East  SILCHAR</h1>
+      <h1> Centre for Development of Advanced Computing Center in North East SILCHAR</h1>
       <h3 style="font-size:30px;"> Public Grievance Redressal System</h3>
     </div>
     <img id="clg" src="/images/WhatsApp Image 2022-12-19 at 3.45.10 PM.jpeg" alt="">
@@ -28,17 +28,17 @@
     <a href="" class="nav">Home</a>
     <a href="http://www.nits.ac.in/" class="nav"> About Us</a>
     <a href="/contact" class="nav">Contact Us </a>
-    
+
     <a href="/<%= user.username %>/profile" class="nav"><i class="fa-solid fa-user"></i> <%= user.firstName %></a>
-    
+
     <a href="/logout" class="nav">LOGOUT</a>
 
   </div>
 
-  <% if(message.length > 0){ %> 
-    <div class="alert">
-      <%= message %> 
-    </div>
+  <% if(message.length > 0){ %>
+  <div class="alert">
+    <%= message %>
+  </div>
   <% } %>
 
   <div class="middlecontainer">
@@ -65,19 +65,20 @@
               <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
               <p><b>Complaint Progress</b> &nbsp;&nbsp;<%= item.progress %></p>
               <p><b>Contact of complaint raised person:</b> &nbsp;&nbsp;9912912XXX</p>
-              <p><b>Photo of the complaint:</b> &nbsp;&nbsp;</p>
+              <p><b>Photo of the complaint:</b> &nbsp;&nbsp;
+                <a href="/brokenImg/<%= item.brokenImg %>" download="<%= item._id %>"
+                  style="text-decoration: underline;">download Image here</a></p>
               <button type="button" onclick="closepopup(this)">Ok</button>
-              <!-- <div class="btns-container"> -->
-              <form action="/acceptByTech/<%= item._id %>" method="post" style="margin-top: 0.5rem;">
-                <button type="submit">Accept</button>
-              </form>
-              <form action="/rejectByTech/<%= item._id %>" method="post">
-                <label for="rejecct">Give reason of rejection:</label>
-                <input type="text" name="whyRejetedBytech" id="reject">
-                <button type="submit">Reject</button>
-              </form>
-             
-              <!-- </div> -->
+              <div class="btns-container">
+                <form action="/acceptByTech/<%= item._id %>" method="post" style="margin-top: 0.5rem;">
+                  <button type="submit">Accept</button>
+                </form>
+                <form action="/rejectByTech/<%= item._id %>" method="post">
+                  <label for="rejecct">Give reason of rejection:</label>
+                  <input type="text" name="whyRejetedBytech" id="reject">
+                  <button type="submit">Reject</button>
+                </form>
+              </div>
             </div>
           </li>
         </ul>
@@ -101,15 +102,23 @@
               <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
               <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
               <p><b>Complaint Progress</b> &nbsp;&nbsp;<%= item.progress %></p>
-              <%if(item.issue){%>
-              <p style="color: crimson;"><b>Issue Raised:</b> &nbsp;&nbsp;<%= item.issue %></p>
-              <%}%>
               <p><b>Contact of complaint raised person:</b> &nbsp;&nbsp;9912912XXX</p>
-              <p><b>Photo of the complaint:</b> &nbsp;&nbsp;</p>
-              <form action="/resolved/<%= item._id %>/<%= user.username %>" method="post" style="margin-top: 0.5rem;">
-                <button type="submit">Resolved</button>
-              </form>           
-             </div>
+              <p><b>Photo of the complaint:</b> &nbsp;&nbsp;
+                <a href="/brokenImg/<%= item.brokenImg %>" download="<%= item._id %>"
+                  style="text-decoration: underline;">download Image here</a></p>
+              <% if(item.issueImg && item.issue){ %>
+              <p style="color: crimson;"><b>Issue:</b> &nbsp;&nbsp;<%= item.issue %></p>
+              <p><b>Photo of the Issue:</b> &nbsp;&nbsp;
+                <a href="/issue/<%= item.issueImg %>" download="<%= item._id %>"
+                  style="text-decoration: underline;">download Image here</a>
+              </p>
+              <% } %>
+              <form action="/resolved/<%= item._id %>/<%= user.username %>" method="post" style="margin-top: 0.5rem;"
+              enctype="multipart/form-data">
+              <p><b>Upload Photo of Fixed Image:</b> &nbsp;&nbsp;<input type="file" name="fixedImg" id=""></p>
+              <button type="submit">Resolved</button>
+              </form>
+            </div>
           </li>
         </ul>
         <% }}); %>
@@ -120,22 +129,21 @@
     <!-- end of center 1 -->
   </div>
   <footer>
-        <p>
-            <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
-            <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
-            <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
-            <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
-            <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
-            <a href="https://www.facebook.com/CDACINDIA/"><img src="/images/pics/facebook.png" alt=""></a>
-            <a
-                href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img
-                    src="/images/pics/linkedin.png" alt=""></a>
-            <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img
-                    src="/images/pics/twitter.png" alt=""></a>
-        </p>
-        <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p>
-        <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
-    </footer>
+    <p>
+      <a href="https://www.cdac.in/index.aspx?id=help">Help</a>
+      <a href="https://www.cdac.in/index.aspx?id=website_policies">Website Policies</a>
+      <a href="https://www.cdac.in/index.aspx?id=legal_notice#2">Copyrights Policy</a>
+      <a href="https://www.cdac.in/index.aspx?id=terms_conditions">Terms & Conditions</a>
+      <a href="https://www.cdac.in/index.aspx?id=reach_us">Reach Us</a>
+      <a href="https://www.facebook.com/CDACINDIA/"><img src="/images/pics/facebook.png" alt=""></a>
+      <a href="https://www.linkedin.com/messaging/thread/2-NzI2YmNjMmItNzU3NS00ZjRiLTllZDMtNmZjNzU3MGJiZDIyXzAxMw==/"><img
+          src="/images/pics/linkedin.png" alt=""></a>
+      <a href="https://twitter.com/cdacindia?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img
+          src="/images/pics/twitter.png" alt=""></a>
+    </p>
+    <p>Website owned & maintained by: Centre for Development of Advanced Computing (C-DAC)</p>
+    <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
+  </footer>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="/js/tech.js"></script>

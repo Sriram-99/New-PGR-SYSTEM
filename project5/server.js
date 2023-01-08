@@ -20,13 +20,14 @@ const e = require('connect-flash');
 const multer = require('multer');
 const assert = require('assert');
 const { findById } = require('./models/userSchema');
+const { json } = require('body-parser');
 app.use(flash());
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
+app.use(bodyParser.json());
 app.use(session({
     secret: process.env.JWT_SECRET,
     resave: false,
@@ -41,7 +42,7 @@ app.use(passport.session());
 // }).then(()=>{console.log("DB connected!!")}).catch((err)=>{console.log(err)});
 
 //mongoose connect
-mongoose.connect(process.env.MONGODB_LOCAL, {useNewUrlParser: true}).then(()=>{console.log("DB connected!!");}).catch((err)=>{console.log(err);});
+mongoose.connect(process.env.MONGODB_LOCAL, {useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{console.log("DB connected!!");}).catch((err)=>{console.log(err);});
 
 passport.use(userModel.createStrategy());
 passport.serializeUser(userModel.serializeUser());
@@ -67,7 +68,8 @@ app.post('/', upload,(req, res) => {
         password: req.body.password,
         mobile: req.body.mobile,
         adharNo:req.body.adharNo,
-        // adharImg:req.file.filename,
+        adharImg:req.file.filename,
+        age:req.body.age,
         typeOfPerson: req.body.typeOfPerson
     });
     const originalPass = req.body.password;
@@ -250,17 +252,22 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 app.get('/status', (req, res) => {
-    res.render('status',{complaint:"",assignedTo:""});
+    res.render('status',{complaint:"",assignedTo:"",message:req.flash('message')});
 });
 app.post('/status', (req, res) => {
     const id = req.body.statusId;
     citizenModel.findById(id,(err,found)=>{
+        if(err){
+            req.flash('message','Wrong complaint Id!!');
+            res.redirect('/status');
+        }else{
         userModel.findOne({username:found.assignedTo},(err,foundUser)=>{
             if(err) console.log(err);
             else{
-                res.render('status',{complaint:found,assignedTo:foundUser});
+                res.render('status',{complaint:found,assignedTo:foundUser,message:req.flash('message')});
             }
         });
+    }
     });
 });
 app.get('/techHome', (req, res) => {
