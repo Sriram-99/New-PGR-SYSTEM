@@ -37,6 +37,7 @@ body {
 }
 
 .title {
+  text-transform: capitalize;
   background-color:#755353c7;
   width: 66%;
   color:#cbd2cbe0;
@@ -61,7 +62,7 @@ body {
   padding: 12px;
   color: white;
   text-decoration: none;
-  font-size:17px;
+  /* font-size:17px; */
   /* background-color: #04AA6D; */
   text-align: center;
   border-radius: 6px;
@@ -146,7 +147,7 @@ hr {
   width: 100%;
   overflow: hidden;
   background-color:#c96868;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 .navebar a {
@@ -286,7 +287,7 @@ hr {
   border-radius: 8px;
   padding: 14px 16px;
   background-color: inherit;
-  font-family: inherit;
+  /* font-family: inherit; */
   margin: 0;
 }
 
@@ -538,4 +539,21 @@ hr {
   /* display: flex;
   justify-content: center;
   align-items: center; */
+}
+footer{
+  padding: 20px;
+  text-align: center;
+  background-color:#755353c7;
+  /* margin-top: 50px; */
+  border-radius: 10px;
+  color: rgb(254, 253, 253);
+}
+footer a{
+  padding: 15px;
+  color: rgb(254, 253, 253);
+ 
+}
+footer img{
+  width: 35px;
+
 }

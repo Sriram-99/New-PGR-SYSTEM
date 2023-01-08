@@ -5,7 +5,7 @@ body {
   line-height: 1.5;
   color: rgb(33, 37, 41);
   text-align: left;
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
   background-repeat: no-repeat;
   background-size:cover;
   margin: 0px;
@@ -19,6 +19,7 @@ body {
 }
 .head h3{
   position: relative;
+  /* font-size:30px; */
   top:-15px;
 }
 
@@ -31,8 +32,10 @@ body {
     /* height: 150px; */
 }
 .title{
-    background-color:#bea0a0;
-    width: 60%;
+  text-transform: capitalize;
+  background-color:#bea0a0;
+  width: 60%;
+  font-size:18px;
 }
   .nav{
      
