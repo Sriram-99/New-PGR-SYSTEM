@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/css/homepage.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
@@ -38,23 +39,25 @@
     <div class="fill"></div>
     <div class="slide">
       <div class="mySlides fade">
-        <div class="numbertext">1 / 3</div>
+        <img src="/images/pic4.jpeg" style="width:100%">
+
+      </div>
+      <div class="mySlides fade">
         <img src="/images/pic1.jpg" style="width:100%">
 
       </div>
 
       <div class="mySlides fade">
-        <div class="numbertext">2 / 3</div>
         <img src="/images/pic2.jpg" style="width:100%">
 
       </div>
 
       <div class="mySlides fade">
-        <div class="numbertext">3 / 3</div>
         <img src="/images/pic3.jpg" style="width:100%">
 
       </div>
       <div class="radio" style="text-align:center">
+        <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
@@ -73,7 +76,7 @@
       </marquee>
     </div>
     <div class="row innerSection1">
-      <div class="section1">
+      <div class="section1" data-aos="zoom-in">
         <h2>ABOUT PGRAMS</h2>
         <div>
           <p class="text-justify">
@@ -95,7 +98,7 @@
           </p>
         </div>
       </div>
-      <div class="section2">
+      <div class="section2" data-aos="fade-left" data-aos-duration="1000">
 
         <div class="mySlides2 fade2">
           <img src="/images/pgr1.jpeg" style="width:100%">
@@ -120,10 +123,10 @@
     </div>
 
     <div class="row innerSection2">
-      <div class="cdacimg">
+      <div class="cdacimg" data-aos="zoom-in">
         <img src="/images/c-dac1.jpeg" alt="">
       </div>
-      <div class="abt-cdac">
+      <div class="abt-cdac" data-aos="zoom-in">
         <h2>OWNED BY : C-DAC Silchar</h2>
         <div>
           <p>This site is designed,developed and owned by <span style="font-weight:bolder" ;>Centre for Devlopment of
@@ -145,7 +148,7 @@
 
       </div>
     </div>
-    <div class="contact">
+    <!-- <div class="contact">
       <div class="innerSection3">
         <div class="box1 box">
           <a href="/registration"><i class="fa-solid fa-right-to-bracket"></i>&nbsp register</a><a
@@ -157,7 +160,21 @@
         <div class="box3 box">
           <a href="/techHome">Technicians</a></div>
       </div>
+    </div> -->
+
+    <div class="contact">
+      <div class="innerSection3">
+         <div class="box1 box"> 
+          <a href="/registration"><i class="fa-solid fa-right-to-bracket">&nbsp</i> register</a>/<a href="/login">login</a>
+         </div>
+         <div class="box2 box">
+          <a href="/offHome">Assigning officers</a>
+         </div>
+         <div class="box3 box">
+          <a href="/techHome">Technicians</a></div>
+     </div>
     </div>
+
   </div>
   <footer>
     <p>
@@ -176,8 +193,13 @@
     <p>© 2022 C-DAC. All rights reserved, Last Updated: Monday, December 26, 2022</p>
   </footer>
 
-
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
+    AOS.init();
+  </script>
+  <script>
+
+
     let slideIndex = 0;
     showSlides();
 

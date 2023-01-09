@@ -1,0 +1,26 @@
+.details{
+    width: fit-content;
+    margin: auto;
+    margin-top:100px;
+    background-color: rgb(213, 233, 213);
+             }
+    .details h2{
+      text-align: center;
+      background-color: rgb(193, 136, 136);
+      font-size: 30px;
+      margin: auto;
+      margin: 20px 30px 30px 30px;
+      border-radius: 5px;
+    }
+    .details p{
+       text-align: center;
+       padding: 8.5px;
+       font-size: 20px;
+    }
+    .details b{
+       color: rgb(159, 59, 59);
+    }
+    img{
+       background-color: rgb(222, 211, 211);
+       width:100%;
+    }

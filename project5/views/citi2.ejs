@@ -15,6 +15,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@1,600&display=swap');
     </style>
     <link rel="stylesheet" href="/css/test.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body style="background-image: url(/images/img1.jpg);">
@@ -376,7 +377,10 @@
                                             <button type="submit">Mark as done</button>
                                         </form>
                                         <button type="button" onclick="closepopup(this)"> ok</button>
-                                        <button type="button" onclick="download(this)">Download Pdf</button>
+                                            <button type="submit" >
+                                            <a href="/pdfs/users.pdf" download style="text-decoration: underline;">Download Pdf</a></button>
+                                        
+                                        <!-- <a href="/users.pdf" download style="text-decoration: underline;">Download Pdf</a> -->
                                     </div>
                                     <button class="view" onclick="openpopup1(this)">have issue</button>
                                     <div class="popup">
@@ -429,6 +433,7 @@
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 <script src="/js/test.js"></script>
 
 </html>

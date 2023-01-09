@@ -43,7 +43,7 @@ p {
 footer{
     padding: 20px;
     text-align: center;
-    background-color:#755353c7;
+    background-color:#512929c7;
     margin-top: 50px;
     border-radius: 10px;
     color: rgb(254, 253, 253);
@@ -295,7 +295,7 @@ form h3 {
 }
 
 #main1 button:hover {
-    background-color: #6c26f8;
+    background-color: #531f1fc7;
     color: white;
 }
 
@@ -418,7 +418,7 @@ textarea {
     padding-top: 20px;
     padding-bottom: 10px;
     /* change */
-    background-color: #9773e0;
+    background-color: #755353c7;
     /* change */
     color: white;
 
@@ -436,7 +436,7 @@ textarea {
     padding-top: 20px;
     padding-bottom: 10px;
     /* change */
-    background-color: #fd9bf8;
+    background-color: #c0b3b3;
 
     border-top-right-radius: 15px;
     /*change  */
@@ -457,7 +457,7 @@ textarea {
     height: 520px;
 
     /* changes */
-    background-color: #9773e0;
+    background-color: #755353c7;
 
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -509,7 +509,7 @@ textarea {
     background-color: #7611f6;
     display: none;
     /* changes */
-    background-color: #fd9bf8;
+    background-color: #c0b3b3;
 
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -544,6 +544,17 @@ textarea {
     background-color: red;
 }
 
+.remove{
+    padding: 10px;
+    background-color: #fff;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+    border-radius: 30px;
+    width: fit-content;
+}
 /* view button */
 
 .view {

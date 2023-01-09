@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pdf</title>
+    <link rel="stylesheet" href="/css/pdf.css">
+</head>
+
+<body>
+    <div class="details">
+        <img src="/images/pdf-download.jpeg">
+        <h2> Details of Complaint </h2>
+        <p><b>Complaint Lodged By:</b>&nbsp;&nbsp; <%= citizen.firstName %> <%= citizen.lastName %></p>
+        <p><b>Complaint Id:</b>&nbsp;&nbsp; <%= item._id %></p>
+        <p><b>Date &Time of Registion:</b>&nbsp;&nbsp;
+            <%= item.date.toString().substring(0,21) %></p>
+        <p><b>Area:</b> &nbsp;&nbsp; <%= item.area %></p>
+        <p><b>Specific Name:</b>&nbsp;&nbsp; <%= item.building %> </p>
+        <p><b>Room Number: </b>&nbsp;&nbsp; <%= item.room %></p>
+        <p><b>Subject of the complain:</b>&nbsp;&nbsp;<%= item.subject %></p>
+        <p><b>Details of complaint:</b> &nbsp;&nbsp;<%= item.complaint %></p>
+        <p><b>Complaint Resolved Date:&nbsp;&nbsp;</b> <%= item.resolvedTime.toString().substring(0,21) %> </p>
+    </div>
+    <img src="images/ddd.jpg" alt="">
+   
+</body>
+
+</html>

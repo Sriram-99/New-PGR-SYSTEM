@@ -10,6 +10,8 @@ const flash = require('connect-flash');
 const multer = require('multer');
 const path = require('path');
 var fs = require('fs');
+const pdf = require('html-pdf');
+const ejs = require('ejs');
 // router.use(express.static('public'));
 router.use(flash());
 router.use(bodyParser.urlencoded({
@@ -142,6 +144,14 @@ router.post('/issueSend/:id/:doneBy',upload1,(req, res) => {
                 res.redirect('/citizen/' + by);
             }
         });
+});
+
+router.post('/download/:user/:complaint',(req,res)=>{
+    const user = req.params.user;
+    const complaint = req.params.complaint;
+    citizenModel.findById(complaint,(err,found)=>{
+       
+    });
 });
 
 module.exports = router;

@@ -280,28 +280,24 @@ h3{
 }
 .box{
   font-size: 15px;
-  /* height:50px; */
   padding: 30px 20px;
   margin: auto;
-  /* border-radius: 20px; */
-
+color: white;
+}
+.box a:hover{
+  color: rgb(197, 172, 117);
 }
 .box a{
-  margin: auto;
   text-transform: uppercase;
-  background-color:#5d3f51;
   color:white;
   padding: 10px;
   border-radius: 5px;
 }
-.box1{
-  /* background-color:#80c8ea */
-}
-.box2{
-  /* background-color: #e28faa; */
-}
-.box3{
-  /* background-color: #f3cf9b; */
+.box1,.box2,.box3{
+  margin: auto;
+  background-color:#5d3f51;
+  padding: 10px;
+  border-radius: 5px;
 }
 /* footer---------------> */
 footer{

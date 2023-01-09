@@ -118,6 +118,7 @@
               <form action="/resolved/<%= item._id %>/<%= user.username %>" method="post" style="margin-top: 0.5rem;"
               enctype="multipart/form-data">
               <p><b>Upload Photo of Fixed Image:</b> &nbsp;&nbsp;<input type="file" name="fixedImg" id=""></p>
+              <input type="hidden" name="resolvedTime" id="">
               <button type="submit">Resolved</button>
               </form>
               <button type="button" onclick="closepopup(this)" style="margin-top: 10px;">Ok</button>

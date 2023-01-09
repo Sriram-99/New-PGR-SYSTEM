@@ -16,10 +16,7 @@ function switchcenter1(){
 $(".center1").css("display","block");
 $(".center2").css("display","none")
 }
-function download(currelement){
-    let par=currelement.parentElement;
-    html2pdf(par);
-}
+
 
 $("#toptwo").click(switchcenter2);
 function switchcenter2(){
@@ -55,3 +52,9 @@ function msgsubmit(){
         $(this).remove(); 
     });
 }, 3000);
+
+function download(currelement){
+    const todownload=currelement.parentElement;
+    console.log(todownload);
+    html2pdf().from(todownload).save();
+}

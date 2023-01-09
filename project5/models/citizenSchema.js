@@ -93,6 +93,10 @@ const citizenSchema = new mongoose.Schema({
      },
      fixedImg:{
          type:String
+     },
+     resolvedTime:{
+        type: Date, 
+        default: Date()
      }
 
 });
